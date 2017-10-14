@@ -21,4 +21,9 @@ public class AppService
         return dao.findAll();
     }
 
+    public Stock findOne(Long article)
+    {
+        return dao.findOne(article);
+    }
+
 }

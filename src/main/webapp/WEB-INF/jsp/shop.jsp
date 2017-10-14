@@ -24,7 +24,7 @@
                 равнодушными.
                 <br>Модели игрушек постоянно обновляются. Следите за&nbsp;изменениями на&nbsp;нашем сайте.</p>
             <br><br>
-            <c:forEach items="${resp}" var="i" varStatus="loop">
+            <c:forEach items="${list}" var="i" varStatus="loop">
                 <div class="toy">
                     <div class="block">
                         <a href="${pageContext.request.contextPath}/item?article=${i.getArticle()}">

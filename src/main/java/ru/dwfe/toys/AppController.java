@@ -3,6 +3,7 @@ package ru.dwfe.toys;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Map;
@@ -45,8 +46,20 @@ public class AppController
     @RequestMapping("/shop")
     public String shop(Map<String, Object> model)
     {
-        List<Stock> resp = appService.findAll();
-        model.put("resp", resp);
+        List<Stock> list = appService.findAll();
+        model.put("list", list);
+        return "shop";
+    }
+
+    @RequestMapping("/item")
+    public String item(Map<String, Object> model, @RequestParam Map<String, String> params)
+    {
+        List<Stock> list = appService.findAll();
+        Stock item = appService.findOne(Long.parseLong(params.get("article")));
+
+        list.remove(item);
+        model.put("list", list);
+        model.put("item", item);
         return "shop";
     }
 }
