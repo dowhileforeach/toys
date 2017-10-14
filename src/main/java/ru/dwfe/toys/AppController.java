@@ -1,11 +1,23 @@
 package ru.dwfe.toys;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
+import java.util.Map;
 
 @Controller
 public class AppController
 {
+    private final AppService appService;
+
+    @Autowired
+    public AppController(AppService appService)
+    {
+        this.appService = appService;
+    }
+
     @RequestMapping("/")
     public String index()
     {
@@ -31,8 +43,10 @@ public class AppController
     }
 
     @RequestMapping("/shop")
-    public String shop()
+    public String shop(Map<String, Object> model)
     {
+        List<Stock> resp = appService.findAll();
+        model.put("resp", resp);
         return "shop";
     }
 }
