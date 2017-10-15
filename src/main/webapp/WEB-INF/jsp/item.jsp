@@ -52,16 +52,20 @@
                     </c:if>
                 </table>
                 <p id="fsLinks">
-                    <a href="${pageContext.request.contextPath}/static/pic/art/${item.getArticle()}/${item.getImg01()}"
-                       onclick="return Show_picture( '${pageContext.request.contextPath}/static/pic/art/${item.getArticle()}/${item.getImg01()}' )">
-                        <img src="${pageContext.request.contextPath}/static/pic/art/${item.getArticle()}/${item.getImg01_sm()}"
-                             border=0>
-                    </a>
-                    <a href="${pageContext.request.contextPath}/static/pic/art/${item.getArticle()}/${item.getImg02()}"
-                       onclick="return Show_picture( '${pageContext.request.contextPath}/static/pic/art/${item.getArticle()}/${item.getImg02()}' )">
-                        <img src="${pageContext.request.contextPath}/static/pic/art/${item.getArticle()}/${item.getImg02_sm()}"
-                             border=0>
-                    </a>
+                    <t:img_preview path="${pageContext.request.contextPath}" article="${item.getArticle()}"
+                                   img="${item.getImg01()}" img_sm="${item.getImg01_sm()}"/>
+                    <t:img_preview path="${pageContext.request.contextPath}" article="${item.getArticle()}"
+                                   img="${item.getImg02()}" img_sm="${item.getImg02_sm()}"/>
+                    <t:img_preview path="${pageContext.request.contextPath}" article="${item.getArticle()}"
+                                   img="${item.getImg03()}" img_sm="${item.getImg03_sm()}"/>
+                    <t:img_preview path="${pageContext.request.contextPath}" article="${item.getArticle()}"
+                                   img="${item.getImg04()}" img_sm="${item.getImg04_sm()}"/>
+                    <t:img_preview path="${pageContext.request.contextPath}" article="${item.getArticle()}"
+                                   img="${item.getImg05()}" img_sm="${item.getImg05_sm()}"/>
+                    <t:img_preview path="${pageContext.request.contextPath}" article="${item.getArticle()}"
+                                   img="${item.getImg06()}" img_sm="${item.getImg06_sm()}"/>
+                    <t:img_preview path="${pageContext.request.contextPath}" article="${item.getArticle()}"
+                                   img="${item.getImg07()}" img_sm="${item.getImg07_sm()}"/>
                     <span id="fsControl_prev" class="fsControl" style="border: 0px">&larr;</span>
                     <span id="fsControl_next" class="fsControl" style="border: 0px">&rarr;</span>
                 </p>
