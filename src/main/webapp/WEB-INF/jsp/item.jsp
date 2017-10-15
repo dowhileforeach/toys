@@ -108,6 +108,12 @@
                 </div>
             </c:forEach>
 
+            <script>
+                $('A.buyitem').click(function(e) {
+                    Basket.Add($(this));
+                });
+            </script>
+
     </jsp:attribute>
 
 </t:skeleton>
