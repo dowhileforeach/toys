@@ -35,7 +35,7 @@ html {
 body {
     margin: 0px;
     background: url(/static/pic/bg.gif) no-repeat left top #150b09;
-    background-position : 77px 0;
+    background-position: 77px 0;
     color: #be9079;
     font-family: "Trebuchet MS", "Arial", "sans-serif";
     font-size: 90%;
@@ -873,15 +873,15 @@ a.buyitem:hover {
     height: 421px;
     width: 567px;
     overflow: auto;
-/ / overflow: hidden;
-/ / overflow-x: auto;
+    /*overflow: hidden;*/
+    /*overflow-x: auto;*/
 }
 
 .fsControl, #fsLinks a {
     color: #bb7937;
     cursor: pointer;
     font-size: 15px;
-/ / cursor: hand;
+    /*cursor: hand;*/
 }
 
 #fsLinks img {
@@ -891,10 +891,14 @@ a.buyitem:hover {
     margin-bottom: 2px;
 }
 
+#fsLinks a {
+    text-decoration: none;
+}
+
 .fsControl.disabled, #fsLinks a.current {
     color: #000000;
     cursor: default;
-    text-decoration: none;
+    /*text-decoration: none;*/
 }
 
 .fsControl.disabled {

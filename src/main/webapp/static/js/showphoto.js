@@ -18,11 +18,11 @@
                     this.aeLink[i].className += " current";
                     this.ePrev.className = this.ePrev.className.replace( /\s+disabled/g, "" );
                     this.eNext.className = this.eNext.className.replace( /\s+disabled/g, "" );
-                    if( i == 0 ){
+                    if( i === 0 ){
                         this.ePrev.className += " disabled";
                         this.ePrev.onclick = function(){};
                         this.eNext.onclick = this.aeLink[i + 1].onclick;
-                    }else if( i == this.aeLink.length - 1 ){
+                    }else if( i === this.aeLink.length - 1 ){
                         this.eNext.className += " disabled";
                         this.eNext.onclick = function(){};
                         this.ePrev.onclick = this.aeLink[i - 1].onclick;

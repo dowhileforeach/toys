@@ -32,11 +32,18 @@ public class Stock
     @Column(name = "img01_sm")
     private String img01_sm;
 
+    @Column(name = "img02")
+    private String img02;
+
+    @Column(name = "img02_sm")
+    private String img02_sm;
+
 //    @Column(name = "")
 //    private String ;
 //
 //    @Column(name = "")
 //    private String ;
+
 
 
     public Long getArticle()
@@ -117,6 +124,26 @@ public class Stock
     public void setImg01_sm(String img01_sm)
     {
         this.img01_sm = img01_sm;
+    }
+
+    public String getImg02()
+    {
+        return img02;
+    }
+
+    public void setImg02(String img02)
+    {
+        this.img02 = img02;
+    }
+
+    public String getImg02_sm()
+    {
+        return img02_sm;
+    }
+
+    public void setImg02_sm(String img02_sm)
+    {
+        this.img02_sm = img02_sm;
     }
 
     @Override

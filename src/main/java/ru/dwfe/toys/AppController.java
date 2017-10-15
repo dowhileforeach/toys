@@ -60,6 +60,6 @@ public class AppController
         list.remove(item);
         model.put("list", list);
         model.put("item", item);
-        return "shop";
+        return "item";
     }
 }
