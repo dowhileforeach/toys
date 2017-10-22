@@ -1,26 +1,16 @@
 <%@ page pageEncoding="utf-8" contentType="text/html; charset=utf-8" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <t:skeleton
-        title="Игрушки и аксессуары из натурального меха и кожи / Эксклюзивные подарки из натурального меха - мягкие игрушки и любые изделия на заказ Арума меховые игрушки">
+        title="Игрушки и аксессуары из натурального меха и кожи / Эксклюзивные подарки из натурального меха - мягкие игрушки и любые изделия на заказ Арума меховые игрушки"
+        topmenuMarker="delivery">
 
     <jsp:attribute name="head"/>
 
     <jsp:attribute name="pageBody">
 
-    <nav id="topmenu">
-        <ul>
-            <li><a href="${pageContext.request.contextPath}/shop">Магазин</a></li>
-            <li> |</li>
-            <li><a class="a" href="${pageContext.request.contextPath}/delivery">Доставка</a></li>
-            <li> |</li>
-            <li><a href="${pageContext.request.contextPath}/about">Контакты</a></li>
-        </ul>
-    </nav>
-
     <nav id="sidemenu"></nav>
 
     <div id="content">
-        <h1>Доставка</h1>
         <h3>Доставка по Москве (в пределах МКАД)</h3>
         <p>Доставка игрушек осуществляется на следующий день при наличии товара на
             складе. Стоимость доставки &#151; 350 руб. При заказе более 60 000 руб. доставка

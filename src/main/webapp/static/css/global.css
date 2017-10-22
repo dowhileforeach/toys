@@ -11,13 +11,8 @@ header, nav, section, article, aside, footer {
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
-    -ms-transition: all 0.5s ease;
     transition: all 0.5s ease;
 
-    /**/
-}
-
-* {
     outline: none;
 }
 
@@ -28,12 +23,11 @@ html {
     -webkit-transition: none;
     -moz-transition: none;
     -o-transition: none;
-    -ms-transition: none;
     transition: none;
 }
 
 body {
-    margin: 0px;
+    margin: 0;
     background: url(/static/pic/bg.gif) no-repeat left top #150b09;
     background-position: 77px 0;
     color: #be9079;
@@ -44,14 +38,13 @@ body {
 
 .fix_block {
     width: 90%;
-    padding: 0px;
+    padding: 0;
     margin: 0 auto;
     min-width: 400px;
     max-width: 1200px;
 }
 
 header.top {
-
     min-height: 120px;
     padding: 3% 5px 5px 5px;
 }
@@ -70,22 +63,9 @@ header.top .logo img {
     min-width: 220px;
 }
 
-header.top div.basketblock {
+.shoppingCartBlock {
     width: 20%;
     float: right;
-}
-
-.basket a.orderbutton {
-    padding: 4px 8px;
-    font-size: 90%;
-    margin-top: 2px;
-    display: inlne-block;
-    text-shadow: 0px 1px 1px #666;
-    background: #9b6b51;
-}
-
-.basket a.orderbutton:hover {
-    background: #d4893e;
 }
 
 header.top .txt {
@@ -111,13 +91,11 @@ header.top .txt * {
     width: 45%;
 }
 
-a.
 #topmenu {
-    margin-bottom: 20px;
+    margin-bottom: 0px;
 }
 
 #topmenu ul {
-
     padding: 10px;
     margin: 0px;
 }
@@ -135,7 +113,6 @@ a.
     text-decoration: none;
     margin-right: 3px;
     margin-left: 3px;
-
 }
 
 #topmenu a:hover {
@@ -143,84 +120,25 @@ a.
     text-decoration: underline;
 }
 
-#topmenu a.a {
+#topmenu a.active {
     color: #d4893e;
     background: #270f05;
 
     border-radius: 10px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
-    -khtml-border-radius: 10px;
-
 }
 
-#topmenu a.a:hover {
+#topmenu a.active:hover {
     color: #ffffff;
 
-    text-decoration: underline;
-}
-
-#sidemenu {
-    margin-bottom: 20px;
-
-}
-
-#sidemenu ul {
-    background: #270f05;
-    width: auto;
-    padding: 10px;
-    margin: 0px;
-
-    border-radius: 10px;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -khtml-border-radius: 10px;
-
-}
-
-#sidemenu ul li {
-    display: inline-block;
-    margin: 0px;
-    padding: 0px;
-}
-
-#sidemenu a {
-    color: #e2a081;
-    font-size: 110%;
-    padding: 10px 10px;
-    text-decoration: none;
-    margin-right: 3px;
-    margin-left: 3px;
-
-}
-
-#sidemenu a:hover {
-    color: #d4893e;
-    text-decoration: underline;
-}
-
-#sidemenu a.a {
-    color: #d4893e;
-    background: #270f05;
-
-    border-radius: 10px;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -khtml-border-radius: 10px;
-
-}
-
-#sidemenu a.a:hover {
-    color: #ffffff;
     text-decoration: underline;
 }
 
 #content {
-
     margin-right: 20px;
     padding: 10px 20px 20px 20px;
     min-height: 600px;
-
 }
 
 #sidebar {
@@ -229,9 +147,7 @@ a.
     float: left;
     margin-left: 10px;
     padding: 40px 0px;
-
     min-height: 450px;
-
 }
 
 .side_menu div.header {
@@ -262,7 +178,6 @@ a.side_menu:link, a.side_menu:visited {
     position: relative;
     margin-top: 1px;
     text-decoration: none;
-
 }
 
 a.side_menu:hover {
@@ -282,7 +197,6 @@ a.side_sub_menu:link, a.side_sub_menu:visited {
     padding: 5px 5px 5px 5px;
     color: #270f05;
     text-decoration: none;
-
 }
 
 a.side_sub_menu:hover {
@@ -330,14 +244,14 @@ a.side_sub_menu_act:hover {
 }
 
 .small_search_button {
-    background: url("/toys/static/pic/small_search_click.gif");
+    background: url("/static/pic/small_search_click.gif");
     width: 28px;
     height: 20px;
     border: 0px;
 }
 
 .small_search_input {
-    background: url("/toys/static/pic/small_search_inp.gif");
+    background: url("/static/pic/small_search_inp.gif");
     width: 150px;
     height: 18px;
     border: 0px;
@@ -372,8 +286,6 @@ div.login_form {
     border-radius: 10px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
-    -khtml-border-radius: 10px;
-
     box-shadow: 0px 0px 10px #d4893e;
 }
 
@@ -397,8 +309,6 @@ input {
     border-radius: 10px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
-    -khtml-border-radius: 10px;
-
 }
 
 .form {
@@ -408,7 +318,6 @@ input {
     border-radius: 10px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
-    -khtml-border-radius: 10px;;
 }
 
 .form input, .form textarea {
@@ -450,7 +359,6 @@ div#js-djem-alert {
     border-radius: 10px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
-    -khtml-border-radius: 10px;
 
     box-shadow: 0px 0px 10px #d4893e;
 }
@@ -470,8 +378,6 @@ p#js-djem-alert-text {
     border-radius: 10px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
-    -khtml-border-radius: 10px;
-
 }
 
 .orderbutton {
@@ -485,8 +391,6 @@ p#js-djem-alert-text {
     border-radius: 10px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
-    -khtml-border-radius: 10px;
-
 }
 
 .orderbutton:hover {
@@ -838,7 +742,6 @@ a.buyitem:hover {
     float: right;
     font-size: 12px;
     padding: 2px 0px 2px 0px;
-    color: #fff;
 }
 
 .result_block .block .line .wrap td {
@@ -940,7 +843,6 @@ div.toy {
     border-radius: 10px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
-    -khtml-border-radius: 10px;
 
     text-align: center;
 
@@ -988,5 +890,4 @@ div.toy .price {
     font-size: 120%;
     width: 120px;
     background: none;
-
 }	

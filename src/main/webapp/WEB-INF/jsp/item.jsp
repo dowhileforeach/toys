@@ -2,29 +2,18 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <t:skeleton
-        title="Игрушки и аксессуары из натурального меха и кожи / Эксклюзивные подарки из натурального меха - мягкие игрушки и любые изделия на заказ Арума меховые игрушки">
+        title="Игрушки и аксессуары из натурального меха и кожи / Эксклюзивные подарки из натурального меха - мягкие игрушки и любые изделия на заказ Арума меховые игрушки"
+        topmenuMarker="">
 
-    <jsp:attribute name="head">
-
-    </jsp:attribute>
+    <jsp:attribute name="head"/>
 
     <jsp:attribute name="pageBody">
-
-    <nav id="topmenu">
-        <ul>
-            <li><a href="${pageContext.request.contextPath}/shop">Магазин</a></li>
-            <li> |</li>
-            <li><a href="${pageContext.request.contextPath}/delivery">Доставка</a></li>
-            <li> |</li>
-            <li><a href="${pageContext.request.contextPath}/about">Контакты</a></li>
-        </ul>
-    </nav>
 
     <div id="content">
 
         <div class="left">
             <div id="fsClipper">
-                <div id="fsScreen" style="position: relative; top: -4;"></div>
+                <div id="fsScreen" style="position: relative; top: 0;"></div>
             </div>
         </div>
         <div class="right">
@@ -69,7 +58,7 @@
                 <span id="fsControl_prev" class="fsControl" style="border: 0px">&larr;</span>
                 <span id="fsControl_next" class="fsControl" style="border: 0px">&rarr;</span>
             </p>
-            <script src="${pageContext.request.contextPath}/static/js/showphoto.js" type="text/javascript"></script>
+            <script src="${pageContext.request.contextPath}/static/js/picPreview.js" type="text/javascript"></script>
             <br>
             <div style="float: right; width: 200px;">Цена: <span class="price">${item.getPrice()} руб.</span>
                 <a href="#" item="${item.getArticle()}" class="buyitem" style="margin-top: 20px;">в корзину</a>

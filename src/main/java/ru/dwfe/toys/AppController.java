@@ -31,10 +31,10 @@ public class AppController
         return "about";
     }
 
-    @RequestMapping("/basket")
-    public String basket()
+    @RequestMapping("/shoppingcart")
+    public String shoppingCart()
     {
-        return "basket";
+        return "shoppingcart";
     }
 
     @RequestMapping("/delivery")
