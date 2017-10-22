@@ -14,14 +14,6 @@
     <link rel="icon" href="${pageContext.request.contextPath}/static/pic/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/static/pic/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/styles3.css" type="text/css"/>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/media4.css" type="text/css"/>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/lightbox.css" type="text/css" media="screen"/>
-
-    <script src="${pageContext.request.contextPath}/static/js/jquery.js"></script>
-    <script src="${pageContext.request.contextPath}/static/js/jform.js"></script>
-    <script src="${pageContext.request.contextPath}/static/js/com.js"></script>
-    <script src="${pageContext.request.contextPath}/static/js/document725.js"></script>
-    <script src="${pageContext.request.contextPath}/static/js/lightbox.js" type="text/javascript"></script>
 
     <jsp:invoke fragment="head"/>
 
@@ -32,8 +24,7 @@
 
     <header class="top">
         <div class="logo">
-            <a href="${pageContext.request.contextPath}/"><img src="${pageContext.request.contextPath}/static/pic/logo.png"
-                                                               alt=""></a>
+            <a href="${pageContext.request.contextPath}/"><img src="${pageContext.request.contextPath}/static/pic/logo.png" alt=""></a>
         </div>
         <div class="basketblock">
 
@@ -47,6 +38,7 @@
             </div>
 
         </div>
+
         <div class="txt">
             <p><strong>Тел.: +7(777)777-77-77</strong></p>
         </div>
@@ -55,11 +47,6 @@
 
     <jsp:invoke fragment="pageBody"/>
 
-    <script>
-        $(document).ready(function () {
-            $('[rel="lightbox"]').lightBox();
-        });
-    </script>
     <div id="footer">
         <div style="float:right; width: 300px;">
             <p class=small> Разработка сайта: <a href="https://dwfe.ru" target="_blank">Do|While|For|Each</a></p>

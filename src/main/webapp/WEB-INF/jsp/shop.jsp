@@ -4,7 +4,17 @@
 <t:skeleton
         title="Игрушки и аксессуары из натурального меха и кожи / Эксклюзивные подарки из натурального меха - мягкие игрушки и любые изделия на заказ Арума меховые игрушки">
 
-    <jsp:attribute name="head"/>
+    <jsp:attribute name="head">
+
+        <script>
+
+            function addItemToTheBasket() {
+
+            }
+
+        </script>
+
+    </jsp:attribute>
 
     <jsp:attribute name="pageBody">
 
@@ -31,22 +41,14 @@
                             <img src="${pageContext.request.contextPath}/static/pic/art/${i.getArticle()}/${i.getImg01_sm()}" width=200>
                         </a>
                         <br>
-                        <a href="${pageContext.request.contextPath}/item?article=${i.getArticle()}" class=link>${i.getTitle()}</a>
+                        <a href="${pageContext.request.contextPath}/item?article=${i.getArticle()}"
+                           class=link>${i.getTitle()}</a>
                     </div>
                     <div class="clear"></div>
-                    <a href="#" item="${i.getArticle()}" class="buyitem">в корзину</a>
-                    <div class="price">
-                        ${i.getPrice()} <span>руб.</span>
-                    </div>
+                    <a href="#" item="${i.getArticle()}" class="buyitem" onclick="addItemToTheBasket()">в корзину</a>
+                    <div class="price">${i.getPrice()} <span>руб.</span></div>
                 </div>
             </c:forEach>
-
-            <script>
-                $('A.buyitem').click(function(e) {
-                    Basket.Add($(this));
-                });
-            </script>
-
         </div>
 
     </jsp:attribute>
