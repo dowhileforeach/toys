@@ -12,7 +12,7 @@
     <div id="content">
         <div class="left">
             <a href="${pageContext.request.contextPath}/shop">
-                <img src="${pageContext.request.contextPath}/static/pic/crow_01.jpg" border=0 style="margin-top: -3px;" alt="" style="width: 100%;">
+                <img src="${pageContext.request.contextPath}/static/pic/crow_01.jpg" border=0 style="margin-top: -3px; margin-left: 32px" alt="" style="width: 100%;">
             </a>
         </div>
         <div class="right">

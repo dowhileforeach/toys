@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service("appService")
 public class AppService
@@ -24,6 +25,10 @@ public class AppService
     public Stock findOne(Long article)
     {
         return dao.findOne(article);
+    }
+
+    public List<Stock> findAll(Set<Long> ids){
+        return dao.findAll(ids);
     }
 
 }

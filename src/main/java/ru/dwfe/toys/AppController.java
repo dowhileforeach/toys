@@ -2,11 +2,13 @@ package ru.dwfe.toys;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Controller
 public class AppController
@@ -31,9 +33,21 @@ public class AppController
         return "about";
     }
 
-    @RequestMapping("/shoppingcart")
-    public String shoppingCart()
+    @RequestMapping(value = "/shoppingcart", method = RequestMethod.POST)
+    public String shoppingCart(Map<String, Object> model, @RequestBody List<ShoppingCart> shoppingcart)
     {
+        List<Stock> info = appService.findAll(
+                shoppingcart.stream()
+                        .map(ShoppingCart::getArticle)
+                        .collect(Collectors.toSet()));
+
+        for (ShoppingCart item : shoppingcart){
+            Stock stock = new Stock();
+            stock.setArticle(item.getArticle());
+            item.setStock(info.get(info.indexOf(stock)));
+        }
+
+        model.put("shoppingcart", shoppingcart);
         return "shoppingcart";
     }
 

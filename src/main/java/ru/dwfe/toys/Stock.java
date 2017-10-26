@@ -68,14 +68,6 @@ public class Stock
     @Column(name = "img07_sm")
     private String img07_sm;
 
-//    @Column(name = "")
-//    private String ;
-//
-//    @Column(name = "")
-//    private String ;
-
-
-
     public Long getArticle()
     {
         return article;

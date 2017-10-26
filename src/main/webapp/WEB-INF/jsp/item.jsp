@@ -20,10 +20,6 @@
             <h1>${item.getTitle()}</h1>
             <table class="shop" border=0 cellspacing=0>
                 <tr>
-                    <td class="name">Артикул</td>
-                    <td>${item.getArticle()}</td>
-                </tr>
-                <tr>
                     <td class="name">Мех</td>
                     <td>${item.getMaterial()}</td>
                 </tr>
@@ -39,6 +35,10 @@
                         <td>${item.getSize()}</td>
                     </tr>
                 </c:if>
+                <tr>
+                    <td class="name">Артикул</td>
+                    <td>${item.getArticle()}</td>
+                </tr>
             </table>
             <p id="fsLinks">
                 <t:img_preview path="${pageContext.request.contextPath}" article="${item.getArticle()}"
@@ -82,12 +82,10 @@
             <div class="toy">
                 <div class="block">
                     <a href="${pageContext.request.contextPath}/item?article=${i.getArticle()}">
-                        <img src="${pageContext.request.contextPath}/static/pic/art/${i.getArticle()}/${i.getImg01_sm()}"
-                             width=200>
+                        <img src="${pageContext.request.contextPath}/static/pic/art/${i.getArticle()}/${i.getImg01_sm()}" width=200>
                     </a>
                     <br>
-                    <a href="${pageContext.request.contextPath}/item?article=${i.getArticle()}"
-                       class=link>${i.getTitle()}</a>
+                    <a href="${pageContext.request.contextPath}/item?article=${i.getArticle()}" class=link>${i.getTitle()}</a>
                 </div>
                 <div class="clear"></div>
                 <a href="#" item="${i.getArticle()}" class="buyitem">в корзину</a>
