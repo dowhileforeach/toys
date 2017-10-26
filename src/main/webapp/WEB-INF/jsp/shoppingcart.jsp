@@ -11,29 +11,32 @@
 
     <div id="content">
 
-        <h1>Корзина покупателя</h1>
-
-        <table border=0 class="order" width=100%>
-            <tr class=top>
-                <td>Товар</td>
-                <td>Количество</td>
-                <td align=right>Цена (руб.)</td>
-                <td  align=right>Сумма  (руб.)</td>
+        <table border=0 class="order" width="700px" align="center">
+            <tr class="top">
+                <td width="400px">Товар</td>
+                <td width="100px">Количество</td>
+                <td align=right>Сумма</td>
             </tr>
 
             <c:set var="qttyCount" value="0"/>
             <c:set var="sumCount" value="0"/>
             <c:forEach items="${shoppingcart}" var="i" varStatus="loop">
                 <tr>
-                    <td>
-                        <a href="${pageContext.request.contextPath}/item?article=${i.getArticle()}">${i.getStock().getTitle()}</a>
+                    <td style="vertical-align: middle; background: url('${pageContext.request.contextPath}/static/pic/art/${i.getArticle()}/${i.getStock().getImg01()}') no-repeat left center; background-size: 100px;">
+                        <span style="margin-left: 105px">
+                            <a href="${pageContext.request.contextPath}/item?article=${i.getArticle()}">${i.getStock().getTitle()}</a>
+                        </span><br>
+                        <span style="margin-left: 105px; font-size: 12px">
+                                цена: <strong>${i.getStock().getPrice()}</strong> руб.
+                        </span>
+
                     </td>
                     <td>
-                        <input type="text" class="count" name="" value="${i.getQtty()}">
-                        <a href="#" OnClick="del('2386');">Удалить</a>
-                    </td>
-                    <td align=right>
-                        ${i.getStock().getPrice()}
+                        <input type="text" class="count" name="" value="${i.getQtty()}" style="font-size: 14px; text-align: center; font-weight: bold">
+                        <span style="font-size: 12px">
+                            <br><a href="#" OnClick="del('2386');">Обновить</a>
+                            <br><a href="#" OnClick="del('2386');">Удалить</a>
+                        </span>
                     </td>
                     <td align=right>
                         ${i.getStock().getPrice() * i.getQtty()}
@@ -43,19 +46,8 @@
                 <c:set var="sumCount" value="${sumCount + i.getStock().getPrice() * i.getQtty()}"/>
             </c:forEach>
 
-            <tr>
-                <td>
-                    <b>Всего в заказе позиций:</b>
-                </td>
-                <td>
-                    <b>${qttyCount}</b>
-                </td>
-                <td>
-                    <b>на сумму</b>
-                </td>
-                <td align=right>
-                    <b>${sumCount} руб.</b>
-                </td>
+            <tr style="background-color: #4b1d0a; color: #fcccac; font-weight: bold; font-size: 11px;">
+                <td align=right colspan="3">Всего позиций:&nbsp;&nbsp;${qttyCount}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Итоговая сумма:&nbsp;&nbsp;${sumCount} руб.</td>
             </tr>
         </table>
 

@@ -42,8 +42,7 @@ public class AppController
                         .collect(Collectors.toSet()));
 
         for (ShoppingCart item : shoppingcart){
-            Stock stock = new Stock();
-            stock.setArticle(item.getArticle());
+            Stock stock = new Stock(item.getArticle());
             item.setStock(info.get(info.indexOf(stock)));
         }
 

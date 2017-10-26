@@ -598,7 +598,7 @@ table.order tr.top td {
     padding: 5px 10px;
     border: 1px solid #4b1d0a;
     background: #4b1d0a;
-    color: #ffffff;
+    /*color: #ffffff;*/
     font-weight: bold;
     font-size: 120%;
 }
@@ -606,7 +606,7 @@ table.order tr.top td {
 table.order td {
     padding: 10px;
     border: 1px solid #4b1d0a;
-    font-size: 120%;
+    font-size: 140%;
 }
 
 table.order td p {
