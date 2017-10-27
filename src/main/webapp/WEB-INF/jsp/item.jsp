@@ -61,7 +61,7 @@
             <script src="${pageContext.request.contextPath}/static/js/picPreview.js" type="text/javascript"></script>
             <br>
             <div style="float: right; width: 200px;">Цена: <span class="price">${item.getPrice()} руб.</span>
-                <a href="#" item="${item.getArticle()}" class="buyitem" style="margin-top: 20px;">в корзину</a>
+                <a href="#" class="buyitem" onclick="addItemToTheShoppingCart(${item.getArticle()},${item.getPrice()})" style="margin-top: 20px;">в корзину</a>
             </div>
             <div class="clear"></div>
 
@@ -88,7 +88,7 @@
                     <a href="${pageContext.request.contextPath}/item?article=${i.getArticle()}" class=link>${i.getTitle()}</a>
                 </div>
                 <div class="clear"></div>
-                <a href="#" item="${i.getArticle()}" class="buyitem">в корзину</a>
+                <a href="#" class="buyitem" onclick="addItemToTheShoppingCart(${i.getArticle()},${i.getPrice()})">в корзину</a>
                 <div class="price">
                         ${i.getPrice()} <span>руб.</span>
                 </div>
