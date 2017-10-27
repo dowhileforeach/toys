@@ -576,7 +576,7 @@ td.top {
     border: 1px solid #be9079;
     background: #9b6b51;
     color: #ffffff;
-    font-weight: bold;
+    /*font-weight: bold;*/
 }
 
 table.table td {
@@ -599,7 +599,7 @@ table.order tr.top td {
     border: 1px solid #4b1d0a;
     background: #4b1d0a;
     /*color: #ffffff;*/
-    font-weight: bold;
+    /*font-weight: bold;*/
     font-size: 120%;
 }
 

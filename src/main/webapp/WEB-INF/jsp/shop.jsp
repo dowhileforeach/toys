@@ -24,7 +24,7 @@
                     <a href="${pageContext.request.contextPath}/item?article=${i.getArticle()}" class=link>${i.getTitle()}</a>
                 </div>
                 <div class="clear"></div>
-                <a href="#" class="buyitem" onclick="addItemToTheShoppingCart('${i.getArticle()}',1,${i.getPrice()})">в корзину</a>
+                <a href="#" class="buyitem" onclick="addItemToTheShoppingCart('${i.getArticle()}',${i.getPrice()})">в корзину</a>
                 <div class="price">${i.getPrice()} <span>руб.</span></div>
             </div>
         </c:forEach>

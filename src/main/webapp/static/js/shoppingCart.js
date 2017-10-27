@@ -34,8 +34,9 @@ function controlShoppingCart() {
     getShoppingCartBlock().innerHTML = text;
 }
 
-function addItemToTheShoppingCart(article, quantity, _price) {
+function addItemToTheShoppingCart(article, _price) {
 
+    var quantity = 1;
     var ShoppingCart = getShoppingCartStorage();
     var saved = false;
 
@@ -67,6 +68,11 @@ function sendShoppingCartToTheServer() {
             'qtty': ShoppingCart[prop].qtty
         });
 
+    if (arr.length === 0) {
+        window.location.replace(localStorage.contextPath + "/shop");
+        return;
+    }
+
     var req = new XMLHttpRequest();
     var url = localStorage.contextPath + "/shoppingcart";
     req.open("post", url);
@@ -79,4 +85,40 @@ function sendShoppingCartToTheServer() {
         }
     };
     req.send(JSON.stringify(arr));
+}
+
+function refreshShoppingCart(el) {
+
+    var article = el.parentNode.parentNode.parentNode.id;
+    var input = el.parentNode.parentNode.querySelector("input");
+    var qtty = input.value;
+    var ShoppingCart = getShoppingCartStorage();
+
+    if (!ShoppingCart.hasOwnProperty(article)) return;
+
+    if (isNaN(+qtty) || !isFinite(+qtty) || +qtty < 0) {
+        input.value = ShoppingCart[article].qtty;
+        return;
+    }
+    else if (+qtty === 0) {
+        deleteItemFromShoppingCart(article);
+        return;
+    }
+
+    ShoppingCart[article].qtty = qtty;
+
+    setShoppingCartStorage(ShoppingCart);
+    sendShoppingCartToTheServer();
+}
+
+function deleteItemFromShoppingCart(article) {
+
+    var ShoppingCart = getShoppingCartStorage();
+
+    if (!ShoppingCart.hasOwnProperty(article)) return;
+
+    delete ShoppingCart[article];
+
+    setShoppingCartStorage(ShoppingCart);
+    sendShoppingCartToTheServer();
 }
