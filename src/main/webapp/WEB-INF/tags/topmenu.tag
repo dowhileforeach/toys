@@ -2,7 +2,7 @@
 <%@attribute name="marked" required="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<nav id="topmenu">
+<nav class="topmenu">
     <ul>
 
         <li><a class="<%= marked.equals("shop") ? "active": "" %>" href="${pageContext.request.contextPath}/shop/">Магазин</a></li>

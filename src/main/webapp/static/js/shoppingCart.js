@@ -36,7 +36,7 @@ function controlShoppingCart() {
 
 function addItemToTheShoppingCart(article, _price) {
 
-    article += "";
+    article += ""
     var quantity = 1;
     var ShoppingCart = getShoppingCartStorage();
     var saved = false;

@@ -7,29 +7,25 @@
 
     <jsp:attribute name="head"/>
 
-    <jsp:attribute name="pageBody">
+    <jsp:attribute name="content">
 
-    <div id="content">
-
-        <p>Каждая меховая игрушка, выполненная вручную, имеет свой неповторимый облик, который не оставит вас равнодушными.
-            <br>Модели игрушек постоянно обновляются. Следите за изменениями на нашем сайте.</p>
-        <br><br>
-        <c:forEach items="${list}" var="i" varStatus="loop">
-            <div class="toy">
-                <div class="block">
-                    <a href="${pageContext.request.contextPath}/item?article=${i.getArticle()}">
-                        <img src="${pageContext.request.contextPath}/static/pic/art/${i.getArticle()}/${i.getImg01_sm()}" width=200>
-                    </a>
-                    <br>
-                    <a href="${pageContext.request.contextPath}/item?article=${i.getArticle()}" class=link>${i.getTitle()}</a>
-                </div>
-                <div class="clear"></div>
-                <a href="#" class="buyitem" onclick="addItemToTheShoppingCart(${i.getArticle()},${i.getPrice()})">в корзину</a>
-                <div class="price">${i.getPrice()} <span>руб.</span></div>
+    <p>Каждая меховая игрушка, выполненная вручную, имеет свой неповторимый облик, который не оставит вас равнодушными.
+        <br>Модели игрушек постоянно обновляются. Следите за изменениями на нашем сайте.</p>
+    <br><br>
+    <c:forEach items="${list}" var="i" varStatus="loop">
+        <div class="toy">
+            <div class="block">
+                <a href="${pageContext.request.contextPath}/item?article=${i.getArticle()}">
+                    <img src="${pageContext.request.contextPath}/static/pic/art/${i.getArticle()}/${i.getImg01_sm()}" width=200>
+                </a>
+                <br>
+                <a class="link" href="${pageContext.request.contextPath}/item?article=${i.getArticle()}">${i.getTitle()}</a>
             </div>
-        </c:forEach>
-
-    </div>
+            <div class="clear"></div>
+            <a href="#" class="buyitem" onclick="addItemToTheShoppingCart(${i.getArticle()},${i.getPrice()})">в корзину</a>
+            <div class="price">${i.getPrice()} <span>руб.</span></div>
+        </div>
+    </c:forEach>
 
     </jsp:attribute>
 

@@ -3,7 +3,7 @@
 <%@attribute name="title" required="true" %>
 <%@attribute name="topmenuMarker" required="true" %>
 <%@attribute name="head" fragment="true" %>
-<%@attribute name="pageBody" fragment="true" required="true" %>
+<%@attribute name="content" fragment="true" required="true" %>
 <%@attribute name="footer" fragment="true" %>
 <!DOCTYPE html>
 <html>
@@ -24,7 +24,7 @@
         window.onload = function () {
 
             if (localStorage.contextPath === undefined)
-                localStorage.setItem("contextPath","${pageContext.request.contextPath}");
+                localStorage.setItem("contextPath", "${pageContext.request.contextPath}");
 
             controlShoppingCart();
         }
@@ -34,38 +34,31 @@
     <jsp:invoke fragment="head"/>
 
 </head>
-<body>
+<body style="background: url(${pageContext.request.contextPath}/static/pic/bg.gif) no-repeat left top #150b09; background-position: 0px 0;">
 
-<div class="fix_block">
+<div class="page">
 
     <header class="top">
         <div class="logo">
-            <a href="${pageContext.request.contextPath}/"><img
-                    src="${pageContext.request.contextPath}/static/pic/logo.png" alt=""></a>
+            <a href="${pageContext.request.contextPath}/">
+                <img src="${pageContext.request.contextPath}/static/pic/logo.png" alt="">
+            </a>
         </div>
-
         <div class="shoppingCartBlock"></div>
-
-        <div class="txt">
-            <p><strong>Тел.: +7(777)777-77-77</strong></p>
-        </div>
         <div class="clear"></div>
     </header>
 
     <t:topmenu marked="${topmenuMarker}"/>
 
-    <jsp:invoke fragment="pageBody"/>
+    <div class="content">
+        <jsp:invoke fragment="content"/>
+    </div>
 
-    <div id="footer">
-        <div style="float:right; width: 300px;">
-            <p class=small> Разработка сайта: <a href="https://dwfe.ru" target="_blank">Do|While|For|Each</a></p>
-        </div>
+    <div class="footer">
         <strong>ARUMA ®&nbsp;2005&minus;2017</strong> Эксклюзивные подарки из&nbsp;натурального меха<br>
         Тел.: +7(777)777-77-77,
         <nobr>E-mail:</nobr>
         <a href="mailto:some@email.com">some@email.com</a><br>
-        <a href="/shop/">Магазин</a> |
-        <a href="/about">Контакты</a> |
     </div>
 </div>
 
