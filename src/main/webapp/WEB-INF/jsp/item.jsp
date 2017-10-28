@@ -5,7 +5,9 @@
         title="Игрушки и аксессуары из натурального меха и кожи / Эксклюзивные подарки из натурального меха - мягкие игрушки и любые изделия на заказ Арума меховые игрушки"
         topmenuMarker="">
 
-    <jsp:attribute name="head"/>
+    <jsp:attribute name="head">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/media_item.css" type="text/css"/>
+    </jsp:attribute>
 
     <jsp:attribute name="content">
 
