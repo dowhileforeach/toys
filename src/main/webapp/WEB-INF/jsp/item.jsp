@@ -5,11 +5,15 @@
         title="Игрушки и аксессуары из натурального меха и кожи / Эксклюзивные подарки из натурального меха - мягкие игрушки и любые изделия на заказ Арума меховые игрушки"
         topmenuMarker="">
 
+
     <jsp:attribute name="head">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/media_item.css" type="text/css"/>
     </jsp:attribute>
 
     <jsp:attribute name="content">
+
+    <c:set var="path" value="${pageContext.request.contextPath}"/>
+    <c:set var="article" value="${item.getArticle()}"/>
 
     <div class="left">
         <div id="fsClipper">
@@ -37,42 +41,35 @@
             </c:if>
             <tr>
                 <td class="name">Артикул</td>
-                <td>${item.getArticle()}</td>
+                <td>${article}</td>
             </tr>
         </table>
         <p id="fsLinks">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="fsControl_prev" class="fsControl"><img src="${pageContext.request.contextPath}/static/pic/arrow_left.png" alt=""></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <span id="fsControl_next" class="fsControl"><img src="${pageContext.request.contextPath}/static/pic/arrow_right.png" alt=""></span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="fsControl_prev" class="fsControl"><img
+                src="${path}/static/pic/arrow_left.png" alt=""></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span id="fsControl_next" class="fsControl"><img src="${path}/static/pic/arrow_right.png" alt=""></span>
             <br>
             <br>
-            <t:img_preview path="${pageContext.request.contextPath}" article="${item.getArticle()}"
-                           img="${item.getImg01()}" img_sm="${item.getImg01_sm()}"/>
-            <t:img_preview path="${pageContext.request.contextPath}" article="${item.getArticle()}"
-                           img="${item.getImg02()}" img_sm="${item.getImg02_sm()}"/>
-            <t:img_preview path="${pageContext.request.contextPath}" article="${item.getArticle()}"
-                           img="${item.getImg03()}" img_sm="${item.getImg03_sm()}"/>
-            <t:img_preview path="${pageContext.request.contextPath}" article="${item.getArticle()}"
-                           img="${item.getImg04()}" img_sm="${item.getImg04_sm()}"/>
-            <t:img_preview path="${pageContext.request.contextPath}" article="${item.getArticle()}"
-                           img="${item.getImg05()}" img_sm="${item.getImg05_sm()}"/>
-            <t:img_preview path="${pageContext.request.contextPath}" article="${item.getArticle()}"
-                           img="${item.getImg06()}" img_sm="${item.getImg06_sm()}"/>
-            <t:img_preview path="${pageContext.request.contextPath}" article="${item.getArticle()}"
-                           img="${item.getImg07()}" img_sm="${item.getImg07_sm()}"/>
+            <t:img_preview path="${path}" article="${article}" img="${item.getImg01()}"/>
+            <t:img_preview path="${path}" article="${article}" img="${item.getImg02()}"/>
+            <t:img_preview path="${path}" article="${article}" img="${item.getImg03()}"/>
+            <t:img_preview path="${path}" article="${article}" img="${item.getImg04()}"/>
+            <t:img_preview path="${path}" article="${article}" img="${item.getImg05()}"/>
+            <t:img_preview path="${path}" article="${article}" img="${item.getImg06()}"/>
+            <t:img_preview path="${path}" article="${article}" img="${item.getImg07()}"/>
         </p>
-        <script src="${pageContext.request.contextPath}/static/js/picPreview.js" type="text/javascript"></script>
+        <script src="${path}/static/js/picPreview.js" type="text/javascript"></script>
         <br>
         <div class="sellItem">Цена: <span class="price">${item.getPrice()} руб.</span><br>
-            <a href="#" class="buyitem" onclick="addItemToTheShoppingCart(${item.getArticle()},${item.getPrice()})">в корзину</a>
+            <a href="#" class="buyitem" onclick="addItemToTheShoppingCart(${article},${item.getPrice()})">в корзину</a>
         </div>
         <div class="clear"></div>
 
-        <div class="allgoods">Каждая игрушка индивидуальна. Имеющиеся в наличии изделия могут отличаться от
-            представленных в данном каталоге не только аксессуарами (глазки, носики, бантики), но и мехом,
-            кожей,
-            замшей (тип, фактура, цвет). Цена так же зависит от выбора меха. Мы внимательно относимся к
-            пожеланиям
-            клиентов. Обращайтесь за консультацией к нашим менеджерам.
+        <div class="allgoods">
+            Каждая игрушка индивидуальна. Имеющиеся в наличии изделия могут отличаться от представленных в данном
+            каталоге не только аксессуарами (глазки, носики, бантики), но и мехом,
+            кожей, замшей (тип, фактура, цвет). Цена так же зависит от выбора меха. Мы внимательно относимся к
+            пожеланиям клиентов. Обращайтесь за консультацией к нашим менеджерам.
         </div>
     </div>
 
@@ -81,14 +78,15 @@
     <c:forEach items="${list}" var="i" varStatus="loop">
         <div class="toy">
             <div class="block">
-                <a href="${pageContext.request.contextPath}/item?article=${i.getArticle()}">
-                    <img src="${pageContext.request.contextPath}/static/pic/art/${i.getArticle()}/${i.getImg01_sm()}" width=200>
+                <a href="${path}/item?article=${i.getArticle()}">
+                    <img src="${path}/static/pic/art/${i.getArticle()}/${i.getImg01()}" width=200>
                 </a>
                 <br>
-                <a class="link" href="${pageContext.request.contextPath}/item?article=${i.getArticle()}">${i.getTitle()}</a>
+                <a class="link" href="${path}/item?article=${i.getArticle()}">${i.getTitle()}</a>
             </div>
             <div class="clear"></div>
-            <a href="#" class="buyitem" onclick="addItemToTheShoppingCart(${i.getArticle()},${i.getPrice()})">в корзину</a>
+            <a href="#" class="buyitem" onclick="addItemToTheShoppingCart(${i.getArticle()},${i.getPrice()})">в
+                корзину</a>
             <div class="price">
                     ${i.getPrice()} <span>руб.</span>
             </div>

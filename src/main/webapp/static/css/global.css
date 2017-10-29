@@ -175,7 +175,7 @@ a:hover
 
 img.index_front
 {
-    margin-left: -71px;
+    margin-left: 0px;
 }
 
 .topmenu
@@ -378,7 +378,14 @@ table.shop td.name
     border-style: solid;
     border-color: #3c110b;
     margin-bottom: 2px;
+    width: 100px;
 }
+
+a.item_preview
+{
+    text-decoration: none;
+}
+
 
 .fsControl.disabled, #fsLinks a.current
 {
@@ -408,11 +415,6 @@ table.shop td.name
     position: relative;
     margin-left: -20px;
     top: 0;
-}
-
-a.item_preview
-{
-    text-decoration: none;
 }
 
 .allgoods
