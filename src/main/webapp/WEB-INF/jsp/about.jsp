@@ -29,13 +29,13 @@
             </script>
             &nbsp;&nbsp;<a href="mailto:some@email.com">some@email.com</a></p>
         <p>
-            <a href="https://vk.com/" target="_blank">
-                <img title="" style="HEIGHT: 26px; WIDTH: 27px" border="0" hspace="0" alt=""
-                     src="${pageContext.request.contextPath}/static/pic/vk.bmp" width="24" height="24"></a>
             &nbsp;
-            <a href="https://www.facebook.com/" target="_blank">
-                <img title="" style="HEIGHT: 26px; WIDTH: 96px" border="0" hspace="0" alt=""
-                     src="${pageContext.request.contextPath}/static/pic/fb.bmp" width="88" height="22">
+            <a class="no_decoration" href="https://vk.com/" target="_blank">
+                <img src="${pageContext.request.contextPath}/static/pic/vk.png" >
+            </a>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="no_decoration" href="https://www.facebook.com/" target="_blank">
+                <img src="${pageContext.request.contextPath}/static/pic/facebook.png">
             </a>
         </p>
     </div>

@@ -41,6 +41,10 @@
             </tr>
         </table>
         <p id="fsLinks">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="fsControl_prev" class="fsControl"><img src="${pageContext.request.contextPath}/static/pic/arrow_left.png" alt=""></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span id="fsControl_next" class="fsControl"><img src="${pageContext.request.contextPath}/static/pic/arrow_right.png" alt=""></span>
+            <br>
+            <br>
             <t:img_preview path="${pageContext.request.contextPath}" article="${item.getArticle()}"
                            img="${item.getImg01()}" img_sm="${item.getImg01_sm()}"/>
             <t:img_preview path="${pageContext.request.contextPath}" article="${item.getArticle()}"
@@ -55,8 +59,6 @@
                            img="${item.getImg06()}" img_sm="${item.getImg06_sm()}"/>
             <t:img_preview path="${pageContext.request.contextPath}" article="${item.getArticle()}"
                            img="${item.getImg07()}" img_sm="${item.getImg07_sm()}"/>
-            <span id="fsControl_prev" class="fsControl">&larr;</span>
-            <span id="fsControl_next" class="fsControl">&rarr;</span>
         </p>
         <script src="${pageContext.request.contextPath}/static/js/picPreview.js" type="text/javascript"></script>
         <br>

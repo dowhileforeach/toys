@@ -12,7 +12,7 @@
 
     <div class="left">
         <a href="${pageContext.request.contextPath}/shop">
-            <img class="index_front" src="${pageContext.request.contextPath}/static/pic/crow_01.jpg">
+            <img class="index_front" src="${pageContext.request.contextPath}/static/pic/cat.png">
         </a>
     </div>
     <div class="right">

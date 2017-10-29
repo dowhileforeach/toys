@@ -329,11 +329,11 @@ table.shop td.name
     font-size: 15px;
 }
 
-#fsLinks img
+#fsLinks .item_preview img
 {
     border-width: 1px;
     border-style: solid;
-    border-color: #50200b;
+    border-color: #3c110b;
     margin-bottom: 2px;
 }
 
@@ -344,17 +344,17 @@ table.shop td.name
     text-decoration: none;
 }
 
-.fsControl.disabled
+.fsControl.disabled img
 {
     color: #666666;
-    margin-bottom: 2px;
+    border-image: 0;
 }
 
 #fsLinks a.current img
 {
     border-width: 1px;
     border-style: solid;
-    border-color: #813412;
+    border-color: #d4893e;
     margin-bottom: 2px;
 }
 
@@ -376,4 +376,9 @@ a.item_preview
 {
     font-size: 80%;
     margin-top: 2%;
+}
+
+a.no_decoration
+{
+    text-decoration: none;
 }

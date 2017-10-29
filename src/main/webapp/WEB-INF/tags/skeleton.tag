@@ -9,6 +9,7 @@
 <html>
 <head>
     <title>${title}</title>
+
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="description" content="Игрушки и аксессуары из натурального меха и кожи"/>
     <meta name="keywords" content="Игрушки и аксессуары из натурального меха и кожи"/>
