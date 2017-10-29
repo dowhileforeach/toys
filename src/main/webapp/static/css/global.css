@@ -52,6 +52,37 @@ header.top .shoppingCartBlock
     float: right;
 }
 
+.shoppingCartBlock a.orderbutton
+{
+    padding: 4px 8px;
+    margin-bottom: 5px;
+    font-size: 100%;
+    display: inline-block;
+    text-shadow: 0 1px 1px #666;
+    background: #9b6b51;
+}
+
+.shoppingCartBlock a.orderbutton:hover
+{
+    background: #d4893e;
+}
+
+.orderbutton
+{
+    font-size: 120%;
+    padding: 7px 10px;
+    background: #d4893e;
+    color: #fff !important;
+    text-decoration: none !important;
+    text-shadow: 0 1px 1px #270f05;
+    border-radius: 10px;
+}
+
+.orderbutton:hover
+{
+    background: #9b6b51;
+}
+
 .content
 {
     margin-right: 20px;

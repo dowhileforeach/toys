@@ -28,7 +28,7 @@ function controlShoppingCart() {
     }
 
     if (totalQuantity > 0)
-        text += "<a href='#' onclick='sendShoppingCartToTheServer()'>Корзина (<strong>" + totalQuantity + "</strong>)</a><br>итого: <strong>" + totalSum + "</strong> руб.";
+        text += "<a class='orderbutton' href='#' onclick='sendShoppingCartToTheServer()'>Корзина (<strong>" + totalQuantity + "</strong>)</a><br>&nbsp;&nbsp;<strong>" + totalSum + "</strong> руб.";
     else
         text += "<strong>Корзина</strong> пустая";
     getShoppingCartBlock().innerHTML = text;
