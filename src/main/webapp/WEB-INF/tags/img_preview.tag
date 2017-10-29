@@ -1,4 +1,4 @@
-<%@tag description="just template" pageEncoding="UTF-8" %>
+<%@tag description="preview images" pageEncoding="UTF-8" %>
 <%@attribute name="path" required="true" %>
 <%@attribute name="article" required="true" %>
 <%@attribute name="img" required="true" %>

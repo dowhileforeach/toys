@@ -1,5 +1,6 @@
 <%@ page pageEncoding="utf-8" contentType="text/html; charset=utf-8" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <t:skeleton
         title="Игрушки и аксессуары из натурального меха и кожи / Эксклюзивные подарки из натурального меха - мягкие игрушки и любые изделия на заказ Арума меховые игрушки"
         topmenuMarker="about">
@@ -9,6 +10,7 @@
     </jsp:attribute>
 
     <jsp:attribute name="content">
+    <c:set var="path" value="${pageContext.request.contextPath}"/>
 
     <div class="left">
         <h1>Информация о компании</h1>
@@ -26,15 +28,15 @@
         <p>
             &nbsp;
             <a class="no_decoration" href="mailto:some@email.com">
-                <img src="${pageContext.request.contextPath}/static/pic/email.png">
+                <img src="${path}/static/pic/email.png">
             </a>
             &nbsp;&nbsp;&nbsp;&nbsp;
             <a class="no_decoration" href="https://vk.com/" target="_blank">
-                <img src="${pageContext.request.contextPath}/static/pic/vk.png" >
+                <img src="${path}/static/pic/vk.png" >
             </a>
             &nbsp;&nbsp;&nbsp;&nbsp;
             <a class="no_decoration" href="https://www.facebook.com/" target="_blank">
-                <img src="${pageContext.request.contextPath}/static/pic/facebook.png">
+                <img src="${path}/static/pic/facebook.png">
             </a>
         </p>
     </div>

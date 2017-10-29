@@ -5,7 +5,6 @@
         title="Игрушки и аксессуары из натурального меха и кожи / Эксклюзивные подарки из натурального меха - мягкие игрушки и любые изделия на заказ Арума меховые игрушки"
         topmenuMarker="">
 
-
     <jsp:attribute name="head">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/media_item.css" type="text/css"/>
     </jsp:attribute>
@@ -75,23 +74,8 @@
 
     <div class="clear"></div><br>
     <br><br>
-    <c:forEach items="${list}" var="i" varStatus="loop">
-        <div class="toy">
-            <div class="block">
-                <a href="${path}/item?article=${i.getArticle()}">
-                    <img src="${path}/static/pic/art/${i.getArticle()}/${i.getImg01()}" width=200>
-                </a>
-                <br>
-                <a class="link" href="${path}/item?article=${i.getArticle()}">${i.getTitle()}</a>
-            </div>
-            <div class="clear"></div>
-            <a href="#" class="buyitem" onclick="addItemToTheShoppingCart(${i.getArticle()},${i.getPrice()})">в
-                корзину</a>
-            <div class="price">
-                    ${i.getPrice()} <span>руб.</span>
-            </div>
-        </div>
-    </c:forEach>
+
+    <t:shop_items_list list="${list}" path="${path}"/>
 
     </jsp:attribute>
 
