@@ -56,10 +56,7 @@
     </div>
 
     <div class="footer">
-        <strong>ARUMA ®&nbsp;2005&minus;2017</strong> Эксклюзивные подарки из&nbsp;натурального меха<br>
-        Тел.: +7(777)777-77-77,
-        <nobr>E-mail:</nobr>
-        <a href="mailto:some@email.com">some@email.com</a><br>
+        <strong>ARUMA ®&nbsp;2005&minus;2017</strong><br>Эксклюзивные подарки из&nbsp;натурального меха<br>
     </div>
 </div>
 

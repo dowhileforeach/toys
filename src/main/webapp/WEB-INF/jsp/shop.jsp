@@ -16,7 +16,7 @@
         <div class="toy">
             <div class="block">
                 <a href="${pageContext.request.contextPath}/item?article=${i.getArticle()}">
-                    <img src="${pageContext.request.contextPath}/static/pic/art/${i.getArticle()}/${i.getImg01_sm()}" width=200>
+                    <img src="${pageContext.request.contextPath}/static/pic/art/${i.getArticle()}/${i.getImg01()}">
                 </a>
                 <br>
                 <a class="link" href="${pageContext.request.contextPath}/item?article=${i.getArticle()}">${i.getTitle()}</a>

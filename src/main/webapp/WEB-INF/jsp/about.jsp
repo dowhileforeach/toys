@@ -24,12 +24,11 @@
         <p>Наш адрес: 121000, <strong>Москва</strong>, ул. Меховая, дом 7.</p>
         <p>Тел.: +7(777)777-77-77</p>
         <p>
-            <nobr>E-Mail:</nobr>
-            <script type="text">
-            </script>
-            &nbsp;&nbsp;<a href="mailto:some@email.com">some@email.com</a></p>
-        <p>
             &nbsp;
+            <a class="no_decoration" href="mailto:some@email.com">
+                <img src="${pageContext.request.contextPath}/static/pic/email.png">
+            </a>
+            &nbsp;&nbsp;&nbsp;&nbsp;
             <a class="no_decoration" href="https://vk.com/" target="_blank">
                 <img src="${pageContext.request.contextPath}/static/pic/vk.png" >
             </a>
