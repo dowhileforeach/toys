@@ -10,17 +10,12 @@
     <jsp:attribute name="content">
     <c:set var="path" value="${pageContext.request.contextPath}"/>
 
-        <h1>Корзина</h1>
+        <h1>Оформление заказа</h1>
 
         <div class="left">
-            <t:order_items_list shoppingcart="${shoppingcart}" path="${path}" orderFinal="false"/>
-
-            <br>
-            <h1>Доставка</h1>
-            Расчет итоговой стоимости доставки
-
+            <t:order_items_list shoppingcart="${shoppingcart}" path="${path}" orderFinal="true"/>
             <div class="center" style="margin-top: 30px; margin-bottom: 30px;">
-                <a class="orderbutton" href="#" onclick="sendShoppingCartToTheServer('/orderfinal')">К оформлению заказа</a>
+                <a class="orderbutton" href="#">Подтвердить</a>
             </div>
         </div>
 

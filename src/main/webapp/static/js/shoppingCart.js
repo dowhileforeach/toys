@@ -28,7 +28,7 @@ function controlShoppingCart() {
     }
 
     if (totalQuantity > 0)
-        text += "<a class='orderbutton' href='#' onclick='sendShoppingCartToTheServer()'>Корзина (<strong>" + totalQuantity + "</strong>)</a><br>&nbsp;&nbsp;<strong>" + totalSum + "</strong> руб.";
+        text += "<a class='orderbutton' href='#' onclick='sendShoppingCartToTheServer(\"/shoppingcart\")'>Корзина (<strong>" + totalQuantity + "</strong>)</a><br>&nbsp;&nbsp;<strong>" + totalSum + "</strong> руб.";
     else
         text += "<strong>Корзина</strong> пустая";
     getShoppingCartBlock().innerHTML = text;
@@ -59,7 +59,7 @@ function addItemToTheShoppingCart(article, _price) {
     controlShoppingCart();
 }
 
-function sendShoppingCartToTheServer() {
+function sendShoppingCartToTheServer(point) {
 
     var ShoppingCart = getShoppingCartStorage();
     var arr = [];
@@ -75,7 +75,7 @@ function sendShoppingCartToTheServer() {
     }
 
     var req = new XMLHttpRequest();
-    var url = localStorage.contextPath + "/shoppingcart";
+    var url = localStorage.contextPath + point;
     req.open("post", url);
     req.setRequestHeader("content-type", "application/json");
     req.onreadystatechange = function () {

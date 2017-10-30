@@ -58,9 +58,9 @@
 
     <tr class="other">
         <td align=right colspan="3">
-            Всего позиций:&nbsp;&nbsp;<strong>${totalQtty}</strong>
+            Всего товаров:&nbsp;&nbsp;<strong>${totalQtty}</strong>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            Итоговая сумма:&nbsp;&nbsp;<strong>${totalSum}</strong> руб.
+            Итоговая сумма товаров:&nbsp;&nbsp;<strong>${totalSum}</strong> руб.
         </td>
     </tr>
 </table>

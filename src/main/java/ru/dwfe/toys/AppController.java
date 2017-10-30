@@ -50,6 +50,23 @@ public class AppController
         return "shoppingcart";
     }
 
+    @RequestMapping(value = "/orderfinal", method = RequestMethod.POST)
+    public String orderFinal(Map<String, Object> model, @RequestBody List<ShoppingCart> shoppingcart)
+    {
+        List<Stock> info = appService.findAll(
+                shoppingcart.stream()
+                        .map(ShoppingCart::getArticle)
+                        .collect(Collectors.toSet()));
+
+        for (ShoppingCart item : shoppingcart){
+            Stock stock = new Stock(item.getArticle());
+            item.setStock(info.get(info.indexOf(stock)));
+        }
+
+        model.put("shoppingcart", shoppingcart);
+        return "orderfinal";
+    }
+
     @RequestMapping("/delivery")
     public String delivery()
     {
