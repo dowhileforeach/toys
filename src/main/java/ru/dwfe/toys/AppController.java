@@ -50,6 +50,12 @@ public class AppController
         return "shoppingcart";
     }
 
+    @RequestMapping(value = "/orderdelivery", method = RequestMethod.POST)
+    public String orderDelivery(Map<String, Object> model, @RequestParam Map<String, String> params)
+    {
+        return "orderdelivery";
+    }
+
     @RequestMapping(value = "/orderfinal", method = RequestMethod.POST)
     public String orderFinal(Map<String, Object> model, @RequestBody List<ShoppingCart> shoppingcart)
     {

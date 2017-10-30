@@ -48,9 +48,10 @@ header.top .logo
 
 header.top .shoppingCartBlock
 {
-    width: 150px;
+    width: 200px;
     float: left;
     margin-top: 10px;
+    cursor: pointer;
 }
 
 .shoppingCartBlock a.orderbutton
@@ -61,11 +62,13 @@ header.top .shoppingCartBlock
     display: inline-block;
     text-shadow: 0 1px 1px #666;
     background: #9b6b51;
+    cursor: pointer;
 }
 
 .shoppingCartBlock a.orderbutton:hover
 {
     background: #d4893e;
+    cursor: pointer;
 }
 
 .orderbutton
@@ -81,7 +84,7 @@ header.top .shoppingCartBlock
 
 .orderbutton:hover
 {
-    background: #5a9b5a;
+    background: #00880e;
     cursor: pointer;
 }
 
@@ -366,7 +369,7 @@ table.order
     border-spacing: 0;
     border-collapse: collapse;
     width: 550px;
-    margin: 0 auto;
+    /*margin: 0 auto;*/
 }
 
 table.order tr.other td
@@ -391,6 +394,16 @@ table.order td p
 {
     margin: 0;
     padding: 0;
+    font-size: 120%;
+}
+
+table.info
+{
+    border-spacing: 0;
+    border-collapse: collapse;
+    width: 550px;
+    /*margin: 0 auto;*/
+    border: 0;
     font-size: 120%;
 }
 
@@ -477,7 +490,13 @@ a.no_decoration
 
 .center
 {
-display: inline-block;
+    display: inline-block;
     text-align: center;
+    width: 100%;
+}
+
+.input_100
+{
+    display: inline-block;
     width: 100%;
 }

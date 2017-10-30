@@ -28,7 +28,7 @@ function controlShoppingCart() {
     }
 
     if (totalQuantity > 0)
-        text += "<a class='orderbutton' href='#' onclick='sendShoppingCartToTheServer(\"/shoppingcart\")'>Корзина (<strong>" + totalQuantity + "</strong>)</a><br>&nbsp;&nbsp;<strong>" + totalSum + "</strong> руб.";
+        text += "<a class='orderbutton' href='#' onclick='sendShoppingCartToTheServer()'>Корзина (<strong>" + totalQuantity + "</strong>)</a>&nbsp;&nbsp;<strong>" + totalSum + "</strong> руб.";
     else
         text += "<strong>Корзина</strong> пустая";
     getShoppingCartBlock().innerHTML = text;
@@ -61,6 +61,7 @@ function addItemToTheShoppingCart(article, _price) {
 
 function sendShoppingCartToTheServer(point) {
 
+    if (point === undefined) point = '/shoppingcart';
     var ShoppingCart = getShoppingCartStorage();
     var arr = [];
     for (var prop in ShoppingCart)
@@ -90,7 +91,7 @@ function sendShoppingCartToTheServer(point) {
 
 function refreshShoppingCart(el) {
 
-    var article = el.parentNode.parentNode.parentNode.id;
+    var article = el.parentNode.parentNode.id;
     var input = el.parentNode.parentNode.querySelector("input");
     var qtty = input.value;
     var ShoppingCart = getShoppingCartStorage();

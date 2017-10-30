@@ -22,7 +22,7 @@
         <c:set var="qtty"    value="${item.getQtty()}"/>
         <c:set var="sum"     value="${price * qtty}"/>
 
-        <tr id="${article}">
+        <tr>
             <td style="background: url('${path}/static/pic/art/${article}/${img}') no-repeat left center; background-size: 100px;">
                 <span style="margin-left: 105px">
                     <a href="${path}/item?article=${article}">${title}</a>
@@ -32,7 +32,7 @@
                     цена: <strong>${price}</strong> руб.
                 </span>
             </td>
-            <td align=center>
+            <td align=center id="${article}">
                 <c:choose>
                     <c:when test="${orderFinal}">
                         &nbsp;<br>
@@ -43,7 +43,7 @@
                         <input class="qtty" type="text" name="" value="${qtty}">
                         <span style="font-size: 75%">
                             <br><a href="#" onclick="refreshShoppingCart(this)">Обновить</a>
-                            <br><a href="#" onclick="deleteItemFromShoppingCart(this.parentNode.parentNode.parentNode.id)">Удалить</a>
+                            <br><a href="#" onclick="deleteItemFromShoppingCart(this.parentNode.parentNode.id)">Удалить</a>
                         </span>
                     </c:otherwise>
                 </c:choose>
@@ -60,7 +60,7 @@
         <td align=right colspan="3">
             Всего товаров:&nbsp;&nbsp;<strong>${totalQtty}</strong>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            Итоговая сумма товаров:&nbsp;&nbsp;<strong>${totalSum}</strong> руб.
+            Итоговая стоимость товаров:&nbsp;&nbsp;<strong>${totalSum}</strong> руб.
         </td>
     </tr>
 </table>
