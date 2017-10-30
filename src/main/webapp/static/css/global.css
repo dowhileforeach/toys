@@ -49,7 +49,8 @@ header.top .logo
 header.top .shoppingCartBlock
 {
     width: 150px;
-    float: right;
+    float: left;
+    margin-top: 10px;
 }
 
 .shoppingCartBlock a.orderbutton
@@ -80,7 +81,8 @@ header.top .shoppingCartBlock
 
 .orderbutton:hover
 {
-    background: #9b6b51;
+    background: #5a9b5a;
+    cursor: pointer;
 }
 
 .content
@@ -115,7 +117,7 @@ h1
     color: #d4893e;
     font-size: 200%;
     font-weight: normal;
-    margin: 1px 0px 10px 0px;
+    margin: 1px 0 10px 0;
 }
 
 h2
@@ -123,7 +125,7 @@ h2
     color: #d4893e;
     font-size: 160%;
     font-weight: normal;
-    margin: 10px 0px 10px 0px;
+    margin: 10px 0 10px 0;
 }
 
 h3
@@ -131,28 +133,28 @@ h3
     color: #9b6b51;
     font-size: 150%;
     font-weight: normal;
-    margin: 10px 0px 10px 0px;
+    margin: 10px 0 10px 0;
 }
 
 h4
 {
     color: #d4893e;
     font-size: 120%;
-    margin: 10px 0px 10px 0px;
+    margin: 10px 0 10px 0;
 }
 
 h5
 {
     color: #d4893e;
     font-size: 100%;
-    margin: 10px 0px 10px 0px;
+    margin: 10px 0 10px 0;
 }
 
 h6
 {
     color: #d4893e;
     font-size: 100%;
-    margin: 10px 0px 10px 0px;
+    margin: 10px 0 10px 0;
 }
 
 a:link
@@ -175,7 +177,7 @@ a:hover
 
 img.index_front
 {
-    margin-left: 0px;
+    margin-left: 0;
 }
 
 .topmenu
@@ -424,9 +426,7 @@ input.qtty
 
 #fsLinks .item_preview img
 {
-    border-width: 1px;
-    border-style: solid;
-    border-color: #3c110b;
+    border: 1px solid #3c110b;
     margin-bottom: 2px;
     width: 100px;
 }
@@ -451,9 +451,7 @@ a.item_preview
 
 #fsLinks a.current img
 {
-    border-width: 1px;
-    border-style: solid;
-    border-color: #d4893e;
+    border: 1px solid #d4893e;
     margin-bottom: 2px;
 }
 
@@ -475,4 +473,11 @@ a.item_preview
 a.no_decoration
 {
     text-decoration: none;
+}
+
+.center
+{
+display: inline-block;
+    text-align: center;
+    width: 100%;
 }

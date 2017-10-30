@@ -19,7 +19,9 @@
         <div class="clear"></div>
 
         <a class="buyitem" href="#"
-           onclick="addItemToTheShoppingCart(${article},${item.getPrice()})">в корзину</a>
+           onclick="addItemToTheShoppingCart(${article},${item.getPrice()})">
+            в корзину
+        </a>
 
         <div class="price">
             ${item.getPrice()} <span>руб.</span>
