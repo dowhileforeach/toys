@@ -43,12 +43,18 @@
                 <td>${article}</td>
             </tr>
         </table>
+
         <p id="fsLinks">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="fsControl_prev" class="fsControl"><img
-                src="${path}/static/pic/arrow_left.png" alt=""></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <span id="fsControl_next" class="fsControl"><img src="${path}/static/pic/arrow_right.png" alt=""></span>
-            <br>
-            <br>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <span id="fsControl_prev" class="fsControl">
+                <img src="${path}/static/pic/arrow_left.png" alt="">
+            </span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span id="fsControl_next" class="fsControl">
+                <img src="${path}/static/pic/arrow_right.png" alt="">
+            </span>
+            <br><br>
             <t:img_preview path="${path}" article="${article}" img="${item.getImg01()}"/>
             <t:img_preview path="${path}" article="${article}" img="${item.getImg02()}"/>
             <t:img_preview path="${path}" article="${article}" img="${item.getImg03()}"/>
