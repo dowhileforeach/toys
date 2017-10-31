@@ -8,6 +8,7 @@ function getOrderDeliveryStorage() {
 
 function setOrderDeliveryStorage(newValue) {
     localStorage.setItem("OrderDelivery", JSON.stringify(newValue));
+    controlOrderDelivery();
 }
 
 function isDeliveryPresent() {
@@ -24,8 +25,15 @@ function controlOrderDelivery() {
     var url = localStorage.contextPath + "/orderdelivery";
     var totalSum = 0;
     var text =
-        "<a class='orderbutton' href='" + url + "'>" +
+        "<form action='" + url + "' method='post'>" +
+        "<input hidden name='index' type='number' value='" + 1 + "'>" +
+        "<button class='orderbutton'>" +
         "<strong>Доставка</strong>" +
-        "</a>&nbsp;&nbsp;<strong>" + totalSum + "</strong> руб.";
+        "</button>&nbsp;&nbsp;<strong>" + totalSum + "</strong> руб."+
+        "</form>";
     getOrderDeliveryBlock().innerHTML = text;
+}
+
+function onSendOrderDeliveryToTheServer() {
+
 }

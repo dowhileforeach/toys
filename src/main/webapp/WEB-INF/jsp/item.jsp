@@ -55,13 +55,13 @@
                 <img src="${path}/static/pic/arrow_right.png" alt="">
             </span>
             <br><br>
-            <t:img_preview path="${path}" article="${article}" img="${item.getImg01()}"/>
-            <t:img_preview path="${path}" article="${article}" img="${item.getImg02()}"/>
-            <t:img_preview path="${path}" article="${article}" img="${item.getImg03()}"/>
-            <t:img_preview path="${path}" article="${article}" img="${item.getImg04()}"/>
-            <t:img_preview path="${path}" article="${article}" img="${item.getImg05()}"/>
-            <t:img_preview path="${path}" article="${article}" img="${item.getImg06()}"/>
-            <t:img_preview path="${path}" article="${article}" img="${item.getImg07()}"/>
+            <t:item_img_preview path="${path}" article="${article}" img="${item.getImg01()}"/>
+            <t:item_img_preview path="${path}" article="${article}" img="${item.getImg02()}"/>
+            <t:item_img_preview path="${path}" article="${article}" img="${item.getImg03()}"/>
+            <t:item_img_preview path="${path}" article="${article}" img="${item.getImg04()}"/>
+            <t:item_img_preview path="${path}" article="${article}" img="${item.getImg05()}"/>
+            <t:item_img_preview path="${path}" article="${article}" img="${item.getImg06()}"/>
+            <t:item_img_preview path="${path}" article="${article}" img="${item.getImg07()}"/>
         </p>
         <script src="${path}/static/js/picPreview.js" type="text/javascript"></script>
         <br>

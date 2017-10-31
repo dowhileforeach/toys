@@ -13,7 +13,7 @@
         <h1>Оформление заказа</h1>
 
         <div class="left">
-            <t:order_items_list shoppingcart="${shoppingcart}" path="${path}" orderFinal="true"/>
+            <t:shoppingcart_items_list shoppingcart="${shoppingcart}" path="${path}" orderFinal="true"/>
             <div class="center" style="margin-top: 40px; margin-bottom: 40px;">
                 <a class="orderbutton" href="#">Подтвердить</a>
             </div>

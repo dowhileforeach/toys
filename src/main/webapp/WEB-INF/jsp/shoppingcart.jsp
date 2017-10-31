@@ -13,12 +13,12 @@
     <c:set var="la" value="${shoppingcart.size()}"/>
 
         <h1>Корзина</h1>
-        <t:order_items_list shoppingcart="${shoppingcart}" path="${path}" orderFinal="false"/>
+        <t:shoppingcart_items_list shoppingcart="${shoppingcart}" path="${path}" orderFinal="false"/>
 
         <div style="margin-top: 25px; margin-bottom: 40px;">
             <a class="orderbutton delivery" href="${path}/orderdelivery">Рассчитать стоимость доставки</a>
             <a class="orderbutton orderFinal" href="#"
-               onclick="sendShoppingCartToTheServer()">Оформить заказ</a>
+               onclick="onSendShoppingCartToTheServer()">Оформить заказ</a>
         </div>
         <script>
             document.querySelector(".orderbutton.delivery").style.display = isDeliveryPresent() ? "none" : "inline-block";

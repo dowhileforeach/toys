@@ -75,9 +75,10 @@ public class AppController
 
         return "shoppingcart";
     }
-    @RequestMapping(value = "/orderdelivery")
-    public String orderDelivery(Map<String, Object> model, @RequestParam Map<String, String> params)
+    @RequestMapping(value = "/orderdelivery", method = RequestMethod.POST)
+    public String orderDelivery(Map<String, Object> model, @RequestParam Integer index)
     {
+        System.out.println("index="+index);
         return "orderdelivery";
     }
 
@@ -97,12 +98,6 @@ public class AppController
 
         //model.put("shoppingcart", shoppingcart);
         return "orderfinal";
-    }
-
-    @RequestMapping("/delivery")
-    public String delivery()
-    {
-        return "delivery";
     }
 
     @RequestMapping("/shop")

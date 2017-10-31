@@ -74,7 +74,7 @@ function addItemToTheShoppingCart(article, _price) {
     setShoppingCartStorage(ShoppingCart);
 }
 
-function sendShoppingCartToTheServer() {
+function onSendShoppingCartToTheServer() {
 
     getShoppingCartBlock().querySelector("form").submit();
 
@@ -129,7 +129,7 @@ function refreshShoppingCart(el) {
     ShoppingCart[article].qtty = qtty;
 
     setShoppingCartStorage(ShoppingCart);
-    sendShoppingCartToTheServer();
+    onSendShoppingCartToTheServer();
 }
 
 function deleteItemFromShoppingCart(article) {
@@ -141,5 +141,5 @@ function deleteItemFromShoppingCart(article) {
     delete ShoppingCart[article];
 
     setShoppingCartStorage(ShoppingCart);
-    sendShoppingCartToTheServer()
+    onSendShoppingCartToTheServer()
 }
