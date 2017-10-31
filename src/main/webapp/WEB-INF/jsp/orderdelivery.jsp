@@ -10,8 +10,14 @@
     <jsp:attribute name="content">
     <c:set var="path" value="${pageContext.request.contextPath}"/>
 
-        <h1>Доставка</h1>
+        <h1>Доставка заказа</h1>
         <table class="info">
+            <tr>
+                <td width="10%">Индекс:</td>
+                <td>
+                    <input class="input input_20" type="text" name="index" value="" required>
+                </td>
+            </tr>
             <tr>
                 <td width="10%">Адрес:</td>
                 <td>
@@ -19,9 +25,12 @@
                 </td>
             </tr>
         </table>
-        <br>
-        Расчет итоговой стоимости доставки
 
+        <div style="margin-top: 40px; margin-bottom: 40px;">
+            <a class="orderbutton" href="#"
+               onclick="sendShoppingCartToTheServer('/orderfinal')">Выполнить расчет стоимости доставки</a>
+        </div>
+        <br>
         <div style="margin-top: 40px; margin-bottom: 40px;">
             <a class="orderbutton" href="#"
                onclick="sendShoppingCartToTheServer('/orderfinal')">Корзина</a>

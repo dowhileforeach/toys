@@ -46,15 +46,23 @@ header.top .logo
     float: left;
 }
 
-header.top .shoppingCartBlock
+header.top .orderBlock
+{
+    float: left;
+}
+
+header.top .shoppingCartBlock, header.top .orderDeliveryBlock
 {
     width: 200px;
-    float: left;
-    margin-top: 10px;
+    margin-top: 5px;
+}
+
+.shoppingCartBlock:hover, .orderDeliveryBlock:hover
+{
     cursor: pointer;
 }
 
-.shoppingCartBlock a.orderbutton
+.shoppingCartBlock a.orderbutton, .orderDeliveryBlock a.orderbutton
 {
     padding: 4px 8px;
     margin-bottom: 5px;
@@ -62,13 +70,11 @@ header.top .shoppingCartBlock
     display: inline-block;
     text-shadow: 0 1px 1px #666;
     background: #9b6b51;
-    cursor: pointer;
 }
 
-.shoppingCartBlock a.orderbutton:hover
+.shoppingCartBlock a.orderbutton:hover, .orderDeliveryBlock a.orderbutton:hover
 {
     background: #d4893e;
-    cursor: pointer;
 }
 
 .orderbutton
@@ -407,6 +413,11 @@ table.info
     font-size: 120%;
 }
 
+table.info td
+{
+    padding: 10px;
+}
+
 input
 {
     background: #270f05;
@@ -499,4 +510,10 @@ a.no_decoration
 {
     display: inline-block;
     width: 100%;
+}
+
+.input_20
+{
+    display: inline-block;
+    width: 20%;
 }

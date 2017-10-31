@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/global.css" type="text/css"/>
 
     <script src="${pageContext.request.contextPath}/static/js/shoppingCart.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/orderDelivery.js"></script>
 
     <script>
 
@@ -28,6 +29,7 @@
                 localStorage.setItem("contextPath", "${pageContext.request.contextPath}");
 
             controlShoppingCart();
+            controlOrderDelivery();
         }
 
     </script>
@@ -45,7 +47,10 @@
                 <img src="${pageContext.request.contextPath}/static/pic/logo.png" alt="">
             </a>
         </div>
-        <div class="shoppingCartBlock"></div>
+        <div class="orderBlock">
+            <div class="shoppingCartBlock"></div>
+            <div class="orderDeliveryBlock"></div>
+        </div>
         <div class="clear"></div>
     </header>
 

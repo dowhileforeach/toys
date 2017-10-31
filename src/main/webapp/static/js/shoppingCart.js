@@ -27,11 +27,31 @@ function controlShoppingCart() {
         totalSum += +item.qtty * +item.price;
     }
 
-    if (totalQuantity > 0)
-        text += "<a class='orderbutton' href='#' onclick='sendShoppingCartToTheServer()'>Корзина (<strong>" + totalQuantity + "</strong>)</a>&nbsp;&nbsp;<strong>" + totalSum + "</strong> руб.";
-    else
-        text += "<strong>Корзина</strong> пустая";
+    var arr = [];
+    for (var prop in ShoppingCart)
+        arr.push({
+            'article': prop,
+            'qtty': ShoppingCart[prop].qtty
+        });
+
+    // text +=
+    //     "<form action='" + localStorage.contextPath + "/shoppingcart' method='post'>" +
+    //     "<input name='shoppingcart' type='hidden' value='" + JSON.stringify(arr) + "'>" +
+    //     "<button class='orderbutton' type='submit'>" +
+    //     "Корзина (<strong>" + totalQuantity + "</strong>)" +
+    //     "</button>&nbsp;&nbsp;<strong>" + totalSum + "</strong> руб." +
+    //     "</form>";
+    text +=
+        "<a class='orderbutton' href='"+localStorage.contextPath+"/shoppingcart?shoppingcart="+JSON.stringify(arr)+"'>" +
+        "Корзина (<strong>" + totalQuantity + "</strong>)" +
+        "</a>&nbsp;&nbsp;<strong>" + totalSum + "</strong> руб.";
     getShoppingCartBlock().innerHTML = text;
+
+    // if (totalQuantity > 0)
+    //     text += "<a class='orderbutton' href='#' onclick='sendShoppingCartToTheServer()'>Корзина (<strong>" + totalQuantity + "</strong>)</a>&nbsp;&nbsp;<strong>" + totalSum + "</strong> руб.";
+    // else
+    //     text += "<strong>Корзина</strong> 0 руб.";
+    // getShoppingCartBlock().innerHTML = text;
 }
 
 function addItemToTheShoppingCart(article, _price) {

@@ -1,65 +1,33 @@
 package ru.dwfe.toys;
 
-public class ShoppingCart{
+import java.util.ArrayList;
+import java.util.List;
 
-    private Long article;
-    private int qtty;
-    private Stock stock;
+public class ShoppingCart<T>
+{
+    private List<T> list = new ArrayList<>();
 
-    public Long getArticle()
+    public List<T> getList()
     {
-        return article;
+        return list;
     }
 
-    public void setArticle(Long article)
+    public void setList(List<T> list)
     {
-        this.article = article;
+        this.list = list;
     }
 
-    public int getQtty()
+    public void addItem(T item)
     {
-        return qtty;
-    }
-
-    public void setQtty(int qtty)
-    {
-        this.qtty = qtty;
-    }
-
-    public Stock getStock()
-    {
-        return stock;
-    }
-
-    public void setStock(Stock stock)
-    {
-        this.stock = stock;
+        list.add(item);
     }
 
     @Override
     public String toString()
     {
         return "ShoppingCart{" +
-                "article=" + article +
-                ", qtty=" + qtty +
-                ", stock=" + stock +
+                "list=" + list +
                 '}';
     }
-
-    @Override
-    public boolean equals(Object o)
-    {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        ShoppingCart that = (ShoppingCart) o;
-
-        return article.equals(that.article);
-    }
-
-    @Override
-    public int hashCode()
-    {
-        return article.hashCode();
-    }
 }
+

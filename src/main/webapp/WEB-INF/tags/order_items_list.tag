@@ -1,7 +1,8 @@
 <%@tag description="item in the shop" pageEncoding="UTF-8" %>
-<%@attribute name="shoppingcart" required="true" type="java.util.List" %>
+<%--<%@attribute name="shoppingcart" required="true" rtexprvalue="true" type="java.util.List<ru.dwfe.toys.Item>" %>--%>
 <%@attribute name="path" required="true" %>
 <%@attribute name="orderFinal" required="true" type="java.lang.Boolean" %>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <table class="order">
@@ -58,9 +59,9 @@
 
     <tr class="other">
         <td align=right colspan="3">
-            Всего товаров:&nbsp;&nbsp;<strong>${totalQtty}</strong>
+            Товаров:&nbsp;&nbsp;<strong>${totalQtty}</strong>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            Итоговая стоимость товаров:&nbsp;&nbsp;<strong>${totalSum}</strong> руб.
+            Стоимость:&nbsp;&nbsp;<strong>${totalSum}</strong> руб.
         </td>
     </tr>
 </table>

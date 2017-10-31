@@ -2,13 +2,15 @@ package ru.dwfe.toys;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 @Controller
 public class AppController
@@ -33,24 +35,50 @@ public class AppController
         return "about";
     }
 
-    @RequestMapping(value = "/shoppingcart", method = RequestMethod.POST)
-    public String shoppingCart(Map<String, Object> model, @RequestBody List<ShoppingCart> shoppingcart)
+    @RequestMapping(value = "/shoppingcart")
+    public String shoppingCart(ModelMap model)
     {
-        List<Stock> info = appService.findAll(
-                shoppingcart.stream()
-                        .map(ShoppingCart::getArticle)
-                        .collect(Collectors.toSet()));
+//        ObjectMapper mapper = new ObjectMapper();
+//        List<Item> list = new ArrayList<>();
+//        try
+//        {
+//            ArrayNode root = (ArrayNode) mapper.readTree(shoppingcart);
+//            for (JsonNode node: root){
+//                Long article = node.path("article").asLong();
+//                Integer qtty = node.path("qtty").asInt();
+//                Item item = new Item();
+//                item.setArticle(article);
+//                item.setQtty(qtty);
+//                list.add(item);
+//            }
+//        }
+//        catch (IOException e)
+//        {
+//            e.printStackTrace();
+//        }
+//
+//        System.out.println("1)shoppingcart=" + list);
+//        List<Stock> info = appService.findAll(list.stream()
+//                .map(Item::getArticle)
+//                .collect(Collectors.toSet()));
+//
+//        for (Item item : list)
+//        {
+//            Stock stock = new Stock(item.getArticle());
+//            item.setStock(info.get(info.indexOf(stock)));
+//        }
 
-        for (ShoppingCart item : shoppingcart){
-            Stock stock = new Stock(item.getArticle());
-            item.setStock(info.get(info.indexOf(stock)));
-        }
+        List<Item> list = new ArrayList<>();
+        list.add(new Item(1L));
+        list.add(new Item(2L));
+        list.add(new Item(3L));
 
-        model.put("shoppingcart", shoppingcart);
+        System.out.println("2)shoppingcart=" + list);
+        model.put("shoppingcart", list);
+
         return "shoppingcart";
     }
-
-    @RequestMapping(value = "/orderdelivery", method = RequestMethod.POST)
+    @RequestMapping(value = "/orderdelivery")
     public String orderDelivery(Map<String, Object> model, @RequestParam Map<String, String> params)
     {
         return "orderdelivery";
@@ -59,15 +87,16 @@ public class AppController
     @RequestMapping(value = "/orderfinal", method = RequestMethod.POST)
     public String orderFinal(Map<String, Object> model, @RequestBody List<ShoppingCart> shoppingcart)
     {
-        List<Stock> info = appService.findAll(
-                shoppingcart.stream()
-                        .map(ShoppingCart::getArticle)
-                        .collect(Collectors.toSet()));
-
-        for (ShoppingCart item : shoppingcart){
-            Stock stock = new Stock(item.getArticle());
-            item.setStock(info.get(info.indexOf(stock)));
-        }
+//        List<Stock> info = appService.findAll(
+//                shoppingcart.stream()
+//                        .map(ShoppingCart::getArticle)
+//                        .collect(Collectors.toSet()));
+//
+//        for (ShoppingCart item : shoppingcart)
+//        {
+//            Stock stock = new Stock(item.getArticle());
+//            item.setStock(info.get(info.indexOf(stock)));
+//        }
 
         model.put("shoppingcart", shoppingcart);
         return "orderfinal";
