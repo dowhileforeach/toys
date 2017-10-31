@@ -16,7 +16,7 @@
         <t:shoppingcart_items_list shoppingcart="${shoppingcart}" path="${path}" orderFinal="false"/>
 
         <div style="margin-top: 25px; margin-bottom: 40px;">
-            <a class="orderbutton delivery" href="${path}/orderdelivery">Рассчитать стоимость доставки</a>
+            <a class="orderbutton delivery" href="#" onclick="openOrderDeliveryPage()">Рассчитать стоимость доставки</a>
             <a class="orderbutton orderFinal" href="#"
                onclick="onSendShoppingCartToTheServer()">Оформить заказ</a>
         </div>

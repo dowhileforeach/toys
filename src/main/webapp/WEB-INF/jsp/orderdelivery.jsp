@@ -11,45 +11,53 @@
     <c:set var="path" value="${pageContext.request.contextPath}"/>
 
         <h1>Доставка заказа</h1>
-        <form name="orderDelivery" action="/orderdelivery" method="post">
-        <table class="info">
-            <tr>
-                <td width="18%">Индекс:</td>
-                <td>
-                    <input class="input input_20 " name="index" type="number" min="1" max="9999999" value="" required>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Страна:
-                    <input class="input input_40 " name="country" type="text" maxlength="100" value="" required>
-                </td>
-            </tr>
-            <tr>
-                <td>Адрес получателя:</td>
-                <td>
-                    <input class="input input_100" type="text" name="address" maxlength="2000" value="" required>
-                </td>
-            </tr>
-            <tr>
-                <td>Имя получателя:</td>
-                <td>
-                    <input class="input input_100" type="text" name="name" maxlength="200" value="" required>
-                </td>
-            </tr>
-            <tr>
-                <td>Телефон получателя:</td>
-                <td>
-                    <input class="input input_100" type="tel" name="phone"  value="" required>
-                </td>
-            </tr>
-        </table>
-        <div style="margin-top: 10px; margin-bottom: 30px;">
-            <button class="orderbutton deliveryPerform"
-               onsubmit="onSendOrderDeliveryToTheServer()">Выполнить расчет стоимости доставки</button>
-        </div>
+        <form name="orderDelivery" action="/orderdelivery" method="post" onsubmit="onSubmitOrderDelivery()">
+            <table class="info">
+                <tr>
+                    <td width="18%">Индекс:</td>
+                    <td>
+                        <input class="input input_20 " name="index" type="number" min="1" max="9999999" value="" required>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Страна:&nbsp;
+                        <input class="input input_40 " name="country" type="text" maxlength="100" value="" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Адрес получателя:</td>
+                    <td>
+                        <input class="input input_100" type="text" name="address" maxlength="2000" value="" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Имя получателя:</td>
+                    <td>
+                        <input class="input input_100" type="text" name="name" maxlength="200" value="" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Телефон получателя:</td>
+                    <td>
+                        <input class="input input_100" type="tel" name="phone" value="" required>
+                    </td>
+                </tr>
+            </table>
+            <div style="margin-top: 20px; margin-bottom: 30px;">
+                <button class="orderbutton deliveryPerform">Выполнить расчет стоимости доставки</button>
+            </div>
+            <table class="info">
+                <tr>
+                    <td width="18%">Стоимость доставки:</td>
+                    <td style="text-align: left"><div class="deliveryValue"><span class="price"></span></div></td>
+                </tr>
+            </table>
         </form>
         <div style="margin-top: 20px; margin-bottom: 50px;">
             <a class="orderbutton orderFinal" href="#"
                onclick="onSendShoppingCartToTheServer()">Оформить заказ</a>
         </div>
         <script>
+            debugger;
+            setDeliveryValue(${deliveryValue});
+            onLoadOrderDeliveryPage();
             document.querySelector(".orderbutton.orderFinal").style.display = isDeliveryPresent() && isShoppingCartPresent() ? "inline-block" : "none";
         </script>
 

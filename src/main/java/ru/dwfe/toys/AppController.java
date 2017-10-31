@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -46,7 +47,8 @@ public class AppController
         try
         {
             ArrayNode root = (ArrayNode) mapper.readTree(shoppingcart);
-            for (JsonNode node: root){
+            for (JsonNode node : root)
+            {
                 Long article = node.path("article").asLong();
                 Integer qtty = node.path("qtty").asInt();
                 ShoppingCartItem item = new ShoppingCartItem();
@@ -75,10 +77,30 @@ public class AppController
 
         return "shoppingcart";
     }
+
     @RequestMapping(value = "/orderdelivery", method = RequestMethod.POST)
-    public String orderDelivery(Map<String, Object> model, @RequestParam Integer index)
+    public String orderDelivery(ModelMap model, @RequestParam("index") String indexValue)
     {
-        System.out.println("index="+index);
+        int index = 1;
+        try{
+            index = Integer.parseInt(indexValue);
+        }catch (NumberFormatException ignored){}
+
+        int deliveryValue = 0;
+        if (index>=1 && index<=100_000)
+            deliveryValue = 1000;
+        else if (index>100_000 && index<=200_000)
+            deliveryValue = 1500;
+        else if (index>200_000 && index<=300_000)
+            deliveryValue = 1300;
+        else if (index>300_000 && index<=400_000)
+            deliveryValue = 1800;
+        else if (index>400_000 && index<=500_000)
+            deliveryValue = 800;
+        else
+            deliveryValue = 500;
+
+        model.put("deliveryValue", deliveryValue);
         return "orderdelivery";
     }
 
