@@ -57,12 +57,12 @@ header.top .shoppingCartBlock, header.top .orderDeliveryBlock
     margin-top: 5px;
 }
 
-.shoppingCartBlock:hover, .orderDeliveryBlock:hover
+.shoppingCartBlock:hover, .orderDeliveryBlock:hover, .orderbutton.deliveryPerform:hover
 {
     cursor: pointer;
 }
 
-.shoppingCartBlock button.orderbutton, .orderDeliveryBlock a.orderbutton
+.shoppingCartBlock button.orderbutton, .orderDeliveryBlock a.orderbutton, .orderbutton.deliveryPerform
 {
     padding: 4px 8px;
     margin-bottom: 5px;
@@ -73,7 +73,7 @@ header.top .shoppingCartBlock, header.top .orderDeliveryBlock
     border: 0;
 }
 
-.shoppingCartBlock button.orderbutton:hover, .orderDeliveryBlock a.orderbutton:hover
+.shoppingCartBlock button.orderbutton:hover, .orderDeliveryBlock a.orderbutton:hover, .orderbutton.deliveryPerform:hover
 {
     background: #d4893e;
 }

@@ -15,11 +15,15 @@
         <h1>Корзина</h1>
         <t:order_items_list shoppingcart="${shoppingcart}" path="${path}" orderFinal="false"/>
 
-        <div style="margin-top: 40px; margin-bottom: 40px;">
-            <a class="orderbutton" href="${path}/orderdelivery">Рассчитать стоимость доставки</a>
-            <a class="orderbutton" href="#"
-               onclick="sendShoppingCartToTheServer('/orderfinal')">Оформить заказ</a>
+        <div style="margin-top: 25px; margin-bottom: 40px;">
+            <a class="orderbutton delivery" href="${path}/orderdelivery">Рассчитать стоимость доставки</a>
+            <a class="orderbutton orderFinal" href="#"
+               onclick="sendShoppingCartToTheServer()">Оформить заказ</a>
         </div>
+        <script>
+            document.querySelector(".orderbutton.delivery").style.display = isDeliveryPresent() ? "none" : "inline-block";
+            document.querySelector(".orderbutton.orderFinal").style.display = isDeliveryPresent() && isShoppingCartPresent() ? "inline-block" : "none";
+        </script>
 
     </jsp:attribute>
 

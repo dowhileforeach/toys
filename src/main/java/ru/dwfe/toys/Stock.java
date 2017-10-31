@@ -47,16 +47,6 @@ public class Stock
     @Column(name = "img07")
     private String img07;
 
-    public Stock()
-    {
-
-    }
-
-    public Stock(Long article)
-    {
-        this.article = article;
-    }
-
     public Long getArticle()
     {
         return article;

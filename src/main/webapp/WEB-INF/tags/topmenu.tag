@@ -7,9 +7,11 @@
 
         <li><a class="<%= marked.equals("shop") ? "active": "" %>" href="${pageContext.request.contextPath}/shop/">Магазин</a></li>
 
+<%--
         <li> |</li>
 
         <li><a class="<%= marked.equals("delivery") ? "active": "" %>" href="${pageContext.request.contextPath}/delivery/">Доставка</a></li>
+--%>
 
         <li> |</li>
 

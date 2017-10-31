@@ -64,9 +64,10 @@ public class AppController
                 .map(ShoppingCartItem::getArticle)
                 .collect(Collectors.toSet()));
 
+        Stock stock = new Stock();
         for (ShoppingCartItem item : list)
         {
-            Stock stock = new Stock(item.getArticle());
+            stock.setArticle(item.getArticle());
             item.setStock(info.get(info.indexOf(stock)));
         }
 

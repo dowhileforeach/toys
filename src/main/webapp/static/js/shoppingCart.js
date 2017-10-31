@@ -11,6 +11,10 @@ function setShoppingCartStorage(newValue) {
     controlShoppingCart();
 }
 
+function isShoppingCartPresent() {
+    return Object.keys(getShoppingCartStorage()).length > 0;
+}
+
 function getShoppingCartBlock() {
     return document.querySelector(".shoppingCartBlock");
 }

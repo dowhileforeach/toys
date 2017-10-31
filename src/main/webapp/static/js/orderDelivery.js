@@ -10,6 +10,10 @@ function setOrderDeliveryStorage(newValue) {
     localStorage.setItem("OrderDelivery", JSON.stringify(newValue));
 }
 
+function isDeliveryPresent() {
+    return Object.keys(getOrderDeliveryStorage()).length > 0;
+}
+
 function getOrderDeliveryBlock() {
     return document.querySelector(".orderDeliveryBlock");
 }
