@@ -8,6 +8,7 @@ function getShoppingCartStorage() {
 
 function setShoppingCartStorage(newValue) {
     localStorage.setItem("ShoppingCart", JSON.stringify(newValue));
+    controlShoppingCart();
 }
 
 function getShoppingCartBlock() {
@@ -20,43 +21,34 @@ function controlShoppingCart() {
     var totalQuantity = 0;
     var totalSum = 0;
     var text = "";
+    var arr = [];
 
     for (var prop in ShoppingCart) {
         var item = ShoppingCart[prop];
         totalQuantity += +item.qtty;
         totalSum += +item.qtty * +item.price;
-    }
 
-    var arr = [];
-    for (var prop in ShoppingCart)
         arr.push({
             'article': prop,
-            'qtty': ShoppingCart[prop].qtty
+            'qtty': item.qtty
         });
+    }
 
-    // text +=
-    //     "<form action='" + localStorage.contextPath + "/shoppingcart' method='post'>" +
-    //     "<input name='shoppingcart' type='hidden' value='" + JSON.stringify(arr) + "'>" +
-    //     "<button class='orderbutton' type='submit'>" +
-    //     "Корзина (<strong>" + totalQuantity + "</strong>)" +
-    //     "</button>&nbsp;&nbsp;<strong>" + totalSum + "</strong> руб." +
-    //     "</form>";
+    var url = localStorage.contextPath + "/shoppingcart";
+    if (totalQuantity === 0) url = localStorage.contextPath + "/shop";
     text +=
-        "<a class='orderbutton' href='"+localStorage.contextPath+"/shoppingcart?shoppingcart="+JSON.stringify(arr)+"'>" +
+        "<form name='shoppingCartForm' action='" + url + "' method='post'>" +
+        "<input name='shoppingcart' type='hidden' value='" + JSON.stringify(arr) + "'>" +
+        "<button class='orderbutton' type='submit'>" +
         "Корзина (<strong>" + totalQuantity + "</strong>)" +
-        "</a>&nbsp;&nbsp;<strong>" + totalSum + "</strong> руб.";
+        "</button>&nbsp;&nbsp;<strong>" + totalSum + "</strong> руб." +
+        "</form>";
     getShoppingCartBlock().innerHTML = text;
-
-    // if (totalQuantity > 0)
-    //     text += "<a class='orderbutton' href='#' onclick='sendShoppingCartToTheServer()'>Корзина (<strong>" + totalQuantity + "</strong>)</a>&nbsp;&nbsp;<strong>" + totalSum + "</strong> руб.";
-    // else
-    //     text += "<strong>Корзина</strong> 0 руб.";
-    // getShoppingCartBlock().innerHTML = text;
 }
 
 function addItemToTheShoppingCart(article, _price) {
 
-    article += ""
+    article += "";
     var quantity = 1;
     var ShoppingCart = getShoppingCartStorage();
     var saved = false;
@@ -76,37 +68,40 @@ function addItemToTheShoppingCart(article, _price) {
         };
 
     setShoppingCartStorage(ShoppingCart);
-    controlShoppingCart();
 }
 
-function sendShoppingCartToTheServer(point) {
+function sendShoppingCartToTheServer() {
 
-    if (point === undefined) point = '/shoppingcart';
-    var ShoppingCart = getShoppingCartStorage();
-    var arr = [];
-    for (var prop in ShoppingCart)
-        arr.push({
-            'article': prop,
-            'qtty': ShoppingCart[prop].qtty
-        });
+    getShoppingCartBlock().querySelector("form").submit();
 
-    if (arr.length === 0) {
-        window.location.replace(localStorage.contextPath + "/shop");
-        return;
-    }
-
-    var req = new XMLHttpRequest();
-    var url = localStorage.contextPath + point;
-    req.open("post", url);
-    req.setRequestHeader("content-type", "application/json");
-    req.onreadystatechange = function () {
-        if (req.readyState === 4 && req.status === 200) {
-            document.open();
-            document.write(req.responseText);
-            document.close();
-        }
-    };
-    req.send(JSON.stringify(arr));
+    //
+    // if (point === undefined) point = '/shoppingcart';
+    // var ShoppingCart = getShoppingCartStorage();
+    // var arr = [];
+    // for (var prop in ShoppingCart)
+    //     arr.push({
+    //         'article': prop,
+    //         'qtty': ShoppingCart[prop].qtty
+    //     });
+    //
+    // if (arr.length === 0) {
+    //     window.location.replace(localStorage.contextPath + "/shop");
+    //     return;
+    // }
+    //
+    // var req = new XMLHttpRequest();
+    // var url = localStorage.contextPath + point;
+    // req.open("post", url);
+    // req.setRequestHeader("content-type", "application/json");
+    // req.onreadystatechange = function () {
+    //     if (req.readyState === 4 && req.status === 200) {
+    //         document.open();
+    //         document.write(req.responseText);
+    //         document.close();
+    //     }
+    // };
+    // req.send(JSON.stringify(arr));
+    //
 }
 
 function refreshShoppingCart(el) {
@@ -142,5 +137,5 @@ function deleteItemFromShoppingCart(article) {
     delete ShoppingCart[article];
 
     setShoppingCartStorage(ShoppingCart);
-    sendShoppingCartToTheServer();
+    sendShoppingCartToTheServer()
 }

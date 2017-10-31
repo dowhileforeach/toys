@@ -1,5 +1,5 @@
 <%@tag description="item in the shop" pageEncoding="UTF-8" %>
-<%--<%@attribute name="shoppingcart" required="true" rtexprvalue="true" type="java.util.List<ru.dwfe.toys.Item>" %>--%>
+<%@attribute name="shoppingcart" required="true" type="java.util.List<ru.dwfe.toys.ShoppingCartItem>" %>
 <%@attribute name="path" required="true" %>
 <%@attribute name="orderFinal" required="true" type="java.lang.Boolean" %>
 

@@ -1,16 +1,19 @@
 package ru.dwfe.toys;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Controller
 public class AppController
@@ -35,45 +38,38 @@ public class AppController
         return "about";
     }
 
-    @RequestMapping(value = "/shoppingcart")
-    public String shoppingCart(ModelMap model)
+    @RequestMapping(value = "/shoppingcart", method = RequestMethod.POST)
+    public String shoppingCart(Map<String, Object> model, @RequestParam String shoppingcart)
     {
-//        ObjectMapper mapper = new ObjectMapper();
-//        List<Item> list = new ArrayList<>();
-//        try
-//        {
-//            ArrayNode root = (ArrayNode) mapper.readTree(shoppingcart);
-//            for (JsonNode node: root){
-//                Long article = node.path("article").asLong();
-//                Integer qtty = node.path("qtty").asInt();
-//                Item item = new Item();
-//                item.setArticle(article);
-//                item.setQtty(qtty);
-//                list.add(item);
-//            }
-//        }
-//        catch (IOException e)
-//        {
-//            e.printStackTrace();
-//        }
-//
-//        System.out.println("1)shoppingcart=" + list);
-//        List<Stock> info = appService.findAll(list.stream()
-//                .map(Item::getArticle)
-//                .collect(Collectors.toSet()));
-//
-//        for (Item item : list)
-//        {
-//            Stock stock = new Stock(item.getArticle());
-//            item.setStock(info.get(info.indexOf(stock)));
-//        }
+        ObjectMapper mapper = new ObjectMapper();
+        List<ShoppingCartItem> list = new ArrayList<>();
+        try
+        {
+            ArrayNode root = (ArrayNode) mapper.readTree(shoppingcart);
+            for (JsonNode node: root){
+                Long article = node.path("article").asLong();
+                Integer qtty = node.path("qtty").asInt();
+                ShoppingCartItem item = new ShoppingCartItem();
+                item.setArticle(article);
+                item.setQtty(qtty);
+                list.add(item);
+            }
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
 
-        List<Item> list = new ArrayList<>();
-        list.add(new Item(1L));
-        list.add(new Item(2L));
-        list.add(new Item(3L));
+        List<Stock> info = appService.findAll(list.stream()
+                .map(ShoppingCartItem::getArticle)
+                .collect(Collectors.toSet()));
 
-        System.out.println("2)shoppingcart=" + list);
+        for (ShoppingCartItem item : list)
+        {
+            Stock stock = new Stock(item.getArticle());
+            item.setStock(info.get(info.indexOf(stock)));
+        }
+
         model.put("shoppingcart", list);
 
         return "shoppingcart";
@@ -85,7 +81,7 @@ public class AppController
     }
 
     @RequestMapping(value = "/orderfinal", method = RequestMethod.POST)
-    public String orderFinal(Map<String, Object> model, @RequestBody List<ShoppingCart> shoppingcart)
+    public String orderFinal(Map<String, Object> model)
     {
 //        List<Stock> info = appService.findAll(
 //                shoppingcart.stream()
@@ -98,7 +94,7 @@ public class AppController
 //            item.setStock(info.get(info.indexOf(stock)));
 //        }
 
-        model.put("shoppingcart", shoppingcart);
+        //model.put("shoppingcart", shoppingcart);
         return "orderfinal";
     }
 
@@ -117,10 +113,10 @@ public class AppController
     }
 
     @RequestMapping("/item")
-    public String item(Map<String, Object> model, @RequestParam Map<String, String> params)
+    public String item(Map<String, Object> model, @RequestParam String article)
     {
         List<Stock> list = appService.findAll();
-        Stock item = appService.findOne(Long.parseLong(params.get("article")));
+        Stock item = appService.findOne(Long.parseLong(article));
 
         list.remove(item);
         model.put("list", list);
