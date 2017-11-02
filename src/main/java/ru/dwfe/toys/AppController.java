@@ -40,7 +40,7 @@ public class AppController
     }
 
     @RequestMapping(value = "/shoppingcart", method = RequestMethod.POST)
-    public String shoppingCart(Map<String, Object> model, @RequestParam String shoppingcart)
+    public String shoppingCart(ModelMap model, @RequestParam String shoppingcart)
     {
         ObjectMapper mapper = new ObjectMapper();
         List<ShoppingCartItem> list = new ArrayList<>();
@@ -82,30 +82,41 @@ public class AppController
     public String orderDelivery(ModelMap model, @RequestParam("index") String indexValue)
     {
         int index = 1;
-        try{
+        try
+        {
             index = Integer.parseInt(indexValue);
-        }catch (NumberFormatException ignored){}
+        }
+        catch (NumberFormatException ignored)
+        {
+        }
 
-        int deliveryValue = 0;
-        if (index>=1 && index<=100_000)
-            deliveryValue = 1000;
-        else if (index>100_000 && index<=200_000)
-            deliveryValue = 1500;
-        else if (index>200_000 && index<=300_000)
-            deliveryValue = 1300;
-        else if (index>300_000 && index<=400_000)
-            deliveryValue = 1800;
-        else if (index>400_000 && index<=500_000)
-            deliveryValue = 800;
-        else
+        int deliveryValue;
+        String currency = "руб.";
+        if (index == 1)
+        {
+            deliveryValue = 0;
+            currency = "";
+        }
+        else if (index > 1 && index <= 100_000)
+            deliveryValue = 300;
+        else if (index > 100_000 && index <= 200_000)
+            deliveryValue = 400;
+        else if (index > 200_000 && index <= 300_000)
             deliveryValue = 500;
+        else if (index > 300_000 && index <= 400_000)
+            deliveryValue = 600;
+        else if (index > 400_000 && index <= 500_000)
+            deliveryValue = 700;
+        else
+            deliveryValue = 800;
 
-        model.put("deliveryValue", deliveryValue);
+        model.put("deliveryValue", deliveryValue == 0 ? "не рассчитана" : deliveryValue);
+        model.put("currency", currency);
         return "orderdelivery";
     }
 
     @RequestMapping(value = "/orderfinal", method = RequestMethod.POST)
-    public String orderFinal(Map<String, Object> model)
+    public String orderFinal(ModelMap model)
     {
 //        List<Stock> info = appService.findAll(
 //                shoppingcart.stream()
@@ -123,7 +134,7 @@ public class AppController
     }
 
     @RequestMapping("/shop")
-    public String shop(Map<String, Object> model)
+    public String shop(ModelMap model)
     {
         List<Stock> list = appService.findAll();
         model.put("list", list);

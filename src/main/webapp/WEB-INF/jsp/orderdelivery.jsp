@@ -55,8 +55,7 @@
                onclick="onSendShoppingCartToTheServer()">Оформить заказ</a>
         </div>
         <script>
-            debugger;
-            setDeliveryValue(${deliveryValue});
+            setDeliveryValue("${deliveryValue}","${currency}");
             onLoadOrderDeliveryPage();
             document.querySelector(".orderbutton.orderFinal").style.display = isDeliveryPresent() && isShoppingCartPresent() ? "inline-block" : "none";
         </script>

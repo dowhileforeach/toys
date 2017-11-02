@@ -3,14 +3,15 @@ function getOrderDeliveryStorage() {
     if (localStorage.OrderDelivery === undefined
         || localStorage.OrderDelivery === "undefined")
         setOrderDeliveryStorage({
-            'index': 0,
+            'index': '',
             'country': '',
             'address': '',
             'name': '',
             'phone': '',
-            'value': ''
+            'form': ['index', 'country', 'address', 'name', 'phone'],
+            'value': '',     //в доставке валюта отдельно, потому что
+            'currency': ''   //могут быть варианты value без валюты, например, БЕСПЛАТНО и т.п.
         });
-
     return JSON.parse(localStorage.OrderDelivery);
 }
 
@@ -19,9 +20,10 @@ function setOrderDeliveryStorage(newValue) {
     controlOrderDelivery();
 }
 
-function setDeliveryValue(deliveryValue) {
+function setDeliveryValue(deliveryValue, currency) {
     var OrderDelivery = getOrderDeliveryStorage();
     OrderDelivery['value'] = deliveryValue;
+    OrderDelivery['currency'] = currency;
     setOrderDeliveryStorage(OrderDelivery);
 }
 
@@ -33,13 +35,12 @@ function getOrderDeliveryBlock() {
     return document.querySelector(".orderDeliveryBlock");
 }
 
-function getDeliveryValue(OrderDelivery) {
-    var deliveryValue = +OrderDelivery['value'];
-    if (isNaN(+deliveryValue) || !isFinite(+deliveryValue) || +deliveryValue < 0) {
-        deliveryValue = 0;
-        OrderDelivery['value'] = deliveryValue;
-    }
-    return deliveryValue;
+function getDeliveryForm() {
+    return document.forms['orderDelivery'];
+}
+
+function getDeliveryValueBlock() {
+    return document.querySelector(".deliveryValue .price");
 }
 
 function controlOrderDelivery() {
@@ -47,17 +48,15 @@ function controlOrderDelivery() {
     var OrderDelivery = getOrderDeliveryStorage();
     var url = localStorage.contextPath + "/orderdelivery";
 
-    var index = OrderDelivery['index'];
-    if (index === undefined) index = 0;
-
-    var totalSum = getDeliveryValue(OrderDelivery);
+    var value = OrderDelivery['value'];
+    if (value === '') value = 'не рассчитана';
 
     var text =
         "<form name='headFormDelivery' action='" + url + "' method='post'>" +
-        "<input hidden name='index' type='number' value='" + index + "'>" +
+        "<input hidden name='index' type='number' value='" + OrderDelivery['index'] + "'>" +
         "<button class='orderbutton'>" +
         "Доставка" +
-        "</button>&nbsp;&nbsp;<strong>" + totalSum + "</strong> руб." +
+        "</button>&nbsp;&nbsp;<strong>" + value + "</strong> " + OrderDelivery['currency'] +
         "</form>";
     getOrderDeliveryBlock().innerHTML = text;
 }
@@ -65,12 +64,12 @@ function controlOrderDelivery() {
 function onSubmitOrderDelivery() {
 
     var OrderDelivery = getOrderDeliveryStorage();
-    var form = document.forms['orderDelivery'];
+    var arr = OrderDelivery['form'];
+    var form = getDeliveryForm();
 
-    for (var prop in OrderDelivery) {
-        if (prop === 'value') continue;
-        OrderDelivery[prop] = form[prop].value;
-    }
+    for (var i = 0; i < arr.length; i++)
+        OrderDelivery[arr[i]] = form[arr[i]].value;
+
     setOrderDeliveryStorage(OrderDelivery);
 }
 
@@ -81,11 +80,11 @@ function openOrderDeliveryPage() {
 function onLoadOrderDeliveryPage() {
 
     var OrderDelivery = getOrderDeliveryStorage();
-    var form = document.forms['orderDelivery'];
+    var arr = OrderDelivery['form'];
+    var form = getDeliveryForm();
 
-    for (var prop in OrderDelivery) {
-        if (prop === 'value') continue;
-        form[prop].value = OrderDelivery[prop];
-    }
-    document.querySelector(".deliveryValue .price").innerHTML = getDeliveryValue(OrderDelivery) + " руб.";
+    for (var i = 0; i < arr.length; i++)
+        form[arr[i]].value = OrderDelivery[arr[i]];
+
+    getDeliveryValueBlock().innerHTML = OrderDelivery['value'] + " " + OrderDelivery['currency'];
 }
