@@ -42,38 +42,9 @@ public class AppController
     @RequestMapping(value = "/shoppingcart", method = RequestMethod.POST)
     public String shoppingCart(ModelMap model, @RequestParam String shoppingcart)
     {
-        ObjectMapper mapper = new ObjectMapper();
-        List<ShoppingCartItem> list = new ArrayList<>();
-        try
-        {
-            ArrayNode root = (ArrayNode) mapper.readTree(shoppingcart);
-            for (JsonNode node : root)
-            {
-                Long article = node.path("article").asLong();
-                Integer qtty = node.path("qtty").asInt();
-                ShoppingCartItem item = new ShoppingCartItem();
-                item.setArticle(article);
-                item.setQtty(qtty);
-                list.add(item);
-            }
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
+        ShoppingCart shoppingCart = new ShoppingCart(shoppingcart, appService);
 
-        List<Stock> info = appService.findAll(list.stream()
-                .map(ShoppingCartItem::getArticle)
-                .collect(Collectors.toSet()));
-
-        Stock stock = new Stock();
-        for (ShoppingCartItem item : list)
-        {
-            stock.setArticle(item.getArticle());
-            item.setStock(info.get(info.indexOf(stock)));
-        }
-
-        model.put("shoppingcart", list);
+        model.put("shoppingcart", shoppingCart.getCart());
 
         return "shoppingcart";
     }
@@ -81,45 +52,12 @@ public class AppController
     @RequestMapping(value = "/orderdelivery", method = RequestMethod.POST)
     public String orderDelivery(ModelMap model, @RequestParam("index") String indexValue)
     {
-        int index = 1;
-        try
-        {
-            index = Integer.parseInt(indexValue);
-        }
-        catch (NumberFormatException ignored)
-        {
-        }
+        Delivery delivery = new Delivery(indexValue);
 
-        int deliveryValue;
-        if (index == 1)
-            deliveryValue = 0;
-        else if (index > 1 && index <= 100_000)
-            deliveryValue = 300;
-        else if (index > 100_000 && index <= 200_000)
-            deliveryValue = 400;
-        else if (index > 200_000 && index <= 300_000)
-            deliveryValue = 500;
-        else if (index > 300_000 && index <= 400_000)
-            deliveryValue = 600;
-        else if (index > 400_000 && index <= 500_000)
-            deliveryValue = 700;
-        else
-            deliveryValue = 800;
+        model.put("deliveryValue", delivery.getValueReturn());
+        model.put("currency", delivery.getCurrency());
+        model.put("isDeliveryCorrect", delivery.getIsCorrect());
 
-
-        String deliveryValueReturn = deliveryValue + "";
-        String currency = "руб.";
-        int isDeliveryCorrect = 1;
-        if (deliveryValue == 0)
-        {
-            deliveryValueReturn = "не рассчитана";
-            isDeliveryCorrect = 0;
-            currency = "";
-        }
-
-        model.put("deliveryValue", deliveryValueReturn);
-        model.put("currency", currency);
-        model.put("isDeliveryCorrect", isDeliveryCorrect);
         return "orderdelivery";
     }
 
