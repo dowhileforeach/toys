@@ -9,6 +9,7 @@ function getShoppingCartStorage() {
 function setShoppingCartStorage(newValue) {
     localStorage.setItem("ShoppingCart", JSON.stringify(newValue));
     controlShoppingCart();
+    controlOrderFinal();
 }
 
 function isShoppingCartPresent() {
@@ -88,10 +89,9 @@ function addItemToTheShoppingCart(article, _price) {
         };
 
     setShoppingCartStorage(ShoppingCart);
-    controlOrderFinal();
 }
 
-function onSendShoppingCartToTheServer() {
+function sendShoppingCartToTheServer() {
 
     getShoppingCartBlock().querySelector("form").submit();
 
@@ -146,7 +146,7 @@ function refreshShoppingCart(el) {
     ShoppingCart[article].qtty = qtty;
 
     setShoppingCartStorage(ShoppingCart);
-    onSendShoppingCartToTheServer();
+    sendShoppingCartToTheServer();
 }
 
 function deleteItemFromShoppingCart(article) {
@@ -158,5 +158,5 @@ function deleteItemFromShoppingCart(article) {
     delete ShoppingCart[article];
 
     setShoppingCartStorage(ShoppingCart);
-    onSendShoppingCartToTheServer()
+    sendShoppingCartToTheServer();
 }

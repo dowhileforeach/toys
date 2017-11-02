@@ -3,6 +3,10 @@ function getOrderFinalBlock() {
     return document.querySelector(".orderFinalBlock");
 }
 
+function getOrderFinalBlockForm() {
+    return document.querySelector(".orderFinalBlock form");
+}
+
 function controlOrderFinal() {
 
     var orderFinalBlock = getOrderFinalBlock();

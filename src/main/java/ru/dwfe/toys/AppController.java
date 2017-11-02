@@ -124,7 +124,7 @@ public class AppController
     }
 
     @RequestMapping(value = "/orderfinal", method = RequestMethod.POST)
-    public String orderFinal(ModelMap model)
+    public String orderFinal(ModelMap model, @RequestParam String shoppingcart, @RequestParam("index") String indexValue)
     {
 //        List<Stock> info = appService.findAll(
 //                shoppingcart.stream()

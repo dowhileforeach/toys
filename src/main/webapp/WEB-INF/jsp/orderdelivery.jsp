@@ -52,7 +52,7 @@
         </form>
         <div style="margin-top: 20px; margin-bottom: 50px;">
             <a class="orderbutton orderFinal" href="#"
-               onclick="onSendShoppingCartToTheServer()">Оформить заказ</a>
+               onclick="getOrderFinalBlockForm().submit();">Оформить заказ</a>
         </div>
         <script>
             setDeliveryValue("${deliveryValue}","${currency}");

@@ -57,7 +57,7 @@ header.top .shoppingCartBlock, header.top .orderDeliveryBlock, header.top .order
     margin-top: 5px;
 }
 
-.shoppingCartBlock:hover, .orderDeliveryBlock:hover, .orderbutton.deliveryPerform:hover, .orderFinalBlock:hover
+.shoppingCartBlock button:hover, .orderDeliveryBlock button:hover, .orderFinalBlock button:hover, .orderbutton.deliveryPerform:hover
 {
     cursor: pointer;
 }
@@ -73,8 +73,8 @@ header.top .shoppingCartBlock, header.top .orderDeliveryBlock, header.top .order
     border: 0;
 }
 
-
-.orderFinalBlock button.orderbutton{
+.orderFinalBlock button.orderbutton
+{
     padding: 4px 8px;
     margin-bottom: 5px;
     font-size: 100%;

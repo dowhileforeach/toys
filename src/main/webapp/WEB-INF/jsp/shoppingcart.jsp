@@ -18,7 +18,7 @@
         <div style="margin-top: 25px; margin-bottom: 40px;">
             <a class="orderbutton delivery" href="#" onclick="openOrderDeliveryPage()">Рассчитать стоимость доставки</a>
             <a class="orderbutton orderFinal" href="#"
-               onclick="onSendShoppingCartToTheServer()">Оформить заказ</a>
+               onclick="getOrderFinalBlockForm().submit();">Оформить заказ</a>
         </div>
         <script>
             document.querySelector(".orderbutton.delivery").style.display = isDeliveryCorrect() ? "none" : "inline-block";
