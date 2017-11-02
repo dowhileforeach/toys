@@ -50,13 +50,15 @@ function controlOrderDelivery() {
 
     var value = OrderDelivery['value'];
     if (value === '') value = 'не рассчитана';
+    if (value !== 'не рассчитана')
+        value = "<strong>" + value + "</strong> " + OrderDelivery['currency'];
 
     var text =
         "<form name='headFormDelivery' action='" + url + "' method='post'>" +
         "<input hidden name='index' type='number' value='" + OrderDelivery['index'] + "'>" +
         "<button class='orderbutton'>" +
         "Доставка" +
-        "</button>&nbsp;&nbsp;<strong>" + value + "</strong> " + OrderDelivery['currency'] +
+        "</button>&nbsp;&nbsp;" + value +
         "</form>";
     getOrderDeliveryBlock().innerHTML = text;
 }
