@@ -50,6 +50,17 @@ function getDeliveryValueBlock() {
     return document.querySelector(".deliveryValue .price");
 }
 
+function getOrderDeliveryTag(OrderDelivery) {
+
+    var arr = OrderDelivery['form'];
+    var res = "";
+
+    for (var i = 0; i < arr.length; i++)
+        res += "<input hidden name='" + arr[i] + "' value='" + OrderDelivery[arr[i]] + "'>";
+
+    return res;
+}
+
 function controlOrderDelivery() {
 
     var OrderDelivery = getOrderDeliveryStorage();
@@ -62,7 +73,7 @@ function controlOrderDelivery() {
 
     var text =
         "<form name='headFormDelivery' action='" + url + "' method='post'>" +
-        "<input hidden name='index' type='number' value='" + OrderDelivery['index'] + "'>" +
+        getOrderDeliveryTag(OrderDelivery) +
         "<button class='orderbutton'>" +
         "Доставка" +
         "</button>&nbsp;&nbsp;" + value +

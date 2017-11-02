@@ -19,12 +19,10 @@ function getShoppingCartBlock() {
     return document.querySelector(".shoppingCartBlock");
 }
 
-function controlShoppingCart() {
-
+function getShoppingCartTotal() {
     var ShoppingCart = getShoppingCartStorage();
     var totalQuantity = 0;
     var totalSum = 0;
-    var text = "";
     var arr = [];
 
     for (var prop in ShoppingCart) {
@@ -38,21 +36,34 @@ function controlShoppingCart() {
         });
     }
 
+    return {
+        'totalQuantity': totalQuantity,
+        'totalSum': totalSum,
+        'arr': arr
+    };
+}
+
+function getShoppingCartTag(arr) {
+    return "<input name='shoppingcart' type='hidden' value='" + JSON.stringify(arr) + "'>";
+}
+
+function controlShoppingCart() {
+
+    var res = getShoppingCartTotal();
     var url = localStorage.contextPath + "/shoppingcart";
     var value = '';
-    if (totalQuantity === 0)
+    if (res.totalQuantity === 0)
         url = localStorage.contextPath + "/shop";
     else
-        value = "<strong>" + totalSum + "</strong> руб.";
+        value = "<strong>" + res.totalSum + "</strong> руб.";
 
-    text +=
+    getShoppingCartBlock().innerHTML =
         "<form name='shoppingCartForm' action='" + url + "' method='post'>" +
-        "<input name='shoppingcart' type='hidden' value='" + JSON.stringify(arr) + "'>" +
+        getShoppingCartTag(res.arr) +
         "<button class='orderbutton' type='submit'>" +
-        "Корзина (<strong>" + totalQuantity + "</strong>)" +
+        "Корзина (<strong>" + res.totalQuantity + "</strong>)" +
         "</button>&nbsp;&nbsp;" + value +
         "</form>";
-    getShoppingCartBlock().innerHTML = text;
 }
 
 function addItemToTheShoppingCart(article, _price) {
@@ -77,6 +88,7 @@ function addItemToTheShoppingCart(article, _price) {
         };
 
     setShoppingCartStorage(ShoppingCart);
+    controlOrderFinal();
 }
 
 function onSendShoppingCartToTheServer() {

@@ -51,13 +51,13 @@ header.top .orderBlock
     float: left;
 }
 
-header.top .shoppingCartBlock, header.top .orderDeliveryBlock
+header.top .shoppingCartBlock, header.top .orderDeliveryBlock, header.top .orderFinalBlock
 {
     width: 200px;
     margin-top: 5px;
 }
 
-.shoppingCartBlock:hover, .orderDeliveryBlock:hover, .orderbutton.deliveryPerform:hover
+.shoppingCartBlock:hover, .orderDeliveryBlock:hover, .orderbutton.deliveryPerform:hover, .orderFinalBlock:hover
 {
     cursor: pointer;
 }
@@ -70,6 +70,17 @@ header.top .shoppingCartBlock, header.top .orderDeliveryBlock
     display: inline-block;
     text-shadow: 0 1px 1px #666;
     background: #9b6b51;
+    border: 0;
+}
+
+
+.orderFinalBlock button.orderbutton{
+    padding: 4px 8px;
+    margin-bottom: 5px;
+    font-size: 100%;
+    display: inline-block;
+    text-shadow: 0 1px 1px #666;
+    /*background: #9b6b51;*/
     border: 0;
 }
 

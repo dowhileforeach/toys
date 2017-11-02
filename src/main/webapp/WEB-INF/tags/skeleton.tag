@@ -20,6 +20,7 @@
 
     <script src="${pageContext.request.contextPath}/static/js/shoppingCart.js"></script>
     <script src="${pageContext.request.contextPath}/static/js/orderDelivery.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/orderFinal.js"></script>
 
     <script>
 
@@ -30,6 +31,7 @@
 
             controlShoppingCart();
             controlOrderDelivery();
+            controlOrderFinal();
         }
 
     </script>
@@ -50,6 +52,7 @@
         <div class="orderBlock">
             <div class="shoppingCartBlock"></div>
             <div class="orderDeliveryBlock"></div>
+            <div class="orderFinalBlock"></div>
         </div>
         <div class="clear"></div>
     </header>
