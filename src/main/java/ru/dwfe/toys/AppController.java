@@ -91,12 +91,8 @@ public class AppController
         }
 
         int deliveryValue;
-        String currency = "руб.";
         if (index == 1)
-        {
             deliveryValue = 0;
-            currency = "";
-        }
         else if (index > 1 && index <= 100_000)
             deliveryValue = 300;
         else if (index > 100_000 && index <= 200_000)
@@ -110,8 +106,20 @@ public class AppController
         else
             deliveryValue = 800;
 
-        model.put("deliveryValue", deliveryValue == 0 ? "не рассчитана" : deliveryValue);
+
+        String deliveryValueReturn = deliveryValue + "";
+        String currency = "руб.";
+        int isDeliveryCorrect = 1;
+        if (deliveryValue == 0)
+        {
+            deliveryValueReturn = "не рассчитана";
+            isDeliveryCorrect = 0;
+            currency = "";
+        }
+
+        model.put("deliveryValue", deliveryValueReturn);
         model.put("currency", currency);
+        model.put("isDeliveryCorrect", isDeliveryCorrect);
         return "orderdelivery";
     }
 

@@ -56,8 +56,9 @@
         </div>
         <script>
             setDeliveryValue("${deliveryValue}","${currency}");
+            setIsDeliveryCorrect(${isDeliveryCorrect});
             onLoadOrderDeliveryPage();
-            document.querySelector(".orderbutton.orderFinal").style.display = isDeliveryPresent() && isShoppingCartPresent() ? "inline-block" : "none";
+            document.querySelector(".orderbutton.orderFinal").style.display = isDeliveryCorrect() && isShoppingCartPresent() ? "inline-block" : "none";
         </script>
 
         <h3>Доставка по Москве (в пределах МКАД)</h3>

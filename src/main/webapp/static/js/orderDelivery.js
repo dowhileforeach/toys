@@ -9,6 +9,7 @@ function getOrderDeliveryStorage() {
             'name': '',
             'phone': '',
             'form': ['index', 'country', 'address', 'name', 'phone'],
+            "isDeliveryCorrect": 0,
             'value': '',     //в доставке валюта отдельно, потому что
             'currency': ''   //могут быть варианты value без валюты, например, БЕСПЛАТНО и т.п.
         });
@@ -27,8 +28,14 @@ function setDeliveryValue(deliveryValue, currency) {
     setOrderDeliveryStorage(OrderDelivery);
 }
 
-function isDeliveryPresent() {
-    return Object.keys(getOrderDeliveryStorage()).length > 0;
+function setIsDeliveryCorrect(value) {
+    var OrderDelivery = getOrderDeliveryStorage();
+    OrderDelivery['isDeliveryCorrect'] = value;
+    setOrderDeliveryStorage(OrderDelivery);
+}
+
+function isDeliveryCorrect() {
+    return getOrderDeliveryStorage()['isDeliveryCorrect'];
 }
 
 function getOrderDeliveryBlock() {

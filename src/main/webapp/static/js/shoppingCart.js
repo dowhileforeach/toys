@@ -39,13 +39,18 @@ function controlShoppingCart() {
     }
 
     var url = localStorage.contextPath + "/shoppingcart";
-    if (totalQuantity === 0) url = localStorage.contextPath + "/shop";
+    var value = '';
+    if (totalQuantity === 0)
+        url = localStorage.contextPath + "/shop";
+    else
+        value = "<strong>" + totalSum + "</strong> руб.";
+
     text +=
         "<form name='shoppingCartForm' action='" + url + "' method='post'>" +
         "<input name='shoppingcart' type='hidden' value='" + JSON.stringify(arr) + "'>" +
         "<button class='orderbutton' type='submit'>" +
         "Корзина (<strong>" + totalQuantity + "</strong>)" +
-        "</button>&nbsp;&nbsp;<strong>" + totalSum + "</strong> руб." +
+        "</button>&nbsp;&nbsp;" + value +
         "</form>";
     getShoppingCartBlock().innerHTML = text;
 }

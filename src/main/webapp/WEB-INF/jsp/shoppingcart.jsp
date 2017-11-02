@@ -21,8 +21,8 @@
                onclick="onSendShoppingCartToTheServer()">Оформить заказ</a>
         </div>
         <script>
-            document.querySelector(".orderbutton.delivery").style.display = isDeliveryPresent() ? "none" : "inline-block";
-            document.querySelector(".orderbutton.orderFinal").style.display = isDeliveryPresent() && isShoppingCartPresent() ? "inline-block" : "none";
+            document.querySelector(".orderbutton.delivery").style.display = isDeliveryCorrect() ? "none" : "inline-block";
+            document.querySelector(".orderbutton.orderFinal").style.display = isDeliveryCorrect() && isShoppingCartPresent() ? "inline-block" : "none";
         </script>
 
     </jsp:attribute>
