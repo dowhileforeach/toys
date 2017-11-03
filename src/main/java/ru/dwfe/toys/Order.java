@@ -6,12 +6,16 @@ public class Order
     private OrderCustomer customer;
     private OrderShoppingCart shoppingCart;
     private OrderDelivery delivery;
+    private Integer value;
 
     public Order(OrderShoppingCart shoppingCart, OrderDelivery delivery)
     {
         this.shoppingCart = shoppingCart;
         this.delivery = delivery;
+
+        value = shoppingCart.getValue() + delivery.getValue();
     }
+
 
     public OrderShoppingCart getShoppingCart()
     {
@@ -21,5 +25,10 @@ public class Order
     public OrderDelivery getDelivery()
     {
         return delivery;
+    }
+
+    public Integer getValue()
+    {
+        return value;
     }
 }

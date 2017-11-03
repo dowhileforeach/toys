@@ -80,6 +80,7 @@ public class AppController
         model.put("hash", hash);
         model.put("shoppingcart", order.getShoppingCart().getCart());
         model.put("delivery", order.getDelivery());
+        model.put("orderValue", order.getValue());
 
         return "orderconfirm";
     }

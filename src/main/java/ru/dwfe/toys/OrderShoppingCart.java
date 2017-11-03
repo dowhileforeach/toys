@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 public class OrderShoppingCart
 {
     private List<OrderShoppingCartItem> cart = new ArrayList<>();
+    private int value;
 
     public OrderShoppingCart(String shoppingcart, AppService appService)
     {
@@ -43,11 +44,18 @@ public class OrderShoppingCart
         {
             stock.setArticle(item.getArticle());
             item.setStock(info.get(info.indexOf(stock)));
+
+            value += item.getQtty() * item.getStock().getPrice();
         }
     }
 
     public List<OrderShoppingCartItem> getCart()
     {
         return cart;
+    }
+
+    public int getValue()
+    {
+        return value;
     }
 }
