@@ -12,12 +12,11 @@
 
         <h1 id="${hash}">Оформление заказа</h1>
 
-        <h2 style="margin-top: 20px">Список товаров заказа</h2>
+        <h2 style="margin-top: 20px">Список товаров</h2>
 
         <t:shoppingcart_items_list shoppingcart="${shoppingcart}" path="${path}" orderConfirm="true"/>
 
-        <br>
-        <h2>Заказ будет доставлен</h2>
+        <h2 style="margin-top: 20px">Заказ будет доставлен</h2>
 
         <table class="info">
             <tr>
@@ -46,13 +45,9 @@
                 </td>
             </tr>
         </table>
-        <table class="info">
-            <tr>
-                <td width="18%">Стоимость доставки:</td>
-                <td style="text-align: left"><div class="deliveryValue"><span class="price">${delivery.getValueReturn()} ${delivery.getCurrency()}</span></div></td>
-            </tr>
-        </table>
-
+        <div class="priceBlock">
+            Стоимость доставки:&nbsp;&nbsp;<span class="price">${delivery.getValueReturn()} ${delivery.getCurrency()}</span>
+        </div>
         <div style="margin-top: 25px; margin-bottom: 40px;">
             <a class="orderbutton" href="#">Подтвердить</a>
         </div>

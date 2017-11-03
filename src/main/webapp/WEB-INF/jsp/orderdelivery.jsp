@@ -43,13 +43,10 @@
             <div style="margin-top: 20px; margin-bottom: 30px;">
                 <button class="orderbutton deliveryPerform">Выполнить расчет стоимости доставки</button>
             </div>
-            <table class="info">
-                <tr>
-                    <td width="18%">Стоимость доставки:</td>
-                    <td style="text-align: left"><div class="deliveryValue"><span class="price"></span></div></td>
-                </tr>
-            </table>
         </form>
+        <div class="priceBlock">
+            <div class="deliveryValue">Стоимость доставки:&nbsp;&nbsp;<span class="price"></span></div>
+        </div>
         <div style="margin-top: 20px; margin-bottom: 50px;">
             <a class="orderbutton orderConfirm" href="#"
                onclick="getOrderConfirmBlockForm().submit();">Оформить заказ</a>

@@ -57,6 +57,7 @@
         <c:set var="totalSum" value="${totalSum + sum}"/>
     </c:forEach>
 
+<%--
     <tr class="other">
         <td align=right colspan="3">
             Товаров:&nbsp;&nbsp;<strong>${totalQtty}</strong>
@@ -64,4 +65,11 @@
             Стоимость:&nbsp;&nbsp;<strong>${totalSum}</strong> руб.
         </td>
     </tr>
+--%>
 </table>
+<br>
+<div class="priceBlock">
+Всего товаров:&nbsp;&nbsp;${totalQtty}
+<br>
+Общая стоимость товаров:&nbsp;&nbsp;<span class="price">${totalSum} руб.</span>
+</div>
