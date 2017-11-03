@@ -62,26 +62,24 @@ public class AppController
 
     @RequestMapping(value = "/orderconfirm", method = RequestMethod.POST)
     public String orderConfirm(ModelMap model,
-                             @RequestParam String shoppingcart,
-                             @RequestParam String index,
-                             @RequestParam String country,
-                             @RequestParam String address,
-                             @RequestParam String name,
-                             @RequestParam String phone)
+                               @RequestParam String shoppingcart,
+                               @RequestParam String index,
+                               @RequestParam String country,
+                               @RequestParam String address,
+                               @RequestParam String name,
+                               @RequestParam String phone)
     {
         OrderShoppingCart shoppingCart = new OrderShoppingCart(shoppingcart, appService);
         OrderDelivery delivery = new OrderDelivery(index, country, address, name, phone);
         Order order = new Order(shoppingCart, delivery);
 
-        int requiredStringLength = 20;
+        int requiredStringLength = 30;
         String hash = new BigInteger(requiredStringLength * 5, new SecureRandom()).toString(36);
         tempOrder.put(hash, order);
 
         model.put("hash", hash);
         model.put("shoppingcart", order.getShoppingCart().getCart());
-        model.put("deliveryValue", order.getDelivery().getValueReturn());
-        model.put("currency", order.getDelivery().getCurrency());
-        model.put("isDeliveryCorrect", order.getDelivery().getIsCorrect());
+        model.put("delivery", order.getDelivery());
 
         return "orderconfirm";
     }

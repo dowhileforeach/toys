@@ -10,40 +10,46 @@
     <jsp:attribute name="content">
     <c:set var="path" value="${pageContext.request.contextPath}"/>
 
-        <h1>Оформление заказа</h1>
+        <h1 id="${hash}">Оформление заказа</h1>
 
-        <h2>Список товаров</h2>
+        <h2 style="margin-top: 20px">Список товаров заказа</h2>
 
         <t:shoppingcart_items_list shoppingcart="${shoppingcart}" path="${path}" orderConfirm="true"/>
 
         <br>
-        <h2>Доставка</h2>
+        <h2>Заказ будет доставлен</h2>
 
         <table class="info">
             <tr>
                 <td width="18%">Индекс:</td>
                 <td>
-
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Страна:&nbsp;
+                    <strong>${delivery.getIndex()}</strong>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Страна:&nbsp;<strong>${delivery.getCountry()}</strong>
                 </td>
             </tr>
             <tr>
                 <td>Адрес получателя:</td>
                 <td>
-                    <input class="input input_100" type="text" name="address" maxlength="2000" value="" required>
+                    <strong>${delivery.getAddress()}</strong>
                 </td>
             </tr>
             <tr>
                 <td>Имя получателя:</td>
                 <td>
-                    <input class="input input_100" type="text" name="name" maxlength="200" value="" required>
+                    <strong>${delivery.getName()}</strong>
                 </td>
             </tr>
             <tr>
                 <td>Телефон получателя:</td>
                 <td>
-                    <input class="input input_100" type="tel" name="phone" value="" required>
+                    <strong>${delivery.getPhone()}</strong>
                 </td>
+            </tr>
+        </table>
+        <table class="info">
+            <tr>
+                <td width="18%">Стоимость доставки:</td>
+                <td style="text-align: left"><div class="deliveryValue"><span class="price">${delivery.getValueReturn()} ${delivery.getCurrency()}</span></div></td>
             </tr>
         </table>
 
