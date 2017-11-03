@@ -1,8 +1,5 @@
 package ru.dwfe.toys;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -10,11 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 @Controller
 public class AppController
@@ -62,20 +56,18 @@ public class AppController
     }
 
     @RequestMapping(value = "/orderfinal", method = RequestMethod.POST)
-    public String orderFinal(ModelMap model, @RequestParam String shoppingcart, @RequestParam("index") String indexValue)
+    public String orderFinal(ModelMap model,
+                             @RequestParam String shoppingcart,
+                             @RequestParam("index") String indexValue)
     {
-//        List<Stock> info = appService.findAll(
-//                shoppingcart.stream()
-//                        .map(ShoppingCart::getArticle)
-//                        .collect(Collectors.toSet()));
-//
-//        for (ShoppingCart item : shoppingcart)
-//        {
-//            Stock stock = new Stock(item.getArticle());
-//            item.setStock(info.get(info.indexOf(stock)));
-//        }
+        ShoppingCart shoppingCart = new ShoppingCart(shoppingcart, appService);
+        Delivery delivery = new Delivery(indexValue);
 
-        //model.put("shoppingcart", shoppingcart);
+        model.put("shoppingcart", shoppingCart.getCart());
+        model.put("deliveryValue", delivery.getValueReturn());
+        model.put("currency", delivery.getCurrency());
+        model.put("isDeliveryCorrect", delivery.getIsCorrect());
+
         return "orderfinal";
     }
 
