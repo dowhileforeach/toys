@@ -9,26 +9,28 @@ import java.util.Set;
 @Service("appService")
 public class AppService
 {
-    private final DAO dao;
+    private final DAO_Item daoItem;
+    private final DAO_Item_img daoItem_img;
 
     @Autowired
-    public AppService(DAO dao)
+    public AppService(DAO_Item daoItem, DAO_Item_img daoItem_img)
     {
-        this.dao = dao;
+        this.daoItem = daoItem;
+        this.daoItem_img = daoItem_img;
     }
 
     public List<Item> findAll()
     {
-        return dao.findAll();
+        return daoItem.findAll();
     }
 
     public Item findOne(Long article)
     {
-        return dao.findOne(article);
+        return daoItem.findOne(article);
     }
 
     public List<Item> findAll(Set<Long> ids){
-        return dao.findAll(ids);
+        return daoItem.findAll(ids);
     }
 
 }
