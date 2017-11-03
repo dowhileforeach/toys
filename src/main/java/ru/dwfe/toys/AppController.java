@@ -41,7 +41,7 @@ public class AppController
     @RequestMapping("/shop")
     public String shop(ModelMap model)
     {
-        List<Stock> list = appService.findAll();
+        List<Item> list = appService.findAll();
         model.put("list", list);
         return "shop";
     }
@@ -49,8 +49,8 @@ public class AppController
     @RequestMapping("/item")
     public String item(Map<String, Object> model, @RequestParam String article)
     {
-        List<Stock> list = appService.findAll();
-        Stock item = appService.findOne(Long.parseLong(article));
+        List<Item> list = appService.findAll();
+        Item item = appService.findOne(Long.parseLong(article));
 
         list.remove(item);
         model.put("list", list);

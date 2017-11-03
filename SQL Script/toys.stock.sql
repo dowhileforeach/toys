@@ -1,7 +1,7 @@
 USE toys;
 
-DROP TABLE IF EXISTS `stock`;
-CREATE TABLE `stock` (
+DROP TABLE IF EXISTS `item`;
+CREATE TABLE `item` (
   `article`  BIGINT(20)                 NOT NULL,
   `title`    VARCHAR(255)
              COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -20,14 +20,14 @@ CREATE TABLE `stock` (
   `img06`    VARCHAR(100)               DEFAULT NULL,
   `img07`    VARCHAR(100)               DEFAULT NULL,
   PRIMARY KEY (`article`),
-  UNIQUE KEY `stock_article_uindex` (`article`)
+  UNIQUE KEY `item_article_uindex` (`article`)
 )
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_unicode_ci;
 
-LOCK TABLES `stock` WRITE;
-INSERT INTO `stock`
+LOCK TABLES `item` WRITE;
+INSERT INTO `item`
 VALUES
   (1,'Ворона большая','норка, орелаг','черный, серый, белый, розовый, бордо, бежевый, светло-коричневый, Кастор, коричневый','21 см.',18800,'photo1949.png','photo1950.png','crow_05.jpg','crow_07.jpg','crow_08.jpg','crow_09.jpg','crow_14.jpg'),
   (111,'Панда средняя','орилаг, рекс',NULL,NULL,18000,'photo2387.png','photo2388.png','photo2389.png',NULL,NULL,NULL,NULL),

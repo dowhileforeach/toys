@@ -35,17 +35,17 @@ public class OrderShoppingCart
             e.printStackTrace();
         }
 
-        List<Stock> info = appService.findAll(cart.stream()
+        List<Item> info = appService.findAll(cart.stream()
                 .map(OrderShoppingCartItem::getArticle)
                 .collect(Collectors.toSet()));
 
-        Stock stock = new Stock();
-        for (OrderShoppingCartItem item : cart)
+        Item item = new Item();
+        for (OrderShoppingCartItem next : cart)
         {
-            stock.setArticle(item.getArticle());
-            item.setStock(info.get(info.indexOf(stock)));
+            item.setArticle(next.getArticle());
+            next.setItem(info.get(info.indexOf(item)));
 
-            value += item.getQtty() * item.getStock().getPrice();
+            value += next.getQtty() * next.getItem().getPrice();
         }
     }
 

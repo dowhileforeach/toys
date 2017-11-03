@@ -4,7 +4,7 @@ public class OrderShoppingCartItem
 {
     private Long article;
     private Integer qtty;
-    private Stock stock;
+    private Item item;
 
     public Integer getQtty()
     {
@@ -16,14 +16,14 @@ public class OrderShoppingCartItem
         this.qtty = qtty;
     }
 
-    public Stock getStock()
+    public Item getItem()
     {
-        return stock;
+        return item;
     }
 
-    public void setStock(Stock stock)
+    public void setItem(Item item)
     {
-        this.stock = stock;
+        this.item = item;
     }
 
     public Long getArticle()

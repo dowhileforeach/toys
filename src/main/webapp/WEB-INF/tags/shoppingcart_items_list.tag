@@ -17,9 +17,9 @@
     <c:forEach items="${shoppingcart}" var="item" varStatus="loop">
 
         <c:set var="article" value="${item.getArticle()}"/>
-        <c:set var="title"   value="${item.getStock().getTitle()}"/>
-        <c:set var="img"     value="${item.getStock().getImg01()}"/>
-        <c:set var="price"   value="${item.getStock().getPrice()}"/>
+        <c:set var="title"   value="${item.getItem().getTitle()}"/>
+        <c:set var="img"     value="${item.getItem().getImg01()}"/>
+        <c:set var="price"   value="${item.getItem().getPrice()}"/>
         <c:set var="qtty"    value="${item.getQtty()}"/>
         <c:set var="sum"     value="${price * qtty}"/>
 

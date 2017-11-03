@@ -17,17 +17,17 @@ public class AppService
         this.dao = dao;
     }
 
-    public List<Stock> findAll()
+    public List<Item> findAll()
     {
         return dao.findAll();
     }
 
-    public Stock findOne(Long article)
+    public Item findOne(Long article)
     {
         return dao.findOne(article);
     }
 
-    public List<Stock> findAll(Set<Long> ids){
+    public List<Item> findAll(Set<Long> ids){
         return dao.findAll(ids);
     }
 

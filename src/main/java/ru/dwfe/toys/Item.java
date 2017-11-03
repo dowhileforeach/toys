@@ -3,8 +3,8 @@ package ru.dwfe.toys;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "stock")
-public class Stock
+@Table(name = "item")
+public class Item
 {
     @Id
     @Column(name = "article")
@@ -180,7 +180,7 @@ public class Stock
     @Override
     public String toString()
     {
-        return "Stock{" +
+        return "Item{" +
                 "article=" + article +
                 ", title='" + title + '\'' +
                 ", material='" + material + '\'' +
@@ -197,9 +197,9 @@ public class Stock
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Stock stock = (Stock) o;
+        Item item = (Item) o;
 
-        return article.equals(stock.article);
+        return article.equals(item.article);
     }
 
     @Override
