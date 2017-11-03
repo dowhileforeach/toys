@@ -51,13 +51,13 @@ header.top .orderBlock
     float: left;
 }
 
-header.top .shoppingCartBlock, header.top .orderDeliveryBlock, header.top .orderFinalBlock
+header.top .shoppingCartBlock, header.top .orderDeliveryBlock, header.top .orderConfirmBlock
 {
     width: 200px;
     margin-top: 5px;
 }
 
-.shoppingCartBlock button:hover, .orderDeliveryBlock button:hover, .orderFinalBlock button:hover, .orderbutton.deliveryPerform:hover
+.shoppingCartBlock button:hover, .orderDeliveryBlock button:hover, .orderConfirmBlock button:hover, .orderbutton.deliveryPerform:hover
 {
     cursor: pointer;
 }
@@ -73,7 +73,7 @@ header.top .shoppingCartBlock, header.top .orderDeliveryBlock, header.top .order
     border: 0;
 }
 
-.orderFinalBlock button.orderbutton
+.orderConfirmBlock button.orderbutton
 {
     padding: 4px 8px;
     margin-bottom: 5px;

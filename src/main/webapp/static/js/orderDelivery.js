@@ -19,7 +19,7 @@ function getOrderDeliveryStorage() {
 function setOrderDeliveryStorage(newValue) {
     localStorage.setItem("OrderDelivery", JSON.stringify(newValue));
     controlOrderDelivery();
-    controlOrderFinal();
+    controlOrderConfirm();
 }
 
 function setDeliveryValue(deliveryValue, currency) {

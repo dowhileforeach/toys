@@ -13,16 +13,16 @@
     <c:set var="la" value="${shoppingcart.size()}"/>
 
         <h1>Корзина</h1>
-        <t:shoppingcart_items_list shoppingcart="${shoppingcart}" path="${path}" orderFinal="false"/>
+        <t:shoppingcart_items_list shoppingcart="${shoppingcart}" path="${path}" orderConfirm="false"/>
 
         <div style="margin-top: 25px; margin-bottom: 40px;">
             <a class="orderbutton delivery" href="#" onclick="openOrderDeliveryPage()">Рассчитать стоимость доставки</a>
-            <a class="orderbutton orderFinal" href="#"
-               onclick="getOrderFinalBlockForm().submit();">Оформить заказ</a>
+            <a class="orderbutton orderConfirm" href="#"
+               onclick="getOrderConfirmBlockForm().submit();">Оформить заказ</a>
         </div>
         <script>
             document.querySelector(".orderbutton.delivery").style.display = isDeliveryCorrect() ? "none" : "inline-block";
-            document.querySelector(".orderbutton.orderFinal").style.display = isDeliveryCorrect() && isShoppingCartPresent() ? "inline-block" : "none";
+            document.querySelector(".orderbutton.orderConfirm").style.display = isDeliveryCorrect() && isShoppingCartPresent() ? "inline-block" : "none";
         </script>
 
     </jsp:attribute>

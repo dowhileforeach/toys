@@ -14,7 +14,7 @@
 
         <h2>Список товаров</h2>
 
-        <t:shoppingcart_items_list shoppingcart="${shoppingcart}" path="${path}" orderFinal="true"/>
+        <t:shoppingcart_items_list shoppingcart="${shoppingcart}" path="${path}" orderConfirm="true"/>
 
         <br>
         <h2>Доставка</h2>
@@ -24,6 +24,7 @@
                 <td width="18%">Индекс:</td>
                 <td>
 
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Страна:&nbsp;
                 </td>
             </tr>
             <tr>

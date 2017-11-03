@@ -51,14 +51,14 @@
             </table>
         </form>
         <div style="margin-top: 20px; margin-bottom: 50px;">
-            <a class="orderbutton orderFinal" href="#"
-               onclick="getOrderFinalBlockForm().submit();">Оформить заказ</a>
+            <a class="orderbutton orderConfirm" href="#"
+               onclick="getOrderConfirmBlockForm().submit();">Оформить заказ</a>
         </div>
         <script>
             setDeliveryValue("${deliveryValue}","${currency}");
             setIsDeliveryCorrect(${isDeliveryCorrect});
             onLoadOrderDeliveryPage();
-            document.querySelector(".orderbutton.orderFinal").style.display = isDeliveryCorrect() && isShoppingCartPresent() ? "inline-block" : "none";
+            document.querySelector(".orderbutton.orderConfirm").style.display = isDeliveryCorrect() && isShoppingCartPresent() ? "inline-block" : "none";
         </script>
 
         <h3>Доставка по Москве (в пределах МКАД)</h3>

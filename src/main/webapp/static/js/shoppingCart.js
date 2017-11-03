@@ -9,7 +9,7 @@ function getShoppingCartStorage() {
 function setShoppingCartStorage(newValue) {
     localStorage.setItem("ShoppingCart", JSON.stringify(newValue));
     controlShoppingCart();
-    controlOrderFinal();
+    controlOrderConfirm();
 }
 
 function isShoppingCartPresent() {

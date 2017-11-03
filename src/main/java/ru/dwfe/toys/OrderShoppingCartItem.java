@@ -1,6 +1,6 @@
 package ru.dwfe.toys;
 
-public class ShoppingCartItem
+public class OrderShoppingCartItem
 {
     private Long article;
     private Integer qtty;

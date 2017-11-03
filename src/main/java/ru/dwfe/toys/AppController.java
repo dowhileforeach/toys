@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.math.BigInteger;
+import java.security.SecureRandom;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -14,6 +17,8 @@ import java.util.Map;
 public class AppController
 {
     private final AppService appService;
+
+    private HashMap<String, Order> tempOrder = new HashMap<>();
 
     @Autowired
     public AppController(AppService appService)
@@ -36,7 +41,7 @@ public class AppController
     @RequestMapping(value = "/shoppingcart", method = RequestMethod.POST)
     public String shoppingCart(ModelMap model, @RequestParam String shoppingcart)
     {
-        ShoppingCart shoppingCart = new ShoppingCart(shoppingcart, appService);
+        OrderShoppingCart shoppingCart = new OrderShoppingCart(shoppingcart, appService);
 
         model.put("shoppingcart", shoppingCart.getCart());
 
@@ -46,7 +51,7 @@ public class AppController
     @RequestMapping(value = "/orderdelivery", method = RequestMethod.POST)
     public String orderDelivery(ModelMap model, @RequestParam("index") String indexValue)
     {
-        Delivery delivery = new Delivery(indexValue);
+        OrderDelivery delivery = new OrderDelivery(indexValue);
 
         model.put("deliveryValue", delivery.getValueReturn());
         model.put("currency", delivery.getCurrency());
@@ -55,20 +60,30 @@ public class AppController
         return "orderdelivery";
     }
 
-    @RequestMapping(value = "/orderfinal", method = RequestMethod.POST)
-    public String orderFinal(ModelMap model,
+    @RequestMapping(value = "/orderconfirm", method = RequestMethod.POST)
+    public String orderConfirm(ModelMap model,
                              @RequestParam String shoppingcart,
-                             @RequestParam("index") String indexValue)
+                             @RequestParam String index,
+                             @RequestParam String country,
+                             @RequestParam String address,
+                             @RequestParam String name,
+                             @RequestParam String phone)
     {
-        ShoppingCart shoppingCart = new ShoppingCart(shoppingcart, appService);
-        Delivery delivery = new Delivery(indexValue);
+        OrderShoppingCart shoppingCart = new OrderShoppingCart(shoppingcart, appService);
+        OrderDelivery delivery = new OrderDelivery(index, country, address, name, phone);
+        Order order = new Order(shoppingCart, delivery);
 
-        model.put("shoppingcart", shoppingCart.getCart());
-        model.put("deliveryValue", delivery.getValueReturn());
-        model.put("currency", delivery.getCurrency());
-        model.put("isDeliveryCorrect", delivery.getIsCorrect());
+        int requiredStringLength = 20;
+        String hash = new BigInteger(requiredStringLength * 5, new SecureRandom()).toString(36);
+        tempOrder.put(hash, order);
 
-        return "orderfinal";
+        model.put("hash", hash);
+        model.put("shoppingcart", order.getShoppingCart().getCart());
+        model.put("deliveryValue", order.getDelivery().getValueReturn());
+        model.put("currency", order.getDelivery().getCurrency());
+        model.put("isDeliveryCorrect", order.getDelivery().getIsCorrect());
+
+        return "orderconfirm";
     }
 
     @RequestMapping("/shop")

@@ -1,7 +1,7 @@
 <%@tag description="item in the shop" pageEncoding="UTF-8" %>
-<%@attribute name="shoppingcart" required="true" type="java.util.List<ru.dwfe.toys.ShoppingCartItem>" %>
+<%@attribute name="shoppingcart" required="true" type="java.util.List<ru.dwfe.toys.OrderShoppingCartItem>" %>
 <%@attribute name="path" required="true" %>
-<%@attribute name="orderFinal" required="true" type="java.lang.Boolean" %>
+<%@attribute name="orderConfirm" required="true" type="java.lang.Boolean" %>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -35,7 +35,7 @@
             </td>
             <td align=center id="${article}">
                 <c:choose>
-                    <c:when test="${orderFinal}">
+                    <c:when test="${orderConfirm}">
                         &nbsp;<br>
                         ${qtty}
                         <br>&nbsp;

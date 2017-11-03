@@ -1,25 +1,25 @@
 
-function getOrderFinalBlock() {
-    return document.querySelector(".orderFinalBlock");
+function getOrderConfirmBlock() {
+    return document.querySelector(".orderConfirmBlock");
 }
 
-function getOrderFinalBlockForm() {
-    return document.querySelector(".orderFinalBlock form");
+function getOrderConfirmBlockForm() {
+    return document.querySelector(".orderConfirmBlock form");
 }
 
-function controlOrderFinal() {
+function controlOrderConfirm() {
 
-    var orderFinalBlock = getOrderFinalBlock();
+    var orderConfirmBlock = getOrderConfirmBlock();
 
     if (!isShoppingCartPresent() || !isDeliveryCorrect()) {
-        orderFinalBlock.innerHTML = "";
+        orderConfirmBlock.innerHTML = "";
         return;
     }
 
     var shoppingCart = getShoppingCartTotal();
-    var url = localStorage.contextPath + "/orderfinal";
+    var url = localStorage.contextPath + "/orderconfirm";
 
-    orderFinalBlock.innerHTML =
+    orderConfirmBlock.innerHTML =
         "<form action='" + url + "' method='post'>" +
         getShoppingCartTag(shoppingCart.arr) +
         getOrderDeliveryTag(getOrderDeliveryStorage()) +

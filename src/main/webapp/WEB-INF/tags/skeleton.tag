@@ -20,7 +20,7 @@
 
     <script src="${pageContext.request.contextPath}/static/js/shoppingCart.js"></script>
     <script src="${pageContext.request.contextPath}/static/js/orderDelivery.js"></script>
-    <script src="${pageContext.request.contextPath}/static/js/orderFinal.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/orderConfirm.js"></script>
 
     <script>
 
@@ -31,7 +31,7 @@
 
             controlShoppingCart();
             controlOrderDelivery();
-            controlOrderFinal();
+            controlOrderConfirm();
         }
 
     </script>
@@ -52,7 +52,7 @@
         <div class="orderBlock">
             <div class="shoppingCartBlock"></div>
             <div class="orderDeliveryBlock"></div>
-            <div class="orderFinalBlock"></div>
+            <div class="orderConfirmBlock"></div>
         </div>
         <div class="clear"></div>
     </header>
