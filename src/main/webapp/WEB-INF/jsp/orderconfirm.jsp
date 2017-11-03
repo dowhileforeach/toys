@@ -53,7 +53,7 @@
         </div>
 
         <h1 style="margin-top: 25px">Информация о покупателе</h1>
-        <form name="orderDelivery" action="/orderdelivery" method="post" onsubmit="onSubmitOrderDelivery()">
+        <form action="/orderfinal" method="post" onsubmit="onSubmitOrderConfirm()">
             <input hidden type="text" name="hash" value="${hash}"/>
             <table class="info">
                 <tr>
@@ -79,7 +79,7 @@
             <div class="priceBlock">
                 Итоговая стоимость заказа:&nbsp;&nbsp;
                 <span class="price">
-                    ${orderValue}
+                    ${orderValue} руб.
             </span>
             </div>
 

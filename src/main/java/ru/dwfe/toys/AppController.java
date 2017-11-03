@@ -38,6 +38,26 @@ public class AppController
         return "about";
     }
 
+    @RequestMapping("/shop")
+    public String shop(ModelMap model)
+    {
+        List<Stock> list = appService.findAll();
+        model.put("list", list);
+        return "shop";
+    }
+
+    @RequestMapping("/item")
+    public String item(Map<String, Object> model, @RequestParam String article)
+    {
+        List<Stock> list = appService.findAll();
+        Stock item = appService.findOne(Long.parseLong(article));
+
+        list.remove(item);
+        model.put("list", list);
+        model.put("item", item);
+        return "item";
+    }
+
     @RequestMapping(value = "/shoppingcart", method = RequestMethod.POST)
     public String shoppingCart(ModelMap model, @RequestParam String shoppingcart)
     {
@@ -85,23 +105,19 @@ public class AppController
         return "orderconfirm";
     }
 
-    @RequestMapping("/shop")
-    public String shop(ModelMap model)
+    @RequestMapping(value = "/orderfinal", method = RequestMethod.POST)
+    public String orderConfirm(ModelMap model,
+                               @RequestParam String hash,
+                               @RequestParam String name,
+                               @RequestParam String phone,
+                               @RequestParam String email)
     {
-        List<Stock> list = appService.findAll();
-        model.put("list", list);
-        return "shop";
-    }
 
-    @RequestMapping("/item")
-    public String item(Map<String, Object> model, @RequestParam String article)
-    {
-        List<Stock> list = appService.findAll();
-        Stock item = appService.findOne(Long.parseLong(article));
+        Order order = tempOrder.get(hash);
+        OrderCustomer customer = new OrderCustomer(name, phone, email);
 
-        list.remove(item);
-        model.put("list", list);
-        model.put("item", item);
-        return "item";
+        order.setCustomer(customer);
+
+        return "orderfinal";
     }
 }

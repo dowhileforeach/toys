@@ -12,6 +12,10 @@ function setShoppingCartStorage(newValue) {
     controlOrderConfirm();
 }
 
+function toZeroShoppingCart() {
+    setShoppingCartStorage({});
+}
+
 function isShoppingCartPresent() {
     return Object.keys(getShoppingCartStorage()).length > 0;
 }

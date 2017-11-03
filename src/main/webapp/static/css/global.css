@@ -106,6 +106,10 @@ header.top .shoppingCartBlock, header.top .orderDeliveryBlock, header.top .order
     cursor: pointer;
 }
 
+.orderConfirm{
+    border: 0;
+}
+
 .content
 {
     margin-right: 20px;

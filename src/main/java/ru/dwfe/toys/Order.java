@@ -16,10 +16,34 @@ public class Order
         value = shoppingCart.getValue() + delivery.getValue();
     }
 
+    public Long getId()
+    {
+        return id;
+    }
+
+    public void setId(Long id)
+    {
+        this.id = id;
+    }
+
+    public OrderCustomer getCustomer()
+    {
+        return customer;
+    }
+
+    public void setCustomer(OrderCustomer customer)
+    {
+        this.customer = customer;
+    }
 
     public OrderShoppingCart getShoppingCart()
     {
         return shoppingCart;
+    }
+
+    public void setShoppingCart(OrderShoppingCart shoppingCart)
+    {
+        this.shoppingCart = shoppingCart;
     }
 
     public OrderDelivery getDelivery()
@@ -27,8 +51,18 @@ public class Order
         return delivery;
     }
 
+    public void setDelivery(OrderDelivery delivery)
+    {
+        this.delivery = delivery;
+    }
+
     public Integer getValue()
     {
         return value;
+    }
+
+    public void setValue(Integer value)
+    {
+        this.value = value;
     }
 }

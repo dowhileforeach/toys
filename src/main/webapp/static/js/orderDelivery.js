@@ -22,6 +22,11 @@ function setOrderDeliveryStorage(newValue) {
     controlOrderConfirm();
 }
 
+function toZeroOrderDelivery() {
+    localStorage.setItem("OrderDelivery", undefined);
+    getOrderDeliveryStorage();
+}
+
 function setDeliveryValue(deliveryValue, currency) {
     var OrderDelivery = getOrderDeliveryStorage();
     OrderDelivery['value'] = deliveryValue;
