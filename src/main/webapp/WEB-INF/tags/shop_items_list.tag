@@ -10,7 +10,7 @@
     <div class="toy">
         <div class="block">
             <a href="${path}/item?article=${article}">
-                <img src="${path}/static/pic/art/${article}/${item.getImg01()}">
+                <img src="${path}/static/pic/art/${article}/${item.getImg()}">
             </a>
             <br>
             <a class="link" href="${path}/item?article=${article}">${item.getTitle()}</a>

@@ -26,8 +26,8 @@ public class Item
     @Column(name = "price")
     private Integer price;
 
-    @Column(name = "img01")
-    private String img01;
+    @Column(name = "img")
+    private String img;
 
     @Column(name = "img02")
     private String img02;
@@ -107,14 +107,14 @@ public class Item
         this.price = price;
     }
 
-    public String getImg01()
+    public String getImg()
     {
-        return img01;
+        return img;
     }
 
-    public void setImg01(String img01)
+    public void setImg(String img)
     {
-        this.img01 = img01;
+        this.img = img;
     }
 
     public String getImg02()
@@ -187,7 +187,7 @@ public class Item
                 ", color='" + color + '\'' +
                 ", size='" + size + '\'' +
                 ", price=" + price +
-                ", img01='" + img01 + '\'' +
+                ", img='" + img + '\'' +
                 '}';
     }
 

@@ -55,7 +55,7 @@
                 <img src="${path}/static/pic/arrow_right.png" alt="">
             </span>
             <br><br>
-            <t:item_img_preview path="${path}" article="${article}" img="${item.getImg01()}"/>
+            <t:item_img_preview path="${path}" article="${article}" img="${item.getImg()}"/>
             <t:item_img_preview path="${path}" article="${article}" img="${item.getImg02()}"/>
             <t:item_img_preview path="${path}" article="${article}" img="${item.getImg03()}"/>
             <t:item_img_preview path="${path}" article="${article}" img="${item.getImg04()}"/>
