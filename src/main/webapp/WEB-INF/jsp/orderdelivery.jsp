@@ -11,7 +11,7 @@
     <c:set var="path" value="${pageContext.request.contextPath}"/>
 
         <h1>Доставка заказа</h1>
-        <form name="orderDelivery" action="/orderdelivery" method="post" onsubmit="onSubmitOrderDelivery()">
+        <form name="orderDelivery" action="${path}/orderdelivery" method="post" onsubmit="onSubmitOrderDelivery()">
             <table class="info">
                 <tr>
                     <td width="18%">Индекс:</td>
