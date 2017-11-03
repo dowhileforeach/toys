@@ -13,7 +13,7 @@ CREATE TABLE `stock` (
              COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `price`    INT(11)                    DEFAULT NULL,
   `img01`    VARCHAR(100)               NOT NULL,
-  `img02`    VARCHAR(100)               NOT NULL,
+  `img02`    VARCHAR(100)               DEFAULT NULL,
   `img03`    VARCHAR(100)               DEFAULT NULL,
   `img04`    VARCHAR(100)               DEFAULT NULL,
   `img05`    VARCHAR(100)               DEFAULT NULL,
