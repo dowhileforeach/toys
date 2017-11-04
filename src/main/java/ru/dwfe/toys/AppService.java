@@ -40,4 +40,8 @@ public class AppService
     {
         return daoItem_img.searchByArticle(article);
     }
+
+    public void saveCustomer(OrderCustomer customer){
+        daoOrderCustomer.save(customer);
+    }
 }

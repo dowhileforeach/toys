@@ -116,8 +116,10 @@ public class AppController
                                @RequestParam String phone,
                                @RequestParam String email)
     {
-        Order order = tempOrder.get(hash);
         OrderCustomer customer = new OrderCustomer(name, phone, email);
+        appService.saveCustomer(customer);
+
+        Order order = tempOrder.get(hash);
 
         order.setCustomer(customer);
 
