@@ -1,9 +1,12 @@
 package ru.dwfe.toys;
 
+
 public class OrderShoppingCartItem
 {
     private Long article;
     private Integer qtty;
+
+
     private Item item;
 
     public Integer getQtty()

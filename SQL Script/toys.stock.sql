@@ -34,19 +34,22 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `item_img`;
 CREATE TABLE `item_img` (
+  `id`      BIGINT(20)                 NOT NULL AUTO_INCREMENT,
   `article` BIGINT(20)                 NOT NULL,
   `img`     VARCHAR(50)
             COLLATE utf8mb4_unicode_ci NOT NULL,
-  UNIQUE KEY `item_img_img_uindex` (`img`),
+  PRIMARY KEY (`id`),
   KEY `item_img_item_article_fk` (`article`),
-  CONSTRAINT `item_img_item_article_fk` FOREIGN KEY (`article`) REFERENCES `item` (`article`) ON DELETE CASCADE
+  CONSTRAINT `item_img_item_article_fk` FOREIGN KEY (`article`) REFERENCES `item` (`article`)
+    ON DELETE CASCADE
 )
   ENGINE = InnoDB
+  AUTO_INCREMENT = 0
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_unicode_ci;
 
 LOCK TABLES `item_img` WRITE;
-INSERT INTO `item_img` VALUES
+INSERT INTO `item_img` (article, img) VALUES
   (1, 'photo1950.png'),
   (1, 'crow_05.jpg'),
   (1, 'crow_07.jpg'),
@@ -83,12 +86,15 @@ CREATE TABLE `customer` (
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_unicode_ci;
 
-SET FOREIGN_KEY_CHECKS=0;
+SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `order`;
-SET FOREIGN_KEY_CHECKS=1;
+SET FOREIGN_KEY_CHECKS = 1;
 CREATE TABLE `order` (
-  `id`            BIGINT(20) NOT NULL AUTO_INCREMENT,
-  `deliveryValue` INT(11)    NOT NULL,
+  `id`            BIGINT(20)                 NOT NULL AUTO_INCREMENT,
+  `customer`      VARCHAR(100)
+                  COLLATE utf8mb4_unicode_ci NOT NULL,
+  `deliveryValue` INT(11)                    NOT NULL,
+  `value`         INT(11)                    NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `order_id_uindex` (`id`)
 )

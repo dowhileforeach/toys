@@ -53,7 +53,7 @@ public class AppController
 
         List<Item> list = appService.findAllItems();
         Item item = appService.findOneItem(article);
-        List<Item_img> item_imgs = appService.searchByArticle(article);
+        List<Item_img> item_imgs = appService.searchItemImgByArticle(article);
 
         list.remove(item);
         model.put("list", list);
@@ -118,12 +118,25 @@ public class AppController
                                @RequestParam String phone,
                                @RequestParam String email)
     {
-        Customer customer = new Customer(name, phone, email);
-        appService.saveCustomer(customer);
-
-        Order order = tempOrder.get(hash);
-
-        order.setCustomer(customer);
+//        //Customer -> DataBase
+//        Customer customer = new Customer(name, phone, email);
+//        appService.saveCustomer(customer);
+//
+//
+//        Order order = tempOrder.get(hash);
+//        OrderDelivery orderDelivery = order.getDelivery();
+//        OrderShoppingCart orderShoppingCart = order.getShoppingCart();
+//
+//        //Order -> DataBase
+//        order.setCustomer(customer.getEmail());
+//        order = appService.saveOrder(order);
+//
+//        //Delivery -> DataBase
+//        orderDelivery.setOrderId(order.getId());
+//        appService.saveOrderDelivery(orderDelivery);
+//
+//        //ShoppingCart
+//        //shoppingCart
 
         return "orderfinal";
     }

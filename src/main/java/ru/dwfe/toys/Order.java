@@ -1,13 +1,33 @@
 package ru.dwfe.toys;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "order")
 public class Order
 {
+    @Id
+    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Customer customer;
-    private OrderShoppingCart shoppingCart;
-    private OrderDelivery delivery;
+
+    @Column
+    private String customer;
+
+    @Column
     private Integer deliveryValue;
+
+    @Column
     private Integer value;
+
+    @Transient
+    private OrderShoppingCart shoppingCart;
+    @Transient
+    private OrderDelivery delivery;
+
+    public Order()
+    {
+    }
 
     public Order(OrderShoppingCart shoppingCart, OrderDelivery delivery)
     {
@@ -15,7 +35,6 @@ public class Order
         this.delivery = delivery;
 
         deliveryValue = DeliveryCalculation.perform(delivery.getIndex());
-
         value = shoppingCart.getValue() + deliveryValue;
     }
 
@@ -29,34 +48,14 @@ public class Order
         this.id = id;
     }
 
-    public Customer getCustomer()
+    public String getCustomer()
     {
         return customer;
     }
 
-    public void setCustomer(Customer customer)
+    public void setCustomer(String customer)
     {
         this.customer = customer;
-    }
-
-    public OrderShoppingCart getShoppingCart()
-    {
-        return shoppingCart;
-    }
-
-    public void setShoppingCart(OrderShoppingCart shoppingCart)
-    {
-        this.shoppingCart = shoppingCart;
-    }
-
-    public OrderDelivery getDelivery()
-    {
-        return delivery;
-    }
-
-    public void setDelivery(OrderDelivery delivery)
-    {
-        this.delivery = delivery;
     }
 
     public Integer getDeliveryValue()
@@ -78,4 +77,26 @@ public class Order
     {
         this.value = value;
     }
+
+
+    public OrderShoppingCart getShoppingCart()
+    {
+        return shoppingCart;
+    }
+
+    public void setShoppingCart(OrderShoppingCart shoppingCart)
+    {
+        this.shoppingCart = shoppingCart;
+    }
+
+    public OrderDelivery getDelivery()
+    {
+        return delivery;
+    }
+
+    public void setDelivery(OrderDelivery delivery)
+    {
+        this.delivery = delivery;
+    }
+
 }
