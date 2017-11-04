@@ -103,7 +103,7 @@ public class AppController
 
         model.put("hash", hash);
         model.put("shoppingcart", order.getShoppingCart().getCart());
-        model.put("delivery",order.getDelivery());
+        model.put("delivery", order.getDelivery());
         model.put("deliveryValue", order.getDeliveryValue());
         model.put("deliveryCurrency", DeliveryCalculation.getCurrency(order.getDeliveryValue()));
         model.put("orderValue", order.getValue());
@@ -118,25 +118,32 @@ public class AppController
                                @RequestParam String phone,
                                @RequestParam String email)
     {
-//        //Customer -> DataBase
-//        Customer customer = new Customer(name, phone, email);
-//        appService.saveCustomer(customer);
-//
-//
-//        Order order = tempOrder.get(hash);
-//        OrderDelivery orderDelivery = order.getDelivery();
-//        OrderShoppingCart orderShoppingCart = order.getShoppingCart();
-//
-//        //Order -> DataBase
-//        order.setCustomer(customer.getEmail());
-//        order = appService.saveOrder(order);
-//
-//        //Delivery -> DataBase
-//        orderDelivery.setOrderId(order.getId());
-//        appService.saveOrderDelivery(orderDelivery);
-//
-//        //ShoppingCart
-//        //shoppingCart
+        //Customer => DataBase
+        Customer customer = new Customer(name, phone, email);
+        appService.saveCustomer(customer);
+
+
+        Order order = tempOrder.get(hash);
+        OrderDelivery orderDelivery = order.getDelivery();
+        OrderShoppingCart orderShoppingCart = order.getShoppingCart();
+
+        //Order => DataBase
+        order.setCustomer(customer.getEmail());
+        order = appService.saveOrder(order);
+
+        Long orderId = order.getId();
+        orderDelivery.setOrderId(orderId);
+        for (OrderShoppingCartItem item : orderShoppingCart.getCart())
+            item.setOrderId(orderId);
+
+        //Delivery => DataBase
+        appService.saveOrderDelivery(orderDelivery);
+
+        //ShoppingCart => DataBase
+        appService.saveOrderShoppingCart(orderShoppingCart.getCart());
+
+        model.put("customerName", customer.getName());
+        model.put("orderNumber", orderId);
 
         return "orderfinal";
     }

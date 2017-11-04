@@ -1,4 +1,3 @@
-The server uses Spring Boot.
-<br><br>
-Remains to be implemented:
- - order registration 
+Server side: **Spring Boot**
+<br>
+Client side: pure **JavaScript**, **CSS**, **HTML**

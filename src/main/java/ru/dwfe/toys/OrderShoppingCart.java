@@ -44,6 +44,7 @@ public class OrderShoppingCart
         {
             item.setArticle(next.getArticle());
             next.setItem(info.get(info.indexOf(item)));
+            next.setPrice(next.getItem().getPrice());
 
             value += next.getQtty() * next.getItem().getPrice();
         }

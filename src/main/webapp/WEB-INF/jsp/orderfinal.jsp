@@ -9,8 +9,16 @@
     <jsp:attribute name="head"/>
 
     <jsp:attribute name="content">
+    <c:set var="path" value="${pageContext.request.contextPath}"/>
 
-        В разработке
+        <p>Уважаемый, ${customerName}.</p>
+        <p>Ваш заказ &#8470;${orderNumber} успешно создан!</p>
+        <p>В ближайшее время с вами свяжется наш менеджер.</p>
+
+        <script>
+            toZeroShoppingCart();
+            toZeroOrderDelivery();
+        </script>
 
     </jsp:attribute>
 

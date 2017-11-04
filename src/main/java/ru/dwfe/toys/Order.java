@@ -3,7 +3,7 @@ package ru.dwfe.toys;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "order")
+@Table(name = "`order`")
 public class Order
 {
     @Id
@@ -14,7 +14,7 @@ public class Order
     @Column
     private String customer;
 
-    @Column
+    @Column(name = "delivery_value")
     private Integer deliveryValue;
 
     @Column
@@ -99,4 +99,16 @@ public class Order
         this.delivery = delivery;
     }
 
+    @Override
+    public String toString()
+    {
+        return "Order{" +
+                "id=" + id +
+                ", customer='" + customer + '\'' +
+                ", deliveryValue=" + deliveryValue +
+                ", value=" + value +
+                ", shoppingCart=" + shoppingCart +
+                ", delivery=" + delivery +
+                '}';
+    }
 }

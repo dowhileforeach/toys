@@ -13,7 +13,7 @@ public class OrderDelivery
     @Column(name = "order_id")
     private Long orderId;
 
-    @Column
+    @Column(name = "`index`")
     private String index;
 
     @Column
@@ -27,6 +27,10 @@ public class OrderDelivery
 
     @Column
     private String phone;
+
+    public OrderDelivery()
+    {
+    }
 
     public OrderDelivery(String index, String country, String address, String name, String phone)
     {

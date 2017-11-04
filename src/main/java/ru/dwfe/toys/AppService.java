@@ -14,15 +14,17 @@ public class AppService
     private final DAO_Customer daoCustomer;
     private final DAO_OrderDelivery daoOrderDelivery;
     private final DAO_Order daoOrder;
+    private final DAO_OrderShoppingCartItem daoOrderShoppingCartItem;
 
     @Autowired
-    public AppService(DAO_Item daoItem, DAO_Item_img daoItem_img, DAO_Customer daoCustomer, DAO_OrderDelivery daoOrderDelivery, DAO_Order daoOrder)
+    public AppService(DAO_Item daoItem, DAO_Item_img daoItem_img, DAO_Customer daoCustomer, DAO_OrderDelivery daoOrderDelivery, DAO_Order daoOrder, DAO_OrderShoppingCartItem daoOrderShoppingCartItem)
     {
         this.daoItem = daoItem;
         this.daoItem_img = daoItem_img;
         this.daoCustomer = daoCustomer;
         this.daoOrderDelivery = daoOrderDelivery;
         this.daoOrder = daoOrder;
+        this.daoOrderShoppingCartItem = daoOrderShoppingCartItem;
     }
 
     public List<Item> findAllItems()
@@ -58,5 +60,10 @@ public class AppService
     public OrderDelivery saveOrderDelivery(OrderDelivery orderDelivery)
     {
         return daoOrderDelivery.save(orderDelivery);
+    }
+
+    public List<OrderShoppingCartItem> saveOrderShoppingCart(List<OrderShoppingCartItem> cart)
+    {
+        return daoOrderShoppingCartItem.save(cart);
     }
 }

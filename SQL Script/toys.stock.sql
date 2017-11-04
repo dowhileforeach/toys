@@ -71,7 +71,9 @@ INSERT INTO `item_img` (article, img) VALUES
   (134, 'korser4.png');
 UNLOCK TABLES;
 
+SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `customer`;
+SET FOREIGN_KEY_CHECKS = 1;
 CREATE TABLE `customer` (
   `email` VARCHAR(100)
           COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -90,16 +92,37 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `order`;
 SET FOREIGN_KEY_CHECKS = 1;
 CREATE TABLE `order` (
-  `id`            BIGINT(20)                 NOT NULL AUTO_INCREMENT,
-  `customer`      VARCHAR(100)
-                  COLLATE utf8mb4_unicode_ci NOT NULL,
-  `deliveryValue` INT(11)                    NOT NULL,
-  `value`         INT(11)                    NOT NULL,
+  `id`             BIGINT(20)                 NOT NULL AUTO_INCREMENT,
+  `customer`       VARCHAR(100)
+                   COLLATE utf8mb4_unicode_ci NOT NULL,
+  `delivery_value` INT(11)                    NOT NULL,
+  `value`          INT(11)                    NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `order_id_uindex` (`id`)
+  UNIQUE KEY `order_id_uindex` (`id`),
+  KEY `order_customer_email_fk` (`customer`),
+  CONSTRAINT `order_customer_email_fk` FOREIGN KEY (`customer`) REFERENCES `customer` (`email`)
 )
   ENGINE = InnoDB
-  AUTO_INCREMENT = 4
+  AUTO_INCREMENT = 0
+  DEFAULT CHARSET = utf8mb4
+  COLLATE = utf8mb4_unicode_ci;
+
+DROP TABLE IF EXISTS `order_cart`;
+CREATE TABLE `order_cart` (
+  `id`       BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `order_id` BIGINT(20) NOT NULL,
+  `article`  BIGINT(20) NOT NULL,
+  `price`    INT(11)    NOT NULL,
+  `qtty`     INT(11)    NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `order_cart_order_id_fk` (`order_id`),
+  KEY `order_cart_item_article_fk` (`article`),
+  CONSTRAINT `order_cart_item_article_fk` FOREIGN KEY (`article`) REFERENCES `item` (`article`),
+  CONSTRAINT `order_cart_order_id_fk` FOREIGN KEY (`order_id`) REFERENCES `order` (`id`)
+    ON DELETE CASCADE
+)
+  ENGINE = InnoDB
+  AUTO_INCREMENT = 0
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_unicode_ci;
 
