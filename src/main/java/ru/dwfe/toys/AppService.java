@@ -19,18 +19,24 @@ public class AppService
         this.daoItem_img = daoItem_img;
     }
 
-    public List<Item> findAll()
+    public List<Item> findAllItems()
     {
         return daoItem.findAll();
     }
 
-    public Item findOne(Long article)
+    public Item findOneItem(Long article)
     {
         return daoItem.findOne(article);
     }
 
-    public List<Item> findAll(Set<Long> ids){
+    public List<Item> findAllItems(Set<Long> ids)
+    {
         return daoItem.findAll(ids);
+    }
+
+    public List<Item_img> searchByArticle(Long article)
+    {
+        return daoItem_img.searchByArticle(article);
     }
 
 }

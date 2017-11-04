@@ -6,11 +6,11 @@ import javax.persistence.*;
 @Table(name = "item_img")
 public class Item_img
 {
-    @Id
-    @Column
+    @Column(name="article")
     private Long article;
 
-    @Column
+    @Id
+    @Column(name = "img")
     private String img;
 
     public Long getArticle()

@@ -41,20 +41,24 @@ public class AppController
     @RequestMapping("/shop")
     public String shop(ModelMap model)
     {
-        List<Item> list = appService.findAll();
+        List<Item> list = appService.findAllItems();
         model.put("list", list);
         return "shop";
     }
 
     @RequestMapping("/item")
-    public String item(Map<String, Object> model, @RequestParam String article)
+    public String item(Map<String, Object> model, @RequestParam("article") String articleValue)
     {
-        List<Item> list = appService.findAll();
-        Item item = appService.findOne(Long.parseLong(article));
+        long article = Long.parseLong(articleValue);
+
+        List<Item> list = appService.findAllItems();
+        Item item = appService.findOneItem(article);
+        List<Item_img> item_imgs = appService.searchByArticle(article);
 
         list.remove(item);
         model.put("list", list);
         model.put("item", item);
+        model.put("item_imgs", item_imgs);
         return "item";
     }
 

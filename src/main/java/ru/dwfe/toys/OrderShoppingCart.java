@@ -35,7 +35,7 @@ public class OrderShoppingCart
             e.printStackTrace();
         }
 
-        List<Item> info = appService.findAll(cart.stream()
+        List<Item> info = appService.findAllItems(cart.stream()
                 .map(OrderShoppingCartItem::getArticle)
                 .collect(Collectors.toSet()));
 

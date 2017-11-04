@@ -56,12 +56,12 @@
             </span>
             <br><br>
             <t:item_img_preview path="${path}" article="${article}" img="${item.getImg()}"/>
-            <t:item_img_preview path="${path}" article="${article}" img="${item.getImg02()}"/>
-            <t:item_img_preview path="${path}" article="${article}" img="${item.getImg03()}"/>
-            <t:item_img_preview path="${path}" article="${article}" img="${item.getImg04()}"/>
-            <t:item_img_preview path="${path}" article="${article}" img="${item.getImg05()}"/>
-            <t:item_img_preview path="${path}" article="${article}" img="${item.getImg06()}"/>
-            <t:item_img_preview path="${path}" article="${article}" img="${item.getImg07()}"/>
+            <c:forEach var="item_img" items="${item_imgs}">
+                <t:item_img_preview path="${path}" article="${article}" img="${item_img.getImg()}"/>
+            </c:forEach>
+            <c:forEach var="item_img" items="${item_imgs}">
+                <c:out value="${item_img.getImg()}"/>
+            </c:forEach>
         </p>
         <script src="${path}/static/js/picPreview.js" type="text/javascript"></script>
         <br>
