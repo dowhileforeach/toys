@@ -30,7 +30,7 @@
                 <tr>
                     <td>Имя получателя:</td>
                     <td>
-                        <input class="input input_100" type="text" name="name" maxlength="200" value="" required>
+                        <input class="input input_100" type="text" name="name" maxlength="100" value="" required>
                     </td>
                 </tr>
                 <tr>

@@ -67,3 +67,52 @@ INSERT INTO `item_img` VALUES
   (134, 'korser1.png'),
   (134, 'korser4.png');
 UNLOCK TABLES;
+
+DROP TABLE IF EXISTS `customer`;
+CREATE TABLE `customer` (
+  `email` VARCHAR(100)
+          COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name`  VARCHAR(100)
+          COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` VARCHAR(100)
+          COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`email`),
+  UNIQUE KEY `customer_email_uindex` (`email`)
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4
+  COLLATE = utf8mb4_unicode_ci;
+
+SET FOREIGN_KEY_CHECKS=0;
+DROP TABLE IF EXISTS `order`;
+SET FOREIGN_KEY_CHECKS=1;
+CREATE TABLE `order` (
+  `id`            BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `deliveryValue` INT(11)    NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `order_id_uindex` (`id`)
+)
+  ENGINE = InnoDB
+  AUTO_INCREMENT = 4
+  DEFAULT CHARSET = utf8mb4
+  COLLATE = utf8mb4_unicode_ci;
+
+DROP TABLE IF EXISTS `order_delivery`;
+CREATE TABLE `order_delivery` (
+  `order_id` BIGINT(20)                 NOT NULL,
+  `index`    INT(11)                    NOT NULL,
+  `country`  VARCHAR(100)
+             COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address`  VARCHAR(2000)
+             COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name`     VARCHAR(100)
+             COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone`    VARCHAR(100)
+             COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`order_id`),
+  CONSTRAINT `order_delivery_order_id_fk` FOREIGN KEY (`order_id`) REFERENCES `order` (`id`)
+    ON DELETE CASCADE
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4
+  COLLATE = utf8mb4_unicode_ci;

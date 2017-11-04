@@ -11,14 +11,16 @@ public class AppService
 {
     private final DAO_Item daoItem;
     private final DAO_Item_img daoItem_img;
-    private final DAO_OrderCustomer daoOrderCustomer;
+    private final DAO_Customer daoCustomer;
+    private final DAO_OrderDelivery daoOrderDelivery;
 
     @Autowired
-    public AppService(DAO_Item daoItem, DAO_Item_img daoItem_img, DAO_OrderCustomer daoOrderCustomer)
+    public AppService(DAO_Item daoItem, DAO_Item_img daoItem_img, DAO_Customer daoCustomer, DAO_OrderDelivery daoOrderDelivery)
     {
         this.daoItem = daoItem;
         this.daoItem_img = daoItem_img;
-        this.daoOrderCustomer = daoOrderCustomer;
+        this.daoCustomer = daoCustomer;
+        this.daoOrderDelivery = daoOrderDelivery;
     }
 
     public List<Item> findAllItems()
@@ -41,7 +43,7 @@ public class AppService
         return daoItem_img.searchByArticle(article);
     }
 
-    public void saveCustomer(OrderCustomer customer){
-        daoOrderCustomer.save(customer);
+    public void saveCustomer(Customer customer){
+        daoCustomer.save(customer);
     }
 }

@@ -48,7 +48,7 @@
         <div class="priceBlock">
             Стоимость доставки:&nbsp;&nbsp;
             <span class="price">
-                    ${delivery.getValueReturn()} ${delivery.getCurrency()}
+                    ${deliveryValue} ${deliveryCurrency}
             </span>
         </div>
 
@@ -65,7 +65,7 @@
                 <tr>
                     <td>Телефон:</td>
                     <td>
-                        <input class="input input_100" name="phone" value="${delivery.getPhone()}" type="tel" maxlength="100" required>
+                        <input class="input input_100" name="phone" value="${delivery.getPhone()}" type="tel" maxlength="20" required>
                     </td>
                 </tr>
                 <tr>

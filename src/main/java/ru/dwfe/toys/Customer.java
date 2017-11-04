@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "customer")
-public class OrderCustomer
+public class Customer
 {
     @Id
     @Column
@@ -19,11 +19,11 @@ public class OrderCustomer
     @Column
     private String phone;
 
-    public OrderCustomer()
+    public Customer()
     {
     }
 
-    public OrderCustomer(String name, String phone, String email)
+    public Customer(String name, String phone, String email)
     {
         this.email = email;
         this.name = name;
@@ -63,7 +63,7 @@ public class OrderCustomer
     @Override
     public String toString()
     {
-        return "OrderCustomer{" +
+        return "Customer{" +
                 "email='" + email + '\'' +
                 ", name='" + name + '\'' +
                 ", phone='" + phone + '\'' +
@@ -76,7 +76,7 @@ public class OrderCustomer
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        OrderCustomer that = (OrderCustomer) o;
+        Customer that = (Customer) o;
 
         return email.equals(that.email);
     }

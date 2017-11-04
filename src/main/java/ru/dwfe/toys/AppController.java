@@ -75,11 +75,11 @@ public class AppController
     @RequestMapping(value = "/orderdelivery", method = RequestMethod.POST)
     public String orderDelivery(ModelMap model, @RequestParam("index") String indexValue)
     {
-        OrderDelivery delivery = new OrderDelivery(indexValue);
+        int value = DeliveryCalculation.perform(indexValue);
 
-        model.put("deliveryValue", delivery.getValueReturn());
-        model.put("currency", delivery.getCurrency());
-        model.put("isDeliveryCorrect", delivery.getIsCorrect());
+        model.put("deliveryValue", DeliveryCalculation.getValueForUser(value));
+        model.put("currency", DeliveryCalculation.getCurrency(value));
+        model.put("isDeliveryCorrect", DeliveryCalculation.isCorrect(value));
 
         return "orderdelivery";
     }
@@ -103,7 +103,9 @@ public class AppController
 
         model.put("hash", hash);
         model.put("shoppingcart", order.getShoppingCart().getCart());
-        model.put("delivery", order.getDelivery());
+        model.put("delivery",order.getDelivery());
+        model.put("deliveryValue", order.getDeliveryValue());
+        model.put("deliveryCurrency", DeliveryCalculation.getCurrency(order.getDeliveryValue()));
         model.put("orderValue", order.getValue());
 
         return "orderconfirm";
@@ -116,7 +118,7 @@ public class AppController
                                @RequestParam String phone,
                                @RequestParam String email)
     {
-        OrderCustomer customer = new OrderCustomer(name, phone, email);
+        Customer customer = new Customer(name, phone, email);
         appService.saveCustomer(customer);
 
         Order order = tempOrder.get(hash);

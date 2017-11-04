@@ -3,9 +3,10 @@ package ru.dwfe.toys;
 public class Order
 {
     private Long id;
-    private OrderCustomer customer;
+    private Customer customer;
     private OrderShoppingCart shoppingCart;
     private OrderDelivery delivery;
+    private Integer deliveryValue;
     private Integer value;
 
     public Order(OrderShoppingCart shoppingCart, OrderDelivery delivery)
@@ -13,7 +14,9 @@ public class Order
         this.shoppingCart = shoppingCart;
         this.delivery = delivery;
 
-        value = shoppingCart.getValue() + delivery.getValue();
+        deliveryValue = DeliveryCalculation.perform(delivery.getIndex());
+
+        value = shoppingCart.getValue() + deliveryValue;
     }
 
     public Long getId()
@@ -26,12 +29,12 @@ public class Order
         this.id = id;
     }
 
-    public OrderCustomer getCustomer()
+    public Customer getCustomer()
     {
         return customer;
     }
 
-    public void setCustomer(OrderCustomer customer)
+    public void setCustomer(Customer customer)
     {
         this.customer = customer;
     }
@@ -54,6 +57,16 @@ public class Order
     public void setDelivery(OrderDelivery delivery)
     {
         this.delivery = delivery;
+    }
+
+    public Integer getDeliveryValue()
+    {
+        return deliveryValue;
+    }
+
+    public void setDeliveryValue(Integer deliveryValue)
+    {
+        this.deliveryValue = deliveryValue;
     }
 
     public Integer getValue()
