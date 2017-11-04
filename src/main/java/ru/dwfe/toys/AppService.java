@@ -11,12 +11,14 @@ public class AppService
 {
     private final DAO_Item daoItem;
     private final DAO_Item_img daoItem_img;
+    private final DAO_OrderCustomer daoOrderCustomer;
 
     @Autowired
-    public AppService(DAO_Item daoItem, DAO_Item_img daoItem_img)
+    public AppService(DAO_Item daoItem, DAO_Item_img daoItem_img, DAO_OrderCustomer daoOrderCustomer)
     {
         this.daoItem = daoItem;
         this.daoItem_img = daoItem_img;
+        this.daoOrderCustomer = daoOrderCustomer;
     }
 
     public List<Item> findAllItems()
@@ -38,5 +40,4 @@ public class AppService
     {
         return daoItem_img.searchByArticle(article);
     }
-
 }

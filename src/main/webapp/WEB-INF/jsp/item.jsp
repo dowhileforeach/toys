@@ -13,6 +13,9 @@
 
     <c:set var="path" value="${pageContext.request.contextPath}"/>
     <c:set var="article" value="${item.getArticle()}"/>
+    <c:set var="color" value="${item.getColor()}"/>
+    <c:set var="size" value="${item.getSize()}"/>
+    <c:set var="price" value="${item.getPrice()}"/>
 
     <div class="left">
         <div id="fsClipper">
@@ -26,16 +29,16 @@
                 <td class="name">Мех</td>
                 <td>${item.getMaterial()}</td>
             </tr>
-            <c:if test="${item.getColor()!=null}">
+            <c:if test="${color!=null}">
                 <tr>
                     <td class="name">Цвет</td>
-                    <td>${item.getColor()}</td>
+                    <td>${color}</td>
                 </tr>
             </c:if>
-            <c:if test="${item.getSize()!=null}">
+            <c:if test="${size!=null}">
                 <tr>
                     <td class="name">Высота</td>
-                    <td>${item.getSize()}</td>
+                    <td>${size}</td>
                 </tr>
             </c:if>
             <tr>
@@ -59,14 +62,11 @@
             <c:forEach var="item_img" items="${item_imgs}">
                 <t:item_img_preview path="${path}" article="${article}" img="${item_img.getImg()}"/>
             </c:forEach>
-            <c:forEach var="item_img" items="${item_imgs}">
-                <c:out value="${item_img.getImg()}"/>
-            </c:forEach>
         </p>
         <script src="${path}/static/js/picPreview.js" type="text/javascript"></script>
         <br>
-        <div class="sellItem">Цена: <span class="price">${item.getPrice()} руб.</span><br>
-            <a href="#" class="buyitem" onclick="addItemToTheShoppingCart(${article},${item.getPrice()})">в корзину</a>
+        <div class="sellItem">Цена: <span class="price">${price} руб.</span><br>
+            <a href="#" class="buyitem" onclick="addItemToTheShoppingCart(${article},${price})">в корзину</a>
         </div>
         <div class="clear"></div>
 

@@ -59,19 +59,19 @@
                 <tr>
                     <td width="18%">Имя:</td>
                     <td>
-                        <input class="input input_100" name="name" value="${delivery.getName()}" type="text" maxlength="200" required>
+                        <input class="input input_100" name="name" value="${delivery.getName()}" type="text" maxlength="100" required>
                     </td>
                 </tr>
                 <tr>
                     <td>Телефон:</td>
                     <td>
-                        <input class="input input_100" name="phone" value="${delivery.getPhone()}" type="tel" required>
+                        <input class="input input_100" name="phone" value="${delivery.getPhone()}" type="tel" maxlength="100" required>
                     </td>
                 </tr>
                 <tr>
                     <td>E-mail:</td>
                     <td>
-                        <input class="input input_100" type="email" name="email" value="" required>
+                        <input class="input input_100" type="email" name="email" maxlength="100" value="" required>
                     </td>
                 </tr>
             </table>

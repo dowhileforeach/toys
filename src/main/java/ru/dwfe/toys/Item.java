@@ -7,45 +7,27 @@ import javax.persistence.*;
 public class Item
 {
     @Id
-    @Column(name = "article")
+    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long article;
 
-    @Column(name = "title")
+    @Column
     private String title;
 
-    @Column(name = "material")
+    @Column
     private String material;
 
-    @Column(name = "color")
+    @Column
     private String color;
 
-    @Column(name = "size")
+    @Column
     private String size;
 
-    @Column(name = "price")
+    @Column
     private Integer price;
 
-    @Column(name = "img")
+    @Column
     private String img;
-
-    @Column(name = "img02")
-    private String img02;
-
-    @Column(name = "img03")
-    private String img03;
-
-    @Column(name = "img04")
-    private String img04;
-
-    @Column(name = "img05")
-    private String img05;
-
-    @Column(name = "img06")
-    private String img06;
-
-    @Column(name = "img07")
-    private String img07;
 
     public Long getArticle()
     {
@@ -115,66 +97,6 @@ public class Item
     public void setImg(String img)
     {
         this.img = img;
-    }
-
-    public String getImg02()
-    {
-        return img02;
-    }
-
-    public void setImg02(String img02)
-    {
-        this.img02 = img02;
-    }
-
-    public String getImg03()
-    {
-        return img03;
-    }
-
-    public void setImg03(String img03)
-    {
-        this.img03 = img03;
-    }
-
-    public String getImg04()
-    {
-        return img04;
-    }
-
-    public void setImg04(String img04)
-    {
-        this.img04 = img04;
-    }
-
-    public String getImg05()
-    {
-        return img05;
-    }
-
-    public void setImg05(String img05)
-    {
-        this.img05 = img05;
-    }
-
-    public String getImg06()
-    {
-        return img06;
-    }
-
-    public void setImg06(String img06)
-    {
-        this.img06 = img06;
-    }
-
-    public String getImg07()
-    {
-        return img07;
-    }
-
-    public void setImg07(String img07)
-    {
-        this.img07 = img07;
     }
 
     @Override

@@ -2,16 +2,17 @@ package ru.dwfe.toys;
 
 public class OrderDelivery
 {
-    private int value;
-    private String valueReturn;
+    private Integer isCorrect = 1;
     private String currency = "руб.";
-    private int isCorrect = 1;
+    private String valueReturn;
 
+    private String email;
     private String index;
     private String country;
     private String address;
     private String name;
     private String phone;
+    private Integer value;
 
     public OrderDelivery(String index)
     {
@@ -75,12 +76,12 @@ public class OrderDelivery
         return currency;
     }
 
-    public int getIsCorrect()
+    public Integer getIsCorrect()
     {
         return isCorrect;
     }
 
-    public int getValue()
+    public Integer getValue()
     {
         return value;
     }
