@@ -63,8 +63,9 @@ function getOrderDeliveryTag(OrderDelivery) {
     let arr = OrderDelivery['form'];
     let res = "";
 
-    for (let i = 0; i < arr.length; i++)
-        res += `<input hidden name='${arr[i]}' value='${OrderDelivery[arr[i]]}'>`;
+    arr.forEach((item, i, arr) => {
+        res += `<input hidden name='${item}' value='${OrderDelivery[item]}'>`;
+    });
 
     return res;
 }
@@ -91,11 +92,11 @@ function controlOrderDelivery() {
 function onSubmitOrderDelivery() {
 
     let OrderDelivery = getOrderDeliveryStorage();
-    let arr = OrderDelivery['form'];
     let form = getDeliveryForm();
 
-    for (let i = 0; i < arr.length; i++)
-        OrderDelivery[arr[i]] = form[arr[i]].value;
+    OrderDelivery['form'].forEach((item, i, arr) => {
+        OrderDelivery[item] = form[item].value;
+    });
 
     setOrderDeliveryStorage(OrderDelivery);
 }
@@ -107,11 +108,11 @@ function openOrderDeliveryPage() {
 function onLoadOrderDeliveryPage() {
 
     let OrderDelivery = getOrderDeliveryStorage();
-    let arr = OrderDelivery['form'];
     let form = getDeliveryForm();
 
-    for (let i = 0; i < arr.length; i++)
-        form[arr[i]].value = OrderDelivery[arr[i]];
+    OrderDelivery['form'].forEach((item, i, arr) => {
+        form[item].value = OrderDelivery[item];
+    });
 
     getDeliveryValueBlock().innerHTML = OrderDelivery['value'] + " " + OrderDelivery['currency'];
 }
