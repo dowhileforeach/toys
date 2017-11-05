@@ -1,3 +1,5 @@
+'use strict';
+
 function getShoppingCartStorage() {
 
     if (localStorage.ShoppingCart === undefined)
@@ -25,13 +27,13 @@ function getShoppingCartBlock() {
 }
 
 function getShoppingCartTotal() {
-    var ShoppingCart = getShoppingCartStorage();
-    var totalQuantity = 0;
-    var totalSum = 0;
-    var arr = [];
+    let ShoppingCart = getShoppingCartStorage();
+    let totalQuantity = 0;
+    let totalSum = 0;
+    let arr = [];
 
-    for (var prop in ShoppingCart) {
-        var item = ShoppingCart[prop];
+    for (let prop in ShoppingCart) {
+        let item = ShoppingCart[prop];
         totalQuantity += +item.qtty;
         totalSum += +item.qtty * +item.price;
 
@@ -49,38 +51,38 @@ function getShoppingCartTotal() {
 }
 
 function getShoppingCartTag(arr) {
-    return "<input name='shoppingcart' type='hidden' value='" + JSON.stringify(arr) + "'>";
+    return `<input name='shoppingcart' type='hidden' value='${JSON.stringify(arr)}'>`;
 }
 
 function controlShoppingCart() {
 
-    var res = getShoppingCartTotal();
-    var url = localStorage.contextPath + "/shoppingcart";
-    var value = '';
+    let res = getShoppingCartTotal();
+    let url = localStorage.contextPath + "/shoppingcart";
+    let value = '';
     if (res.totalQuantity === 0)
         url = localStorage.contextPath + "/shop";
     else
-        value = "<strong>" + res.totalSum + "</strong> руб.";
+        value = `<strong>${res.totalSum}</strong> руб.`;
 
     getShoppingCartBlock().innerHTML =
-        "<form name='shoppingCartForm' action='" + url + "' method='post'>" +
-        getShoppingCartTag(res.arr) +
-        "<button class='orderbutton' type='submit'>" +
-        "Корзина (<strong>" + res.totalQuantity + "</strong>)" +
-        "</button>&nbsp;&nbsp;" + value +
-        "</form>";
+        `<form name='shoppingCartForm' action='${url}' method='post'>
+            ${getShoppingCartTag(res.arr)}
+            <button class='orderbutton' type='submit'>
+                Корзина (<strong>${res.totalQuantity}</strong>)
+            </button>&nbsp;&nbsp;${value} 
+        </form>`;
 }
 
 function addItemToTheShoppingCart(article, _price) {
 
     article += "";
-    var quantity = 1;
-    var ShoppingCart = getShoppingCartStorage();
-    var saved = false;
+    let quantity = 1;
+    let ShoppingCart = getShoppingCartStorage();
+    let saved = false;
 
-    for (var prop in ShoppingCart)
+    for (let prop in ShoppingCart)
         if (prop === article) {
-            var item = ShoppingCart[prop];
+            let item = ShoppingCart[prop];
             item.qtty = +item.qtty + quantity;
             saved = true;
             break;
@@ -101,9 +103,9 @@ function sendShoppingCartToTheServer() {
 
     //
     // if (point === undefined) point = '/shoppingcart';
-    // var ShoppingCart = getShoppingCartStorage();
-    // var arr = [];
-    // for (var prop in ShoppingCart)
+    // let ShoppingCart = getShoppingCartStorage();
+    // let arr = [];
+    // for (let prop in ShoppingCart)
     //     arr.push({
     //         'article': prop,
     //         'qtty': ShoppingCart[prop].qtty
@@ -114,8 +116,8 @@ function sendShoppingCartToTheServer() {
     //     return;
     // }
     //
-    // var req = new XMLHttpRequest();
-    // var url = localStorage.contextPath + point;
+    // let req = new XMLHttpRequest();
+    // let url = localStorage.contextPath + point;
     // req.open("post", url);
     // req.setRequestHeader("content-type", "application/json");
     // req.onreadystatechange = function () {
@@ -131,10 +133,10 @@ function sendShoppingCartToTheServer() {
 
 function refreshShoppingCart(el) {
 
-    var article = el.parentNode.parentNode.id;
-    var input = el.parentNode.parentNode.querySelector("input");
-    var qtty = input.value;
-    var ShoppingCart = getShoppingCartStorage();
+    let article = el.parentNode.parentNode.id;
+    let input = el.parentNode.parentNode.querySelector("input");
+    let qtty = input.value;
+    let ShoppingCart = getShoppingCartStorage();
 
     if (!ShoppingCart.hasOwnProperty(article)) return;
 
@@ -155,7 +157,7 @@ function refreshShoppingCart(el) {
 
 function deleteItemFromShoppingCart(article) {
 
-    var ShoppingCart = getShoppingCartStorage();
+    let ShoppingCart = getShoppingCartStorage();
 
     if (!ShoppingCart.hasOwnProperty(article)) return;
 

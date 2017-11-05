@@ -1,3 +1,5 @@
+'use strict';
+
 function getOrderDeliveryStorage() {
 
     if (localStorage.OrderDelivery === undefined
@@ -28,14 +30,14 @@ function toZeroOrderDelivery() {
 }
 
 function setDeliveryValue(deliveryValue, currency) {
-    var OrderDelivery = getOrderDeliveryStorage();
+    let OrderDelivery = getOrderDeliveryStorage();
     OrderDelivery['value'] = deliveryValue;
     OrderDelivery['currency'] = currency;
     setOrderDeliveryStorage(OrderDelivery);
 }
 
 function setIsDeliveryCorrect(value) {
-    var OrderDelivery = getOrderDeliveryStorage();
+    let OrderDelivery = getOrderDeliveryStorage();
     OrderDelivery['isDeliveryCorrect'] = value;
     setOrderDeliveryStorage(OrderDelivery);
 }
@@ -58,42 +60,41 @@ function getDeliveryValueBlock() {
 
 function getOrderDeliveryTag(OrderDelivery) {
 
-    var arr = OrderDelivery['form'];
-    var res = "";
+    let arr = OrderDelivery['form'];
+    let res = "";
 
-    for (var i = 0; i < arr.length; i++)
-        res += "<input hidden name='" + arr[i] + "' value='" + OrderDelivery[arr[i]] + "'>";
+    for (let i = 0; i < arr.length; i++)
+        res += `<input hidden name='${arr[i]}' value='${OrderDelivery[arr[i]]}'>`;
 
     return res;
 }
 
 function controlOrderDelivery() {
 
-    var OrderDelivery = getOrderDeliveryStorage();
-    var url = localStorage.contextPath + "/orderdelivery";
+    let OrderDelivery = getOrderDeliveryStorage();
+    let url = localStorage.contextPath + "/orderdelivery";
 
-    var value = OrderDelivery['value'];
+    let value = OrderDelivery['value'];
     if (value === '') value = 'не рассчитана';
     if (value !== 'не рассчитана')
-        value = "<strong>" + value + "</strong> " + OrderDelivery['currency'];
+        value = `<strong>${value}</strong> ${OrderDelivery['currency']}`;
 
-    var text =
-        "<form name='headFormDelivery' action='" + url + "' method='post'>" +
-        getOrderDeliveryTag(OrderDelivery) +
-        "<button class='orderbutton'>" +
-        "Доставка" +
-        "</button>&nbsp;&nbsp;" + value +
-        "</form>";
-    getOrderDeliveryBlock().innerHTML = text;
+    getOrderDeliveryBlock().innerHTML =
+        `<form name='headFormDelivery' action='${url}' method='post'>
+            ${getOrderDeliveryTag(OrderDelivery)}
+            <button class='orderbutton'>
+                Доставка
+            </button>&nbsp;&nbsp;${value}
+         </form>`;
 }
 
 function onSubmitOrderDelivery() {
 
-    var OrderDelivery = getOrderDeliveryStorage();
-    var arr = OrderDelivery['form'];
-    var form = getDeliveryForm();
+    let OrderDelivery = getOrderDeliveryStorage();
+    let arr = OrderDelivery['form'];
+    let form = getDeliveryForm();
 
-    for (var i = 0; i < arr.length; i++)
+    for (let i = 0; i < arr.length; i++)
         OrderDelivery[arr[i]] = form[arr[i]].value;
 
     setOrderDeliveryStorage(OrderDelivery);
@@ -105,11 +106,11 @@ function openOrderDeliveryPage() {
 
 function onLoadOrderDeliveryPage() {
 
-    var OrderDelivery = getOrderDeliveryStorage();
-    var arr = OrderDelivery['form'];
-    var form = getDeliveryForm();
+    let OrderDelivery = getOrderDeliveryStorage();
+    let arr = OrderDelivery['form'];
+    let form = getDeliveryForm();
 
-    for (var i = 0; i < arr.length; i++)
+    for (let i = 0; i < arr.length; i++)
         form[arr[i]].value = OrderDelivery[arr[i]];
 
     getDeliveryValueBlock().innerHTML = OrderDelivery['value'] + " " + OrderDelivery['currency'];

@@ -1,3 +1,4 @@
+'use strict';
 
 function getOrderConfirmBlock() {
     return document.querySelector(".orderConfirmBlock");
@@ -9,26 +10,26 @@ function getOrderConfirmBlockForm() {
 
 function controlOrderConfirm() {
 
-    var orderConfirmBlock = getOrderConfirmBlock();
+    let orderConfirmBlock = getOrderConfirmBlock();
 
     if (!isShoppingCartPresent() || !isDeliveryCorrect()) {
         orderConfirmBlock.innerHTML = "";
         return;
     }
 
-    var shoppingCart = getShoppingCartTotal();
-    var url = localStorage.contextPath + "/orderconfirm";
+    let shoppingCart = getShoppingCartTotal();
+    let url = localStorage.contextPath + "/orderconfirm";
 
     orderConfirmBlock.innerHTML =
-        "<form action='" + url + "' method='post'>" +
-        getShoppingCartTag(shoppingCart.arr) +
-        getOrderDeliveryTag(getOrderDeliveryStorage()) +
-        "<button class='orderbutton'>" +
-        "Оформить заказ" +
-        "</button>" +
-        "</form>";
+        `<form action='${url}' method='post'>
+            ${getShoppingCartTag(shoppingCart.arr)}
+            ${getOrderDeliveryTag(getOrderDeliveryStorage())}
+            <button class='orderbutton'>
+                Оформить заказ
+            </button>
+         </form>`;
 }
 
 function onSubmitOrderConfirm() {
-    
+
 }
