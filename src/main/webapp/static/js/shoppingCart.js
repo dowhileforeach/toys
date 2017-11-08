@@ -101,40 +101,10 @@ function sendShoppingCartToTheServer() {
 
     getShoppingCartBlock().querySelector("form").submit();
 
-    //
-    // if (point === undefined) point = '/shoppingcart';
-    // let ShoppingCart = getShoppingCartStorage();
-    // let arr = [];
-    // for (let prop in ShoppingCart)
-    //     arr.push({
-    //         'article': prop,
-    //         'qtty': ShoppingCart[prop].qtty
-    //     });
-    //
-    // if (arr.length === 0) {
-    //     window.location.replace(localStorage.contextPath + "/shop");
-    //     return;
-    // }
-    //
-    // let req = new XMLHttpRequest();
-    // let url = localStorage.contextPath + point;
-    // req.open("post", url);
-    // req.setRequestHeader("content-type", "application/json");
-    // req.onreadystatechange = function () {
-    //     if (req.readyState === 4 && req.status === 200) {
-    //         document.open();
-    //         document.write(req.responseText);
-    //         document.close();
-    //     }
-    // };
-    // req.send(JSON.stringify(arr));
-    //
 }
 
-function refreshShoppingCart(el) {
+function refreshShoppingCart(article, input) {
 
-    let article = el.parentNode.parentNode.id;
-    let input = el.parentNode.parentNode.querySelector("input");
     let qtty = input.value;
     let ShoppingCart = getShoppingCartStorage();
 

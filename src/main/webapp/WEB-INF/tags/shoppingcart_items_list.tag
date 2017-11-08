@@ -33,7 +33,7 @@
                     цена: <strong>${price}</strong> руб.
                 </span>
             </td>
-            <td align=center id="${article}">
+            <td align=center id="art${article}">
                 <c:choose>
                     <c:when test="${orderConfirm}">
                         &nbsp;<br>
@@ -43,8 +43,8 @@
                     <c:otherwise>
                         <input class="qtty" type="text" name="" value="${qtty}">
                         <span style="font-size: 75%">
-                            <br><a href="#" onclick="refreshShoppingCart(this)">Обновить</a>
-                            <br><a href="#" onclick="deleteItemFromShoppingCart(this.parentNode.parentNode.id)">Удалить</a>
+                            <br><a href="#" onclick="refreshShoppingCart('${article}',document.querySelector('td#art${article} > input'))">Обновить</a>
+                            <br><a href="#" onclick="deleteItemFromShoppingCart('${article}')">Удалить</a>
                         </span>
                     </c:otherwise>
                 </c:choose>

@@ -13,7 +13,7 @@ function getOrderDeliveryStorage() {
             'form': ['index', 'country', 'address', 'name', 'phone'],
             "isDeliveryCorrect": 0,
             'value': '',     //в доставке валюта отдельно, потому что
-            'currency': ''   //могут быть варианты value без валюты, например, БЕСПЛАТНО и т.п.
+            'currency': '',   //могут быть варианты value без валюты, например, БЕСПЛАТНО и т.п.
         });
     return JSON.parse(localStorage.OrderDelivery);
 }
