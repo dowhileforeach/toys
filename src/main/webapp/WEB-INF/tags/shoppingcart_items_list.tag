@@ -15,7 +15,6 @@
     <c:set var="totalQtty" value="0"/>
     <c:set var="totalSum" value="0"/>
     <c:forEach items="${shoppingcart}" var="item" varStatus="loop">
-
         <c:set var="article" value="${item.getArticle()}"/>
         <c:set var="title"   value="${item.getItem().getTitle()}"/>
         <c:set var="img"     value="${item.getItem().getImg()}"/>
@@ -57,15 +56,6 @@
         <c:set var="totalSum" value="${totalSum + sum}"/>
     </c:forEach>
 
-<%--
-    <tr class="other">
-        <td align=right colspan="3">
-            Товаров:&nbsp;&nbsp;<strong>${totalQtty}</strong>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            Стоимость:&nbsp;&nbsp;<strong>${totalSum}</strong> руб.
-        </td>
-    </tr>
---%>
 </table>
 <br>
 <div class="priceBlock">
