@@ -103,7 +103,7 @@ CREATE TABLE `order` (
   CONSTRAINT `order_customer_email_fk` FOREIGN KEY (`customer`) REFERENCES `customer` (`email`)
 )
   ENGINE = InnoDB
-  AUTO_INCREMENT = 0
+  AUTO_INCREMENT = 100000
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_unicode_ci;
 
